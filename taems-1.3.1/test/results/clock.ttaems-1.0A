@@ -1,0 +1,168 @@
+;;;;
+;; Begin Task Structure null (Output v.1.01)
+;;;;
+
+(spec_agent
+  (label Clock)
+)
+
+(spec_task_group
+   (label Run-Clock)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (subtasks Init-Clock Track-Time)
+)
+
+(spec_task
+   (label Init-Clock)
+   (agent Clock)
+;  ** In IRs: 0
+;  ** Out IRs: 1
+   (arrival_time 0)
+   (earliest_start_time 0)
+   (deadline 10)
+   (supertasks Run-Clock)
+   (subtasks Get-Atomic-Time Get-User-Time)
+   (qaf q_exactly_one)
+)
+
+(spec_enables
+   (spec_attributes
+      (active false)
+   )
+   (label enables01)
+   (agent Clock)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Init-Clock)
+   (to Track-Time)
+   (delay 0.0 1.0)
+)
+
+(spec_task
+   (label Track-Time)
+   (agent Clock)
+;  ** In IRs: 1
+;  ** Out IRs: 0
+   (supertasks Run-Clock)
+   (subtasks Check-Time Tick-Time)
+   (qaf q_min)
+)
+
+(spec_method
+   (label Check-Time)
+   (agent Clock)
+;  ** In IRs: 0
+;  ** Out IRs: 1
+   (supertasks Track-Time)
+   (outcomes
+      (o1
+         (density 1.0)
+         (quality_distribution 10.0 0.8 0.0 0.2)
+         (duration_distribution 3.0 1.0)
+         (cost_distribution 2.0 1.0)
+      )
+   )
+)
+
+(spec_facilitates
+   (spec_attributes
+      (active false)
+   )
+   (label facilitates01)
+   (agent Clock)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Check-Time)
+   (to Tick-Time)
+   (quality_power 0.5 1.0)
+   (duration_power 0.0 1.0)
+   (cost_power 1.0 1.0)
+   (delay 0.0 1.0)
+)
+
+(spec_method
+   (label Tick-Time)
+   (agent Clock)
+;  ** In IRs: 2
+;  ** Out IRs: 1
+   (supertasks Track-Time)
+   (outcomes
+      (o1
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 1.0 1.0)
+         (cost_distribution 1.0 1.0)
+      )
+   )
+)
+
+(spec_consumes
+   (spec_attributes
+      (active false)
+   )
+   (label clock-elec-use)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Tick-Time)
+   (to Electricity)
+   (consumes 0.1 1.0)
+)
+
+(spec_non_consumable_resource
+   (label Electricity)
+;  ** In IRs: 1
+;  ** Out IRs: 1
+   (state 15.0)
+   (depleted_at 15.0)
+;  ** Status is: 4
+)
+
+(spec_limits
+   (spec_attributes
+      (active false)
+   )
+   (label elec-lim-01)
+   (agent Clock)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Electricity)
+   (to Tick-Time)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 1.0 1.0)
+)
+
+(spec_method
+   (label Get-Atomic-Time)
+   (agent Clock)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Init-Clock)
+   (outcomes
+      (o1
+         (density 1.0)
+         (quality_distribution 20.0 0.8 0.0 0.2)
+         (duration_distribution 3.0 1.0)
+         (cost_distribution 2.0 1.0)
+      )
+   )
+)
+
+(spec_method
+   (label Get-User-Time)
+   (agent Clock)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Init-Clock)
+   (outcomes
+      (o1
+         (density 1.0)
+         (quality_distribution 5.0 1.0)
+         (duration_distribution 1.0 1.0)
+         (cost_distribution 1.0 1.0)
+      )
+   )
+)
+
+

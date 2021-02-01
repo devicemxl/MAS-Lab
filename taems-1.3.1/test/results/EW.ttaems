@@ -1,0 +1,159 @@
+;;;;
+;; Begin Task Structure null (Output v.1.1)
+;;;;
+
+(spec_agent
+  (label Agent_1)
+)
+
+(spec_task_group
+   (label Perform_Tasks)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (subtasks Generate_Track)
+   (qaf q_sum)
+)
+
+(spec_task
+   (label Generate_Track)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Perform_Tasks)
+   (subtasks Use_Prior_Track Use_Current_Position)
+   (qaf q_sum)
+)
+
+(spec_method
+   (label Use_Prior_Track)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Generate_Track)
+   (outcomes
+      (Outcome_1
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 10.0 1.0)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+)
+
+(spec_method
+   (label Use_Current_Position)
+   (agent Agent_1)
+;  ** In IRs: 3
+;  ** Out IRs: 0
+   (supertasks Generate_Track)
+   (outcomes
+      (Outcome_1
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 10.0 1.0)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+)
+
+(spec_facilitates
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Jack_Facilitates)
+   (agent Jack)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Jack_Track)
+   (to Use_Current_Position)
+   (quality_power 0.4 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 1.0 1.0)
+   (delay 0.0 1.0)
+)
+
+(spec_method
+   (label Jack_Track)
+   (agent Jack)
+;  ** In IRs: 0
+;  ** Out IRs: 1
+   (nonlocal)
+   (outcomes
+      (Outcome_1
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 10.0 1.0)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+)
+
+(spec_facilitates
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Jill_Facilitates)
+   (agent Jill)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Jill_Track)
+   (to Use_Current_Position)
+   (quality_power 0.4 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 1.0 1.0)
+   (delay 0.0 1.0)
+)
+
+(spec_method
+   (label Jill_Track)
+   (agent Jill)
+;  ** In IRs: 0
+;  ** Out IRs: 1
+   (nonlocal)
+   (outcomes
+      (Outcome_1
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 10.0 1.0)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+)
+
+(spec_facilitates
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Bob_Facilitates)
+   (agent Bob)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Bob_Track)
+   (to Use_Current_Position)
+   (quality_power 0.4 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 1.0 1.0)
+   (delay 0.0 1.0)
+)
+
+(spec_method
+   (label Bob_Track)
+   (agent Bob)
+;  ** In IRs: 0
+;  ** Out IRs: 1
+   (nonlocal)
+   (outcomes
+      (Outcome_1
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 10.0 1.0)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+)
+
+
+
+
+

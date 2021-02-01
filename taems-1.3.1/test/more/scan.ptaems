@@ -1,0 +1,122 @@
+#define AGENT = Agent_1
+#define SUBTASKS = ""
+
+#if (#ndef($SECTOR1) == true)
+	#define SECTOR1 = true
+#endif
+#if (#ndef($SECTOR2) == true)
+	#define SECTOR2 = true
+#endif
+#if (#ndef($SECTOR3) == true)
+	#define SECTOR3 = true
+#endif
+
+#define INIT_OUT
+  (outcomes
+      (Outcome_1
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 10.0 1.0)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+#enddefine
+
+#define LO_OUT
+  (outcomes
+      (Outcome_1
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 10.0 1.0)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+#enddefine
+
+#define HI_OUT
+  (outcomes
+      (Outcome_1
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 10.0 1.0)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+#enddefine
+
+#define RET_OUT
+  (outcomes
+      (Outcome_1
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 10.0 1.0)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+#enddefine
+
+#define SCAN_TASK
+(spec_task
+   (label Scan_$SECTOR)
+   (agent $AGENT)
+   (subtasks Init_$SECTOR Query_$SECTOR Retrieve_$SECTOR)
+   (qaf q_seq_sum)
+)
+
+(spec_method
+   (label Init_$SECTOR)
+   (agent $AGENT)
+   $INIT_OUT
+)
+
+(spec_task
+   (label Query_$SECTOR)
+   (agent $AGENT)
+   (subtasks Lo_$SECTOR Hi_$SECTOR)
+   (qaf q_exactly_one)
+)
+(spec_method
+   (label Lo_$SECTOR)
+   (agent $AGENT)
+   $LO_OUT
+)
+(spec_method
+   (label Hi_$SECTOR)
+   (agent $AGENT)
+   $HI_OUT
+)
+
+(spec_method
+   (label Retrieve_$SECTOR)
+   (agent $AGENT)
+   $RET_OUT
+)
+#enddefine
+
+(spec_agent
+  (label $AGENT)
+)
+
+#if ($SECTOR1 == true) 
+	#define SECTOR = 1
+	#definenow SUBTASKS = #concat($SUBTASKS, #space(), "Scan_", $SECTOR)
+	$SCAN_TASK
+#endif
+#if ($SECTOR2 == true) 
+	#define SECTOR = 2
+	#definenow SUBTASKS = #concat($SUBTASKS, #space(), "Scan_", $SECTOR)
+	$SCAN_TASK
+#endif
+#if ($SECTOR3 == true) 
+	#define SECTOR = 3
+	#definenow SUBTASKS = #concat($SUBTASKS, #space(), "Scan_", $SECTOR)
+	$SCAN_TASK
+#endif
+
+(spec_task_group
+   (label Perform-Scan)
+   (agent $AGENT)
+   (subtasks $SUBTASKS)
+   (qaf q_sum)
+)
+

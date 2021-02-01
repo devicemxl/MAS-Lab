@@ -1,0 +1,58 @@
+;;;;
+;; Begin Task Structure null (Output v.1.01)
+;;;;
+
+(spec_agent
+  (label CoffeeMaker)
+)
+
+(spec_method
+   (label Buy-Beans-From-Starbucks)
+   (agent CoffeeMaker)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (outcomes
+      (Buy-Beans-From-Starbucks_o0
+         (density 1.0)
+         (quality_distribution 6.0 1.0)
+         (duration_distribution 15.0 1.0)
+         (cost_distribution 6.0 1.0)
+      )
+   )
+)
+
+(spec_non_consumable_resource
+   (label Noise)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (state 20.0)
+   (depleted_at 120.0)
+;  ** Status is: 5
+)
+
+(spec_evaluation_criteria
+   (label toto)
+   (goodness_quality_slider 0.45)
+   (goodness_cost_slider 0.45)
+   (goodness_duration_slider 0.1)
+   (threshold_quality_slider 0.33)
+   (threshold_cost_slider 0.33)
+   (threshold_duration_slider 0.34)
+   (quality_threshold 25.0)
+   (cost_limit 5.0)
+   (duration_limit 10.0)
+   (uncertainty_quality_slider 0.2)
+   (uncertainty_cost_slider 0.7)
+   (uncertainty_duration_slider 0.1)
+   (threshold_certainty_quality_slider 0.1)
+   (threshold_certainty_cost_slider 0.2)
+   (threshold_certainty_duration_slider 0.3)
+   (quality_certainty_threshold 1.0)
+   (cost_certainty_threshold 2.0)
+   (duration_certainty_threshold 3.0)
+   (meta_goodness_slider 0.0)
+   (meta_threshold_slider 0.0)
+   (meta_uncertainty_slider 1.0)
+   (meta_uncertainty_threshold_slider 0.0)
+)
+

@@ -1,0 +1,452 @@
+;;;;
+;; Begin Task Structure null (Output v.1.1)
+;;;;
+
+(spec_agent
+  (label CoffeeMaker)
+)
+
+(spec_task_group
+   (label Make-Coffee)
+   (agent CoffeeMaker)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (subtasks Acquire-Ingredients Hot-Coffee)
+   (qaf q_min)
+)
+
+(spec_task
+   (label Acquire-Ingredients)
+   (agent CoffeeMaker)
+;  ** In IRs: 0
+;  ** Out IRs: 1
+   (supertasks Make-Coffee)
+   (subtasks Fill-Water Get-Coffee)
+   (qaf q_min)
+)
+
+(spec_enables
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label enables1)
+   (agent CoffeeMaker)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Acquire-Ingredients)
+   (to Hot-Coffee)
+   (delay 0.0 1.0)
+)
+
+(spec_task
+   (label Hot-Coffee)
+   (agent CoffeeMaker)
+;  ** In IRs: 1
+;  ** Out IRs: 0
+   (supertasks Make-Coffee)
+   (subtasks Mix-And-Filter Brew-Coffee)
+   (qaf q_exactly_one)
+)
+
+(spec_method
+   (label Mix-And-Filter)
+   (agent CoffeeMaker)
+;  ** In IRs: 0
+;  ** Out IRs: 2
+   (supertasks Hot-Coffee)
+   (outcomes
+      (Mix-And-Filter_o0
+         (density 1.0)
+         (quality_distribution 6.0 1.0)
+         (duration_distribution 4.0 1.0)
+         (cost_distribution 1.5 1.0)
+      )
+   )
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label uses12)
+   (agent CoffeeMaker)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Mix-And-Filter)
+   (to Electricity)
+   (model per_time_unit)
+   (consumes 5.0 1.0)
+)
+
+(spec_non_consumable_resource
+   (label Electricity)
+;  ** In IRs: 4
+;  ** Out IRs: 0
+   (state 16.0)
+   (depleted_at 0.0)
+;  ** Status is: 0
+   (overloaded_at 100.0)
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label uses8)
+   (agent CoffeeMaker)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Grind-Beans)
+   (to Electricity)
+   (model per_time_unit)
+   (consumes 15.0 1.0)
+)
+
+(spec_method
+   (label Grind-Beans)
+   (agent CoffeeMaker)
+;  ** In IRs: 1
+;  ** Out IRs: 4
+   (supertasks Acquire-Beans)
+   (outcomes
+      (Grind-Beans_o0
+         (density 1.0)
+         (quality_distribution 6.0 1.0)
+         (duration_distribution 4.0 1.0)
+         (cost_distribution 2.0 1.0)
+      )
+   )
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label uses9)
+   (agent CoffeeMaker)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Grind-Beans)
+   (to Noise)
+   (model per_time_unit)
+   (consumes 75.0 1.0)
+)
+
+(spec_non_consumable_resource
+   (label Noise)
+;  ** In IRs: 6
+;  ** Out IRs: 0
+   (state 20.0)
+   (depleted_at 0.0)
+;  ** Status is: 0
+   (overloaded_at 100.0)
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label uses4)
+   (agent CoffeeMaker)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Get-Hot-Water)
+   (to Noise)
+   (model duration_independent)
+   (consumes 65.0 1.0)
+)
+
+(spec_method
+   (label Get-Hot-Water)
+   (agent CoffeeMaker)
+;  ** In IRs: 0
+;  ** Out IRs: 2
+   (supertasks Fill-Water)
+   (outcomes
+      (Get-Hot-Water_o0
+         (density 1.0)
+         (quality_distribution 6.0 1.0)
+         (duration_distribution 4.0 1.0)
+         (cost_distribution 6.0 1.0)
+      )
+   )
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label uses3)
+   (agent CoffeeMaker)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Get-Hot-Water)
+   (to HotWater)
+   (model duration_independent)
+   (consumes 1.0 1.0)
+)
+
+(spec_consumable_resource
+   (label HotWater)
+   (agent WaterHeater)
+;  ** In IRs: 1
+;  ** Out IRs: 0
+   (state 20.0)
+   (depleted_at 0.0)
+;  ** Status is: 0
+   (overloaded_at 100.0)
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label uses6)
+   (agent CoffeeMaker)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Get-Cold-Water)
+   (to Noise)
+   (model duration_independent)
+   (consumes 65.0 1.0)
+)
+
+(spec_method
+   (label Get-Cold-Water)
+   (agent CoffeeMaker)
+;  ** In IRs: 0
+;  ** Out IRs: 1
+   (supertasks Fill-Water)
+   (outcomes
+      (Get-Cold-Water_o0
+         (density 1.0)
+         (quality_distribution 6.0 1.0)
+         (duration_distribution 2.0 1.0)
+         (cost_distribution 2.0 1.0)
+      )
+   )
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label uses11)
+   (agent CoffeeMaker)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Use-Frozen-Beans)
+   (to Noise)
+   (model per_time_unit)
+   (consumes 70.0 1.0)
+)
+
+(spec_method
+   (spec_attributes
+      (MyBool Boolean false)
+      (MyVector Vector DELIM=, billy,joe the bad boy,bob,jane)
+      (MyHash Hashtable DELIM=, name2,joe montana,name1,billy the kid)
+      (MyDouble Double 3.14159)
+      (MyInt Integer 3)
+   )
+   (label Use-Frozen-Beans)
+   (agent CoffeeMaker)
+;  ** In IRs: 0
+;  ** Out IRs: 2
+   (supertasks Acquire-Beans)
+   (outcomes
+      (Use-Frozen-Beans_o0
+         (density 1.0)
+         (quality_distribution 3.0 1.0)
+         (duration_distribution 2.0 1.0)
+         (cost_distribution 1.0 1.0)
+      )
+   )
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label uses10)
+   (agent CoffeeMaker)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Use-Frozen-Beans)
+   (to Electricity)
+   (model per_time_unit)
+   (consumes 10.0 1.0)
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label uses13)
+   (agent CoffeeMaker)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Mix-And-Filter)
+   (to Noise)
+   (model per_time_unit)
+   (consumes 60.0 1.0)
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label uses15)
+   (agent CoffeeMaker)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Grind-Beans)
+   (to Noise)
+   (model per_time_unit)
+   (consumes 75.0 1.0)
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label uses14)
+   (agent CoffeeMaker)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Grind-Beans)
+   (to Electricity)
+   (model per_time_unit)
+   (consumes 15.0 1.0)
+)
+
+(spec_enables
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label enables7)
+   (agent CoffeeMaker)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Acquire-Beans)
+   (to Grind-Beans)
+   (delay 0.0 1.0)
+)
+
+(spec_task
+   (label Acquire-Beans)
+   (agent CoffeeMaker)
+;  ** In IRs: 0
+;  ** Out IRs: 1
+   (supertasks Acquire-Ground-Coffee-Beans)
+   (subtasks Grind-Beans Use-Frozen-Beans)
+   (qaf q_max)
+)
+
+(spec_method
+   (label Brew-Coffee)
+   (agent CoffeeMaker)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Hot-Coffee)
+   (outcomes
+      (Brew-Coffee_o0
+         (density 1.0)
+         (quality_distribution 7.0 1.0)
+         (duration_distribution 6.0 1.0)
+         (cost_distribution 3.5 1.0)
+      )
+   )
+)
+
+(spec_task
+   (label Fill-Water)
+   (agent CoffeeMaker)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Acquire-Ingredients)
+   (subtasks Get-Hot-Water Get-Cold-Water)
+   (qaf q_exactly_one)
+)
+
+(spec_task
+   (label Get-Coffee)
+   (agent CoffeeMaker)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Acquire-Ingredients)
+   (subtasks Acquire-Ground-Coffee-Beans Use-Coffee-Instant)
+   (qaf q_exactly_one)
+)
+
+(spec_task
+   (label Acquire-Ground-Coffee-Beans)
+   (agent CoffeeMaker)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Get-Coffee)
+   (subtasks Acquire-Beans Buy-Beans-From-Starbucks)
+   (qaf q_min)
+)
+
+(spec_method
+   (label Buy-Beans-From-Starbucks)
+   (agent CoffeeMaker)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Acquire-Ground-Coffee-Beans)
+   (outcomes
+      (Buy-Beans-From-Starbucks_o0
+         (density 1.0)
+         (quality_distribution 6.0 1.0)
+         (duration_distribution 15.0 1.0)
+         (cost_distribution 6.0 1.0)
+      )
+   )
+)
+
+(spec_method
+   (label Use-Coffee-Instant)
+   (agent CoffeeMaker)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Get-Coffee)
+   (outcomes
+      (Use-Coffee-Instant_o0
+         (density 1.0)
+         (quality_distribution 1.0 1.0)
+         (duration_distribution 0.5 1.0)
+         (cost_distribution 0.5 1.0)
+      )
+   )
+)
+
+
+
+
+(spec_evaluation_criteria
+   (label toto)
+   (goodness_quality_slider 0.6)
+   (goodness_cost_slider 0.3)
+   (goodness_duration_slider 0.1)
+   (threshold_quality_slider 0.33)
+   (threshold_cost_slider 0.33)
+   (threshold_duration_slider 0.34)
+   (quality_threshold 25.0)
+   (cost_limit 5.0)
+   (duration_limit 10.0)
+   (uncertainty_quality_slider 0.2)
+   (uncertainty_cost_slider 0.7)
+   (uncertainty_duration_slider 0.1)
+   (threshold_certainty_quality_slider 0.1)
+   (threshold_certainty_cost_slider 0.2)
+   (threshold_certainty_duration_slider 0.3)
+   (quality_certainty_threshold 1.0)
+   (cost_certainty_threshold 2.0)
+   (duration_certainty_threshold 3.0)
+   (meta_goodness_slider 1.0)
+   (meta_threshold_slider 0.0)
+   (meta_uncertainty_slider 0.0)
+   (meta_uncertainty_threshold_slider 0.0)
+)
+

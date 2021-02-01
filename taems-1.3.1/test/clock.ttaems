@@ -1,0 +1,150 @@
+;;;;
+;; Begin Task Structure Objective (Output v.1.1)
+;;;;
+
+(spec_agent
+  (label Clock)
+)
+
+; Start new base structure
+(spec_task_group
+   (label Run-Clock)
+   (subtasks Init-Clock Track-Time)
+)
+
+(spec_task
+   (label Init-Clock)
+   (agent Clock)
+   (arrival_time 0)
+   (earliest_start_time 0)
+   (deadline 10)
+   (supertasks Run-Clock)
+   (subtasks Get-Atomic-Time Get-User-Time)
+   (qaf q_exactly_one)
+)
+
+(spec_enables
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label enables01)
+   (agent Clock)
+   (from Init-Clock)
+   (to Track-Time)
+   (delay 0.0 1.0)
+)
+
+(spec_task
+   (label Track-Time)
+   (agent Clock)
+   (supertasks Run-Clock)
+   (subtasks Check-Time Tick-Time)
+   (qaf q_min)
+)
+
+(spec_method
+   (label Check-Time)
+   (agent Clock)
+   (supertasks Track-Time)
+   (outcomes
+      (o1
+         (density 1.0)
+         (quality_distribution 10.0 0.8 0.0 0.2)
+         (duration_distribution 3.0 1.0)
+         (cost_distribution 2.0 1.0)
+      )
+   )
+)
+
+(spec_facilitates
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label facilitates01)
+   (agent Clock)
+   (from Check-Time)
+   (to Tick-Time)
+   (quality_power 0.5 1.0)
+   (duration_power 0.0 1.0)
+   (cost_power 1.0 1.0)
+   (delay 0.0 1.0)
+)
+
+(spec_method
+   (label Tick-Time)
+   (agent Clock)
+   (supertasks Track-Time)
+   (outcomes
+      (o1
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 1.0 1.0)
+         (cost_distribution 1.0 1.0)
+      )
+   )
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label clock-elec-use)
+   (from Tick-Time)
+   (to Electricity)
+   (consumes 0.1 1.0)
+)
+
+(spec_non_consumable_resource
+   (overloaded_at 0.0)
+   (label Electricity)
+   (state 15.0)
+   (depleted_at 15.0)
+)
+
+(spec_limits
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label elec-lim-01)
+   (agent Clock)
+   (from Electricity)
+   (to Tick-Time)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 1.0 1.0)
+)
+
+(spec_method
+   (label Get-Atomic-Time)
+   (agent Clock)
+   (supertasks Init-Clock)
+   (outcomes
+      (o1
+         (density 1.0)
+         (quality_distribution 20.0 0.8 0.0 0.2)
+         (duration_distribution 3.0 1.0)
+         (cost_distribution 2.0 1.0)
+      )
+   )
+)
+
+(spec_method
+   (label Get-User-Time)
+   (agent Clock)
+   (supertasks Init-Clock)
+   (outcomes
+      (o1
+         (density 1.0)
+         (quality_distribution 5.0 1.0)
+         (duration_distribution 1.0 1.0)
+         (cost_distribution 1.0 1.0)
+      )
+   )
+)
+
+; Start new base structure
+; Node Electricity previously defined
+
+;;;;
+;; End Task Structure Objective
+;;;;

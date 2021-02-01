@@ -1,0 +1,199 @@
+; To be define by the problem solver/agent controller
+#define ORDER=123
+#define NUMBER=100
+#define SOUND=no
+#define MULTIMEDIA=yes
+#define HD_SIZE=big
+#define MEMORY=1
+#define COST_HD=300
+#define COST_MEMORY=100
+#define COST_CHIPS=700
+#define MARGIN_COST=100
+#define FACTORY_COST=100
+#define CHIPS=intel
+
+; Intermediate computation to help
+#define END = #trim(#concat("_",$ORDER))
+#define DURATION = #sum(5,#prod($NUMBER,3))
+#define PROGRESS = #quot($NUMBER,$DURATION)
+#define COST = #sum(#prod($MEMORY,$COST_MEMORY),$COST_CHIPS,$COST_HD,$MARGIN_COST,$FACTORY_COST)
+
+;; Agents
+(spec_agent
+  (label NEC)
+)
+
+;; Resources
+(spec_consumable_resource
+   (label Memory)
+   (state 120.0)
+   (depleted_at 0.0)
+   (overloaded_at 1000.0)
+)
+(spec_consumable_resource
+   (label $CHIPS)
+   (state 20.0)
+   (depleted_at 0.0)
+   (overloaded_at 800.0)
+)
+
+
+(spec_consumable_resource
+   (label #concat($HD_SIZE,"-HD"))
+   (state 100.0)
+   (depleted_at 0.0)
+   (overloaded_at 400.0)
+)
+
+(spec_consumable_resource
+   (label PC)
+   (state 20.0)
+   (depleted_at 0.0)
+   (overloaded_at 100.0)
+)
+
+;; A Production
+(spec_task_group
+   (label Manufacture-PC_$END)
+   (agent NEC)
+   (subtasks Assemble-PC_$END)
+   (qaf q_min)
+)
+
+(spec_method
+   (label Assemble-PC_$END)
+   (agent NEC)
+   (supertasks Manufacture-PC_$END)
+   (outcomes
+	(Outcome_1
+          (density 1.0)
+          (quality_distribution 20 0.9 0.0 0.1)
+          (duration_distribution #sum(5,#prod($NUMBER,3)) 1.0)
+          (cost_distribution #quot(#prod($NUMBER,$COST),$DURATION) 1.0)
+       )
+   )
+)
+
+(spec_consumes 
+   (label Consume-CPU) 
+   (agent NEC)  
+   (from Assemble-PC_$END) 
+   (to $CHIPS) 
+   (model per_time_unit)
+   (consumes $PROGRESS 1.0) 
+) 
+
+(spec_limits
+   (label Limits-CPU)
+   (agent NEC)
+   (model per_time_unit)
+   (from $CHIPS)
+   (to Assemble-PC_$END)
+   (quality_power 1.0 1.0 )
+   (duration_power 0.0 1.0 )
+   (cost_power 0.0 1.0)
+)
+
+(spec_consumes 
+   (label Consume-Memory) 
+   (agent NEC)  
+   (from Assemble-PC_$END) 
+   (to Memory) 
+   (model per_time_unit)
+   (consumes #prod($MEMORY,$PROGRESS) 1.0) 
+) 
+
+(spec_limits
+   (label Limits-Memory)
+   (agent NEC)
+   (model per_time_unit)
+   (from Memory)
+   (to Assemble-PC_$END)
+   (quality_power 1.0 1.0 )
+   (duration_power 0.0 1.0 )
+   (cost_power 0.0 1.0)
+)
+
+#if ($MULTIMEDIA == "yes")
+(spec_consumable_resource
+   (label Multimedia-Kit)
+   (state 200.0)
+   (depleted_at 0.0)
+   (overloaded_at 800.0)
+)
+(spec_consumes 
+   (model per_time_unit)
+   (label Consume-Multimedia) 
+   (agent NEC)  
+   (from Assemble-PC_$END) 
+   (to Multimedia-Kit) 
+   (consumes $PROGRESS 1.0) 
+) 
+
+(spec_limits
+   (label Limits-Multimedia)
+   (agent NEC)
+   (model per_time_unit)
+   (from Multimedia-Kit)
+   (to Assemble-PC_$END)
+   (quality_power 1.0 1.0 )
+   (duration_power 0.0 1.0 )
+   (cost_power 0.0 1.0)
+)
+#endif
+
+#if ($SOUND == "yes")
+(spec_consumable_resource
+   (label Sound-Kit)
+   (state 100.0)
+   (depleted_at 0.0)
+   (overloaded_at 800.0)
+)
+(spec_consumes 
+   (model per_time_unit)
+   (label Consume-Sound) 
+   (agent NEC)  
+   (from Assemble-PC_$END) 
+   (to Sound-Kit) 
+   (consumes $PROGRESS 1.0) 
+) 
+
+(spec_limits
+   (label Limits-Sound)
+   (agent NEC)
+   (model per_time_unit)
+   (from Sound-Kit)
+   (to Assemble-PC_$END)
+   (quality_power 1.0 1.0 )
+   (duration_power 0.0 1.0 )
+   (cost_power 0.0 1.0)
+)
+#endif
+
+(spec_consumes 
+   (label #concat("Consume-",$HD_SIZE, "-HD"))
+   (model per_time_unit)
+   (agent NEC)  
+   (from Assemble-PC_$END) 
+   (to #concat($HD_SIZE,"-HD"))
+   (consumes $PROGRESS 1.0) 
+) 
+(spec_limits
+   (label #concat("Limits-",$HD_SIZE, "-HD"))
+   (agent NEC)
+   (model per_time_unit)
+   (from #concat($HD_SIZE,"-HD"))
+   (to Assemble-PC_$END)
+   (quality_power 1.0 1.0 )
+   (duration_power 0.0 1.0 )
+   (cost_power 0.0 1.0)
+)
+(spec_produces 
+   (label Produce-PC) 
+   (model per_time_unit)
+   (agent NEC)  
+   (from Assemble-PC_$END) 
+   (to PC) 
+   (produces $PROGRESS 1.0) 
+) 
+

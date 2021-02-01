@@ -1,0 +1,563 @@
+;;;;
+;; Begin Task Structure Init6370675310 (Output v.1.1)
+;;;;
+
+(spec_agent
+  (label SA1)
+)
+
+(spec_task_group
+   (label Setup_Hardware)
+   (agent SA1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (subtasks Startup Init Obtain-Background-Noise)
+   (qaf q_seq_min)
+)
+
+(spec_task
+   (label Startup)
+   (agent SA1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Setup_Hardware)
+   (subtasks Activate-Sector_0 Activate-Sector_1 Activate-Sector_2)
+   (qaf q_min)
+)
+
+(spec_method
+   (label Activate-Sector_0)
+   (agent SA1)
+;  ** In IRs: 1
+;  ** Out IRs: 2
+   (supertasks Startup)
+   (outcomes
+      (Final_Results
+         (density 1.0)
+         (quality_distribution 1.0 1.0)
+         (duration_distribution 0.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Consumes_6.0_85)
+   (agent SA1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Activate-Sector_0)
+   (to SensLock)
+   (model duration_independent)
+   (consumes 1.0 1.0)
+)
+
+(spec_consumable_resource
+   (label SensLock)
+   (agent SA1)
+;  ** In IRs: 20
+;  ** Out IRs: 10
+   (state 997.0)
+   (depleted_at 0.0)
+;  ** Status is: 0
+   (overloaded_at 1000.0)
+)
+
+(spec_limits
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Limits_6.0)
+   (agent SA1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from SensLock)
+   (to Activate-Sector_0)
+   (model duration_independent)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 1.0 1.0)
+)
+
+(spec_limits
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Limits_7.0)
+   (agent SA1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from SensLock)
+   (to Activate-Sector_1)
+   (model duration_independent)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 1.0 1.0)
+)
+
+(spec_method
+   (label Activate-Sector_1)
+   (agent SA1)
+;  ** In IRs: 1
+;  ** Out IRs: 2
+   (supertasks Startup)
+   (outcomes
+      (Final_Results
+         (density 1.0)
+         (quality_distribution 1.0 1.0)
+         (duration_distribution 0.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Consumes_7.0_34)
+   (agent SA1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Activate-Sector_1)
+   (to SensLock)
+   (model duration_independent)
+   (consumes 1.0 1.0)
+)
+
+(spec_produces
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Produces_7.0_76)
+   (agent SA1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Activate-Sector_1)
+   (to SensLock)
+   (model duration_independent)
+   (produces 1.0 1.0)
+)
+
+(spec_limits
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Limits_8.0)
+   (agent SA1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from SensLock)
+   (to Activate-Sector_2)
+   (model duration_independent)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 1.0 1.0)
+)
+
+(spec_method
+   (label Activate-Sector_2)
+   (agent SA1)
+;  ** In IRs: 1
+;  ** Out IRs: 2
+   (supertasks Startup)
+   (outcomes
+      (Final_Results
+         (density 1.0)
+         (quality_distribution 1.0 1.0)
+         (duration_distribution 0.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Consumes_8.07)
+   (agent SA1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Activate-Sector_2)
+   (to SensLock)
+   (model duration_independent)
+   (consumes 1.0 1.0)
+)
+
+(spec_produces
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Produces_8.0_92)
+   (agent SA1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Activate-Sector_2)
+   (to SensLock)
+   (model duration_independent)
+   (produces 1.0 1.0)
+)
+
+(spec_limits
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Limits2.0)
+   (agent SA1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from SensLock)
+   (to Set-Msrment-Duration)
+   (model duration_independent)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 1.0 1.0)
+)
+
+(spec_method
+   (spec_attributes
+      (Duration Integer 200)
+      (NoMessage Boolean true)
+      (Sensor Integer 1)
+      (Quality Float 1.0)
+      (Time Integer 0)
+      (Cost Float 0.0)
+      (Status String Completed)
+      (Finish Integer 1646605)
+;     (State <un-convertible class agent.simplest.State ommitted>)
+      (Start Integer 1646605)
+   )
+   (label Set-Msrment-Duration)
+   (agent SA1)
+;  ** In IRs: 1
+;  ** Out IRs: 2
+   (supertasks Init)
+   (outcomes
+      (Final_Results
+         (density 1.0)
+         (quality_distribution 1.0 1.0)
+         (duration_distribution 0.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Consumes2.03)
+   (agent SA1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Set-Msrment-Duration)
+   (to SensLock)
+   (model duration_independent)
+   (consumes 1.0 1.0)
+)
+
+(spec_produces
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Produces2.0_95)
+   (agent SA1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Set-Msrment-Duration)
+   (to SensLock)
+   (model duration_independent)
+   (produces 1.0 1.0)
+)
+
+(spec_limits
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Limits3.0)
+   (agent SA1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from SensLock)
+   (to Set-Sample-Size)
+   (model duration_independent)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 1.0 1.0)
+)
+
+(spec_method
+   (spec_attributes
+      (Sample Integer 64)
+      (MessageID Integer 2)
+      (NoMessage Boolean true)
+      (Sensor Integer 1)
+      (Status String Running)
+;     (State <un-convertible class agent.simplest.State ommitted>)
+      (Start Integer 1646605)
+   )
+   (label Set-Sample-Size)
+   (agent SA1)
+;  ** In IRs: 1
+;  ** Out IRs: 2
+   (supertasks Init)
+   (outcomes
+      (Outcome
+         (density 1.0)
+         (quality_distribution 1.0 1.0)
+         (duration_distribution 50.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Consumes3.0_40)
+   (agent SA1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Set-Sample-Size)
+   (to SensLock)
+   (model duration_independent)
+   (consumes 1.0 1.0)
+)
+
+(spec_produces
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Produces3.0_49)
+   (agent SA1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Set-Sample-Size)
+   (to SensLock)
+   (model duration_independent)
+   (produces 1.0 1.0)
+)
+
+(spec_limits
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Limits4.0)
+   (agent SA1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from SensLock)
+   (to Set-Sector)
+   (model duration_independent)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 1.0 1.0)
+)
+
+(spec_method
+   (spec_attributes
+      (Sector Integer 0)
+      (Sensor Integer 1)
+   )
+   (label Set-Sector)
+   (agent SA1)
+;  ** In IRs: 1
+;  ** Out IRs: 1
+   (supertasks Obtain-Background-Noise)
+   (outcomes
+      (Outcome
+         (density 1.0)
+         (quality_distribution 1.0 1.0)
+         (duration_distribution 50.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Consumes4.0_88)
+   (agent SA1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Set-Sector)
+   (to SensLock)
+   (model duration_independent)
+   (consumes 1000.0 1.0)
+)
+
+(spec_produces
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Produces_6.0_4)
+   (agent SA1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Activate-Sector_0)
+   (to SensLock)
+   (model duration_independent)
+   (produces 1.0 1.0)
+)
+
+(spec_produces
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Produces5.0_9)
+   (agent SA1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Perform-Msrment)
+   (to SensLock)
+   (model duration_independent)
+   (produces 1000.0 1.0)
+)
+
+(spec_method
+   (spec_attributes
+      (Number Integer 3)
+      (Sensor Integer 1)
+   )
+   (label Perform-Msrment)
+   (agent SA1)
+;  ** In IRs: 0
+;  ** Out IRs: 1
+   (supertasks Obtain-Background-Noise)
+   (outcomes
+      (Outcome
+         (density 1.0)
+         (quality_distribution 1.0 1.0)
+         (duration_distribution 1494.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_task
+   (label Init)
+   (agent SA1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Setup_Hardware)
+   (subtasks Wait-2-Seconds Set-Time-Synch Set-Receive Set-Msrment-Duration Set-Sample-Size)
+   (qaf q_min)
+)
+
+(spec_method
+   (spec_attributes
+      (Action String agent.mass.DelayAction)
+      (NoMessage Boolean true)
+      (Quality Float 1.0)
+      (Time Integer 2039)
+      (Cost Float 0.0)
+      (Status String Completed)
+      (Finish Integer 1648644)
+;     (State <un-convertible class agent.simplest.State ommitted>)
+      (Start Integer 1646605)
+   )
+   (label Wait-2-Seconds)
+   (agent SA1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Init)
+   (outcomes
+      (Final_Results
+         (density 1.0)
+         (quality_distribution 1.0 1.0)
+         (duration_distribution 2039.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_method
+   (spec_attributes
+      (NoMessage Boolean true)
+      (Sensor Integer 1)
+      (Local Boolean true)
+      (Quality Float 1.0)
+      (Time Integer 0)
+      (Cost Float 0.0)
+      (Status String Completed)
+      (Finish Integer 1646605)
+;     (State <un-convertible class agent.simplest.State ommitted>)
+      (Start Integer 1646605)
+   )
+   (label Set-Time-Synch)
+   (agent SA1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Init)
+   (outcomes
+      (Final_Results
+         (density 1.0)
+         (quality_distribution 1.0 1.0)
+         (duration_distribution 0.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_method
+   (spec_attributes
+      (MessageID Integer 4)
+      (Channel Integer 1)
+      (NoMessage Boolean true)
+      (Sensor Integer 1)
+      (Status String Running)
+;     (State <un-convertible class agent.simplest.State ommitted>)
+      (Start Integer 1646605)
+   )
+   (label Set-Receive)
+   (agent SA1)
+;  ** In IRs: 1
+;  ** Out IRs: 2
+   (supertasks Init)
+   (outcomes
+      (Outcome
+         (density 1.0)
+         (quality_distribution 1.0 1.0)
+         (duration_distribution 50.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_task
+   (label Obtain-Background-Noise)
+   (agent SA1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Setup_Hardware)
+   (subtasks Set-Sector Perform-Msrment Calc-Bkgrd)
+   (qaf q_seq_min)
+)
+
+(spec_method
+   (label Calc-Bkgrd)
+   (agent SA1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Obtain-Background-Noise)
+   (outcomes
+      (Outcome
+         (density 1.0)
+         (quality_distribution 1.0 1.0)
+         (duration_distribution 50.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+   (spec_attributes
+      (label String Init6370675310)
+   )
+

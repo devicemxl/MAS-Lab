@@ -1,0 +1,20 @@
+;;;;
+;; Begin Task Structure null (Output v.1.1)
+;;;;
+
+(spec_method
+   (label Some_Method)
+   (agent Pyle)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (outcomes
+      (Some_Outcome_1
+         (density 0.5)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 5.0 1.0)
+         (cost_distribution 2.0 1.0)
+      )
+   )
+)
+
+

@@ -1,0 +1,42 @@
+(spec_schedule
+	(schedule_elements
+	    (M1
+	        (start_time_distribution  100.000000 1.000000)
+	        (finish_time_distribution  101.000000 1.000000)
+	        (quality_distribution  1.000000 1.000000)
+	        (cost_distribution  1.000000 1.000000)
+	        (duration_distribution  1.000000 1.000000)
+	    )
+	    (M2
+	        (start_time_distribution  101.000000 1.000000)
+	        (finish_time_distribution  102.000000 0.500000 103.000000 0.500000)
+	        (quality_distribution  1.000000 1.000000)
+	        (cost_distribution  1.000000 1.000000)
+	        (duration_distribution  1.000000 0.500000 2.000000 0.500000)
+	    )
+	)
+	(start_time_distribution 100.000000 1.0)
+	(finish_time_distribution 102.000000 0.500000 103.000000 0.500000)
+	(quality_distribution  2.000000 1.000000)
+	(duration_distribution  2.000000 0.500000 3.000000 0.500000)
+	(cost_distribution  7.500000 1.000000)
+	(rating 0.500000)
+)
+
+(spec_schedule
+	(schedule_elements
+	    (M1
+	        (start_time_distribution  100.000000 1.000000)
+	        (finish_time_distribution  101.000000 1.000000)
+	        (quality_distribution  1.000000 1.000000)
+	        (cost_distribution  1.000000 1.000000)
+	        (duration_distribution  1.000000 1.000000)
+	    )
+	)
+	(start_time_distribution 100.000000 1.0)
+	(finish_time_distribution 101.000000 1.000000)
+	(quality_distribution  1.000000 1.000000)
+	(duration_distribution  1.000000 1.000000)
+	(cost_distribution  6.500000 1.000000)
+	(rating 0.500000)
+)

@@ -1,0 +1,20 @@
+(spec_task_group
+	(label Foo)
+	(agent A)
+	(qaf q_sum)
+	(subtasks Bar1 Bar2)
+)
+
+(spec_method
+	(spec_attributes
+		(Int Integer 1)
+		(TestNode Node Bar2)
+		(TestNode2 Node NoNode)
+		(Blah Wuzzl What l it do)
+	)
+	(label Bar1)
+)
+
+(spec_method
+	(label Bar2)
+)

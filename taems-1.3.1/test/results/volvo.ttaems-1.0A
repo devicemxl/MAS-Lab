@@ -1,0 +1,173 @@
+;;;;
+;; Begin Task Structure null (Output v.1.01)
+;;;;
+
+(spec_agent
+  (label Volvo)
+)
+
+(spec_task_group
+   (label deliver-S70)
+   (agent Volvo)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (subtasks make-S70 ship-S70)
+   (qaf q_seq_sum)
+)
+
+(spec_method
+   (label make-S70)
+   (agent Volvo)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks deliver-S70)
+   (outcomes
+      (make-S70_o0
+         (density 1.0)
+         (quality_distribution 99.0 1.0)
+         (duration_distribution 10.0 1.0)
+         (cost_distribution 30000.0 1.0)
+      )
+   )
+)
+
+(spec_method
+   (label ship-S70)
+   (agent Volvo)
+;  ** In IRs: 3
+;  ** Out IRs: 3
+   (supertasks deliver-S70)
+   (outcomes
+      (ship-S70_o0
+         (density 1.0)
+         (quality_distribution 50.0 1.0)
+         (duration_distribution 10.0 1.0)
+         (cost_distribution 500.0 1.0)
+      )
+   )
+)
+
+(spec_consumes
+   (spec_attributes
+      (active false)
+   )
+   (label load-S70)
+   (agent Volvo)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from ship-S70)
+   (to Volvo-S70)
+   (consumes 1.0 1.0)
+)
+
+(spec_consumable_resource
+   (label Volvo-S70)
+;  ** In IRs: 1
+;  ** Out IRs: 1
+   (state 0.0)
+   (depleted_at 0.0)
+;  ** Status is: 0
+)
+
+(spec_limits
+   (spec_attributes
+      (active false)
+   )
+   (label no-S70)
+   (agent Volvo)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Volvo-S70)
+   (to ship-S70)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 0.5 1.0)
+)
+
+(spec_consumes
+   (spec_attributes
+      (active false)
+   )
+   (label drive)
+   (agent Volvo)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from ship-S70)
+   (to Truck)
+   (consumes 1.0 1.0)
+)
+
+(spec_non_consumable_resource
+   (label Truck)
+;  ** In IRs: 1
+;  ** Out IRs: 1
+   (state 1.0)
+   (depleted_at 0.0)
+;  ** Status is: 0
+)
+
+(spec_limits
+   (spec_attributes
+      (active false)
+   )
+   (label no-Truck)
+   (agent Volvo)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Truck)
+   (to ship-S70)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power -1.0 1.0)
+)
+
+(spec_produces
+   (spec_attributes
+      (active false)
+   )
+   (label unload)
+   (agent Volvo)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from ship-S70)
+   (to Volvo-S70-at-dealer)
+   (produces 10.0 1.0)
+)
+
+(spec_consumable_resource
+   (label Volvo-S70-at-dealer)
+;  ** In IRs: 1
+;  ** Out IRs: 1
+   (state 5.0)
+   (depleted_at 0.0)
+;  ** Status is: 0
+)
+
+(spec_limits
+   (spec_attributes
+      (active false)
+   )
+   (label no-space-for-S70)
+   (agent Volvo)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Volvo-S70-at-dealer)
+   (to ship-S70)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 0.5 1.0)
+)
+
+
+
+
+(spec_nonlocal_commitment
+   (label nlc3)
+   (task Method2)
+;  ** Note: node Method2 is virtual.
+   (from_agent Agent_A)
+   (to_agent Agent_B)
+   (quality_distribution 12.0 0.5 15.0 0.5)
+   (time_distribution 13.0 1.0)
+)
+

@@ -1,0 +1,229 @@
+;; --------------------------------------------------------------
+;; commitments
+;; ----------------------
+
+(spec_commitment
+   (label com12)
+   ;; one of do, deadline or earliest_start_time
+   (type earliest_start_time)
+   (agent some_agent)
+   (task Delta USAir)
+   ;; 0 = what if question -- see ttaems spec.
+   (importance 1)
+   (minimum_quality .01)
+   (earliest_start_time 500)
+   (deadline -1)
+   (time_satisfied -1)
+)
+
+
+(spec_commitment
+   (label com14)
+   ;; one of do, dont, deadline or earliest_start_time
+   (type dont)
+   (agent some_agent)
+   (task Delta)
+   ;; 0 = what if question, 1 or greater = already committed.
+   (importance 2)
+   (minimum_quality .01)
+   (earliest_start_time -1)
+   (deadline -1)
+   (dont_interval_start 200)
+   (dont_interval_end 400)
+   (time_satisfied -1)
+)
+
+(spec_nonlocal_commitment
+   (label nlc3)
+   (task task3)
+   (from_agent a2)
+   (to_agent a1)
+   (quality_distribution 12 0.5 15 0.5)
+   ;; expected arrival time of nlc
+   (time_distribution 13 1.0)
+)
+
+;; --------------------------------------------------------------
+;; resources & resource nles
+;; ----------------------
+
+(spec_produces
+	(label some_produces)
+	(agent some_agent)
+	(from USAir)
+	(to network_bandwidth)
+	(produces 10 1.0)
+)
+
+(spec_uses
+	(label some_uses)
+	(agent some_agent)
+	(from USAir)
+	(to network_bandwidth)
+	(consumes 11 .50 13 .50)
+)
+
+(spec_uses
+	(label some_uses)
+	(agent some_agent)
+	(from Delta)
+	(to network_bandwidth)
+	(consumes 9 .50 11 .50)
+)
+
+(spec_limits
+	(label some_limits)
+	(agent some_agent)
+	(from network_bandwidth)
+	(to USAir)
+    (quality_power .50 1.0)
+    (duration_power 1.0 1.0)
+    (cost_power 1.0 1.0)
+)
+
+(spec_limits
+	(label some_limits)
+	(agent some_agent)
+	(from network_bandwidth)
+	(to Delta)
+    (quality_power .50 1.0)
+    (duration_power 1.0 1.0)
+    (cost_power 1.0 1.0)
+)
+
+
+(spec_non_consumable_resource
+ (label network_bandwidth)
+ (state 20)
+ (depleted_at 0))
+
+(spec_consumable_resource
+ (label tokens)
+ (state 10)
+ (depleted_at 2))
+
+
+
+;; --------------------------------------------------------------
+;; agents and tasks
+;; ----------------------
+
+
+(spec_agent
+	(label some_agent))
+
+(spec_task_group
+	(label Airline)
+	(agent some_agent)
+	(subtasks USAir Delta MNL)
+	(qaf q_sum)
+)
+
+(spec_method
+	(label USAir)
+	(agent some_agent)
+	(supertasks Airline)
+	(outcomes
+		(Outcome_3
+		   (density 1.)
+		   (quality_distribution 0 .10 100 .90)
+		   (duration_distribution 240 1.0)
+		   (cost_distribution 180 1.0)
+		)
+	)
+)
+
+(spec_method
+    (label Delta)
+    (agent some_agent)
+    (supertasks Airline)
+    (outcomes
+        (Outcome_3b
+           (density 1.)
+           (quality_distribution 100 1.0)
+           (duration_distribution 240 1.0)
+           (cost_distribution 160 1.0)
+        )
+    )
+;	(earliest_start_time 500)
+;    (deadline 1000)
+)
+
+
+(spec_method
+    (label MNL)
+    (agent some_agent)
+    (supertasks Airline)
+    (outcomes
+        (Outcome_3b
+           (density 1.)
+           (quality_distribution 100 1.0)
+           (duration_distribution 240 1.0)
+           (cost_distribution 160 1.0)
+        )
+    )
+	(nonlocal)
+)
+
+
+;; --------------------------------------------------------------
+;; nles
+;; ----------------------
+
+(spec_facilitates
+	(label enables_0)
+	(agent some_agent)
+	(from USAir)
+	(to Delta)
+    (quality_power 1.0 1.0)
+    (duration_power 0.50 1.0)
+    (cost_power .30 1.0)
+	(delay 0 1)
+)
+
+(spec_enables
+	(label enables_1)
+	(agent some_agent)
+	(from MNL)
+	(to Delta)
+	(delay 0 1)
+)
+
+(spec_enables
+	(label enables_2)
+	(agent some_agent)
+	(from USAir)
+	(to MNL)
+	(delay 0 1)
+)
+
+
+;; --------------------------------------------------------------
+;; criteria
+;; --------------------------------------------------------------
+
+(spec_evaluation_criteria
+   (label toto)
+   (goodness_quality_slider .60)
+   (goodness_cost_slider 0.30)
+   (goodness_duration_slider 0.10)
+   (threshold_quality_slider 0.33)
+   (threshold_cost_slider 0.33)
+   (threshold_duration_slider 0.34)
+   (quality_threshold 25)
+   (cost_limit 5)
+   (duration_limit 10)
+   (uncertainty_quality_slider 0.2)
+   (uncertainty_cost_slider 0.7)
+   (uncertainty_duration_slider 0.1)
+   (threshold_certainty_quality_slider .1)
+   (threshold_certainty_cost_slider    .2)
+   (threshold_certainty_duration_slider   .3)
+   (quality_certainty_threshold  1)
+   (cost_certainty_threshold  2)
+   (duration_certainty_threshold  3)
+   (meta_goodness_slider 1.0)
+   (meta_threshold_slider 0.0)
+   (meta_uncertainty_slider 0.0)
+   (meta_uncertainty_threshold_slider 0.0)
+)

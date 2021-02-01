@@ -1,0 +1,19 @@
+#define A = 4.0
+
+(spec_task_group
+	(spec_attributes
+#while ($A != 0)
+		(Variable_#trim($A) Float $A)
+	#definenow B = $A
+	#while ($B != 0)
+#if (($B != 1) && ($B != 3))
+		(Variable_#trim($A)#trim($B) Float #quot($B, 2))
+#endif
+		#definenow B = #diff($B, 1)
+	#endwhile
+	#definenow A = #diff($A, 1)
+#endwhile
+	)
+	(label blah)
+	(qaf q_sum)
+)

@@ -1,0 +1,167 @@
+;;;;
+;; Begin Task Structure null (Output v.1.1)
+;;;;
+
+(spec_agent
+  (label WaterHeater_3)
+)
+
+(spec_task_group
+   (label Make-Hot-Water_3)
+   (agent WaterHeater)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (subtasks Make-Hot-Water-Slow_3 Make-Hot-Water-Medium_3 Make-Hot-Water-Fast_3 Make-Hot-Water-VeryFast_3)
+   (qaf q_exactly_one)
+)
+
+(spec_method
+   (label Make-Hot-Water-Slow_3)
+   (agent WaterHeater)
+;  ** In IRs: 0
+;  ** Out IRs: 1
+   (supertasks Make-Hot-Water_3)
+   (outcomes
+      (Make-Hot-Water-Slow_o0
+         (density 1.0)
+         (quality_distribution 40.0 1.0)
+         (duration_distribution 1.0 1.0)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+)
+
+(spec_produces
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label produces1_3)
+   (agent WaterHeater)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Make-Hot-Water-Slow_3)
+   (to HotWater)
+   (model per_time_unit)
+   (produces 4.0 1.0)
+)
+
+(spec_consumable_resource
+   (spec_attributes
+      (low_bound Double 50.0)
+      (overloaded_at Double 200.0)
+   )
+   (label HotWater)
+;  ** In IRs: 4
+;  ** Out IRs: 0
+   (state 20.0)
+   (depleted_at 0.0)
+;  ** Status is: 0
+   (overloaded_at 100.0)
+)
+
+(spec_produces
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label produces2_3)
+   (agent WaterHeater)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Make-Hot-Water-Medium_3)
+   (to HotWater)
+   (model per_time_unit)
+   (produces 9.0 1.0)
+)
+
+(spec_method
+   (label Make-Hot-Water-Medium_3)
+   (agent WaterHeater)
+;  ** In IRs: 0
+;  ** Out IRs: 1
+   (supertasks Make-Hot-Water_3)
+   (outcomes
+      (Make-Hot-Water-Medium_o0
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 1.0 1.0)
+         (cost_distribution 4.0 1.0)
+      )
+   )
+)
+
+(spec_produces
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label produces3_3)
+   (agent WaterHeater)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Make-Hot-Water-Fast_3)
+   (to HotWater)
+   (model per_time_unit)
+   (produces 45.0 1.0)
+)
+
+(spec_method
+   (spec_attributes
+      (MyBool Boolean false)
+      (MyVector Vector DELIM=, billy,joe,bob,jane)
+      (MyHash Hashtable DELIM=, name2,joe,name1,billy)
+      (MyDouble Double 3.14159)
+      (MyInt Integer 3)
+   )
+   (label Make-Hot-Water-Fast_3)
+   (agent WaterHeater)
+;  ** In IRs: 0
+;  ** Out IRs: 1
+   (supertasks Make-Hot-Water_3)
+   (outcomes
+      (Make-Hot-Water-Fast_o0
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 1.0 1.0)
+         (cost_distribution 6.0 1.0)
+      )
+   )
+)
+
+(spec_produces
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label produces4_3)
+   (agent WaterHeater)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Make-Hot-Water-VeryFast_3)
+   (to HotWater)
+   (model per_time_unit)
+   (produces 25.0 1.0)
+)
+
+(spec_method
+   (spec_attributes
+      (MyBool Boolean false)
+      (MyVector Vector DELIM=, billy,joe the bad boy,bob,jane)
+      (MyHash Hashtable DELIM=, name2,joe montana,name1,billy the kid)
+      (MyDouble Double 3.14159)
+      (MyInt Integer 3)
+   )
+   (label Make-Hot-Water-VeryFast_3)
+   (agent WaterHeater)
+;  ** In IRs: 0
+;  ** Out IRs: 1
+   (supertasks Make-Hot-Water_3)
+   (outcomes
+      (Make-Hot-Water-VeryFast_o0
+         (density 1.0)
+         (quality_distribution 20.0 1.0)
+         (duration_distribution 1.0 1.0)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+)
+
+
+

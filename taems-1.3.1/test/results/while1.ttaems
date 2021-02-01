@@ -1,0 +1,22 @@
+;;;;
+;; Begin Task Structure null (Output v.1.1)
+;;;;
+
+(spec_task_group
+   (spec_attributes
+      (Variable_4.04.0 Float 2.0)
+      (Variable_3.0 Float 3.0)
+      (Variable_2.0 Float 2.0)
+      (Variable_4.02.0 Float 1.0)
+      (Variable_4.0 Float 4.0)
+      (Variable_3.02.0 Float 1.0)
+      (Variable_2.02.0 Float 1.0)
+      (Variable_1.0 Float 1.0)
+   )
+   (label blah)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (qaf q_sum)
+)
+
+

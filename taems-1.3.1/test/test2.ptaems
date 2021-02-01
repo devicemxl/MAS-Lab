@@ -1,0 +1,195 @@
+#define FOOBAR = "10.0 0.5 20 0.5 "
+#define RandomSeed = 105
+
+
+#definenow PROB1 = #RANDOM_FLOAT(0,1)
+#definenow PROB2 = #RANDOM_FLOAT(0,1)
+#definenow PROB3 = #RANDOM_FLOAT(0,1)
+
+#define NORMALQUALITYDIST 
+	(quality_distribution 2.71 0.05 7.39 0.2 20.09 0.5 54.6 0.2 148.41 0.05)
+#enddefine
+
+#define QUALITYDIST
+	(quality_distribution #RANDOM_INT(0,30) 1.0)
+#enddefine
+
+#define DURATIONDIST
+	(duration_distribution #RANDOM_INT(1,20) 1.0)
+#enddefine
+
+#define COSTDIST
+	(cost_distribution #RANDOM_INT(0,10) 1.0 )
+#enddefine
+
+#define PROB4 = #RANDOM_FLOAT(0,1)
+#define OUTCOME
+#if (#RANDOM_FLOAT(0,1) > "Hello World")
+   (outcomes
+      (A_o0
+         (density 1.0)
+;	 $NORMALQUALITYDIST
+	 (quality_distribution $FOOBAR )
+	 $DURATIONDIST
+         $COSTDIST
+      )
+    )    
+#else
+  (outcomes
+      (A_o0
+         (density $PROB4)
+;	 $NORMALQUALITYDIST
+	 (quality_distribution $FOOBAR )
+	 $DURATIONDIST
+         $COSTDIST
+      )
+      (A_o1
+         (density #DIFF(1,$PROB4))
+	 $QUALITYDIST
+	 $DURATIONDIST
+         $COSTDIST
+      )
+    ) 
+#endif
+#enddefine
+
+(spec_agent
+   (label TLS)
+)
+
+(spec_task_group
+   (label TG_1)
+   (agent TLS)
+   #if ($PROB1 > 0.5)    
+       (subtasks T1 T2)
+   #elseif  ($PROB2 > 0.5) 
+	    (subtasks T1 T3)
+   #elseif ($PROB3 > 0.5)
+	    (subtasks T1 T2 T3)
+   #else 
+	 (subtasks T1)
+   #endif
+   (qaf #RANDOM_LIST(q_sum,q_min,q_max))
+   (deadline #RANDOM_INT(10,40))
+)
+
+(spec_task
+   (label T1)
+   (agent TLS)
+   (subtasks A M T)
+   (supertasks TG_1)
+   (qaf #RANDOM_LIST(q_sum,q_min,q_max))
+)
+
+
+(spec_method
+   (label A)
+   (agent TLS)
+   (supertasks T1)
+
+)
+
+(spec_method
+   (label M)
+   (agent TLS)
+   (supertasks T1)
+   $OUTCOME
+)
+
+(spec_method
+   (label T)
+   (agent TLS)
+   (supertasks T1)
+   $OUTCOME
+)
+
+#if (($PROB1 > 0.5) || ($PROB3 > 0.5))
+(spec_task
+   (label T2)
+   (agent TLS)
+   (subtasks Z Q D)
+   (supertasks TG_1)
+   (qaf #RANDOM_LIST(q_sum,q_min,q_max))
+)
+
+(spec_method
+   (label Z)
+   (agent TLS)
+   (supertasks T2)
+   $OUTCOME
+)
+
+(spec_method
+   (label Q)
+   (agent TLS)
+   (supertasks T2)
+   $OUTCOME
+)
+
+(spec_method
+   (label D)
+   (agent TLS)
+   (supertasks T2)
+   $OUTCOME
+)
+
+#endif
+
+#if (($PROB3 > 0.5) || ($PROB2 > 0.5))
+
+(spec_task
+   (label T3)
+   (agent TLS)
+   (subtasks F L W)
+   (supertasks TG_1)
+   (qaf #RANDOM_LIST(q_sum,q_min,q_max))
+)
+
+
+(spec_method
+   (label F)
+   (agent TLS)
+   (supertasks T3)
+   $OUTCOME
+)
+
+(spec_method
+   (label L)
+   (agent TLS)
+   (supertasks T3)
+   $OUTCOME
+)
+
+(spec_method
+   (label W)
+   (agent TLS)
+   (supertasks T3)
+   $OUTCOME
+)
+#endif
+
+(spec_evaluation_criteria
+   (label blah)   
+   (goodness_quality_slider 100.0)
+   (goodness_cost_slider 0.0)
+   (goodness_duration_slider 0.0)
+   (threshold_quality_slider 1.0)
+   (threshold_cost_slider 0)
+   (threshold_duration_slider 0)
+   (quality_threshold 60.0)
+   (cost_limit 5.0)
+   (duration_limit 100.0)
+   (uncertainty_quality_slider 1.0)
+   (uncertainty_cost_slider 0.0)
+   (uncertainty_duration_slider 0.0)
+   (threshold_certainty_quality_slider 1.0)
+   (threshold_certainty_cost_slider 0.0)
+   (threshold_certainty_duration_slider 0.0)
+   (quality_certainty_threshold 1.0)
+   (cost_certainty_threshold 0.0)
+   (duration_certainty_threshold 0.0)
+   (meta_goodness_slider 100.0)
+   (meta_threshold_slider 0.0)
+   (meta_uncertainty_slider 0.0)
+   (meta_uncertainty_threshold_slider 0.0)
+)

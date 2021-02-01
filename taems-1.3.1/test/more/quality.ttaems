@@ -1,0 +1,86 @@
+;;;;
+;; Begin Task Structure null (Output v.1.0)
+;;;;
+
+(spec_agent
+  (label A1)
+)
+
+(spec_task_group
+   (label Test-Resource)
+   (agent A1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (subtasks SubTask User)
+   (qaf q_sum)
+)
+
+(spec_task
+   (label SubTask)
+   (agent A1)
+;  ** In IRs: 0
+;  ** Out IRs: 1
+   (supertasks Test-Resource)
+   (subtasks M1 M2)
+   (qaf q_max)
+)
+
+(spec_enables
+   (label enable)
+   (agent A1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from SubTask)
+   (to User)
+   (delay 0.0 1.0)
+)
+
+(spec_method
+   (label User)
+   (agent A1)
+;  ** In IRs: 1
+;  ** Out IRs: 0
+   (deadline 6)
+   (supertasks Test-Resource)
+   (outcomes
+      (o1
+         (density 1.0)
+         (quality_distribution 2.0 1.0)
+         (duration_distribution 5.0 1.0)
+         (cost_distribution 1.0 1.0)
+      )
+   )
+)
+
+(spec_method
+   (label M1)
+   (agent A1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks SubTask)
+   (outcomes
+      (Outcome_1
+         (density 1.0)
+         (quality_distribution 1.0 1.0)
+         (duration_distribution 1.0 1.0)
+         (cost_distribution 1.0 1.0)
+      )
+   )
+)
+
+(spec_method
+   (label M2)
+   (agent A1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks SubTask)
+   (outcomes
+      (Outcome_1
+         (density 1.0)
+         (quality_distribution 2.0 1.0)
+         (duration_distribution 5.0 1.0)
+         (cost_distribution 1.0 1.0)
+      )
+   )
+)
+

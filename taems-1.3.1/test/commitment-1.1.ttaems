@@ -1,0 +1,274 @@
+;;;;
+;; Begin Task Structure null (Output v.1.1)
+;;;;
+
+(spec_agent
+  (label some_agent)
+)
+
+(spec_non_consumable_resource
+   (label network_bandwidth)
+;  ** In IRs: 3
+;  ** Out IRs: 2
+   (state 20.0)
+   (depleted_at 0.0)
+;  ** Status is: 0
+   (overloaded_at 100.0)
+)
+
+(spec_limits
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label some_limits)
+   (agent some_agent)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from network_bandwidth)
+   (to USAir)
+   (model per_time_unit)
+   (quality_power 0.5 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 1.0 1.0)
+)
+
+(spec_limits
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label some_limits)
+   (agent some_agent)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from network_bandwidth)
+   (to Delta)
+   (model per_time_unit)
+   (quality_power 0.5 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 1.0 1.0)
+)
+
+(spec_consumable_resource
+   (label tokens)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (state 10.0)
+   (depleted_at 2.0)
+;  ** Status is: 0
+   (overloaded_at 100.0)
+)
+
+(spec_task_group
+   (label Airline)
+   (agent some_agent)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (subtasks USAir Delta MNL)
+   (qaf q_sum)
+)
+
+(spec_method
+   (label USAir)
+   (agent some_agent)
+;  ** In IRs: 1
+;  ** Out IRs: 4
+   (supertasks Airline)
+   (outcomes
+      (Outcome_3
+         (density 1.0)
+         (quality_distribution 0.0 0.1 100.0 0.9)
+         (duration_distribution 240.0 1.0)
+         (cost_distribution 180.0 1.0)
+      )
+   )
+)
+
+(spec_produces
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label some_produces)
+   (agent some_agent)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from USAir)
+   (to network_bandwidth)
+   (model per_time_unit)
+   (produces 10.0 1.0)
+)
+
+; Node network_bandwidth previously defined
+
+; Node some_limits previously defined
+
+; Node some_limits previously defined
+
+(spec_method
+   (label Delta)
+   (agent some_agent)
+;  ** In IRs: 3
+;  ** Out IRs: 1
+   (supertasks Airline)
+   (outcomes
+      (Outcome_3b
+         (density 1.0)
+         (quality_distribution 100.0 1.0)
+         (duration_distribution 240.0 1.0)
+         (cost_distribution 160.0 1.0)
+      )
+   )
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label some_uses)
+   (agent some_agent)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Delta)
+   (to network_bandwidth)
+   (model per_time_unit)
+   (consumes 9.0 0.5 11.0 0.5)
+)
+
+(spec_facilitates
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label enables_0)
+   (agent some_agent)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from USAir)
+   (to Delta)
+   (quality_power 1.0 1.0)
+   (duration_power 0.5 1.0)
+   (cost_power 0.3 1.0)
+   (delay 0.0 1.0)
+)
+
+(spec_enables
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label enables_1)
+   (agent some_agent)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from MNL)
+   (to Delta)
+   (delay 0.0 1.0)
+)
+
+(spec_method
+   (label MNL)
+   (agent some_agent)
+;  ** In IRs: 1
+;  ** Out IRs: 1
+   (nonlocal)
+   (supertasks Airline)
+   (outcomes
+      (Outcome_3b
+         (density 1.0)
+         (quality_distribution 100.0 1.0)
+         (duration_distribution 240.0 1.0)
+         (cost_distribution 160.0 1.0)
+      )
+   )
+)
+
+(spec_enables
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label enables_2)
+   (agent some_agent)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from USAir)
+   (to MNL)
+   (delay 0.0 1.0)
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label some_uses)
+   (agent some_agent)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from USAir)
+   (to network_bandwidth)
+   (model per_time_unit)
+   (consumes 11.0 0.5 13.0 0.5)
+)
+
+
+(spec_evaluation_criteria
+   (label blah)
+   (goodness_quality_slider 0.6)
+   (goodness_cost_slider 0.3)
+   (goodness_duration_slider 0.1)
+   (threshold_quality_slider 0.33)
+   (threshold_cost_slider 0.33)
+   (threshold_duration_slider 0.34)
+   (quality_threshold 25.0)
+   (cost_limit 5.0)
+   (duration_limit 10.0)
+   (uncertainty_quality_slider 0.2)
+   (uncertainty_cost_slider 0.7)
+   (uncertainty_duration_slider 0.1)
+   (threshold_certainty_quality_slider 0.1)
+   (threshold_certainty_cost_slider 0.2)
+   (threshold_certainty_duration_slider 0.3)
+   (quality_certainty_threshold 1.0)
+   (cost_certainty_threshold 2.0)
+   (duration_certainty_threshold 3.0)
+   (meta_goodness_slider 1.0)
+   (meta_threshold_slider 0.0)
+   (meta_uncertainty_slider 0.0)
+   (meta_uncertainty_threshold_slider 0.0)
+)
+
+(spec_commitment
+   (label com12)
+   (type earliest_start_time)
+   (from_agent some_agent)
+   (to_agent some_agent)
+   (task Delta USAir)
+   (importance 1)
+   (minimum_quality 0.01)
+   (earliest_start_time 500)
+   (deadline -1)
+   (time_satisfied -1)
+)
+
+(spec_commitment
+   (label com14)
+   (type dont)
+   (from_agent some_agent)
+   (to_agent some_agent)
+   (task Delta)
+   (importance 2)
+   (minimum_quality 0.01)
+   (earliest_start_time -1)
+   (deadline -1)
+   (dont_interval_start 200)
+   (dont_interval_end 400)
+   (time_satisfied -1)
+)
+
+(spec_commitment
+   (label nlc3)
+   (from_agent a2)
+   (to_agent a1)
+   (task task3)
+;  ** Note: node task3 is virtual.
+   (quality_distribution 12.0 0.5 15.0 0.5)
+   (time_distribution 13.0 1.0)
+   (nonlocal)
+)
+

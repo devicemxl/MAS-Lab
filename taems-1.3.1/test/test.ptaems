@@ -1,0 +1,150 @@
+; Definiton of number of call
+; automatic version numbering
+#define RandomSeed = 10
+#define VERSION = 3
+
+#define OUTCOME_1
+	#if (($View == Objective) && ($VERSION > 1))
+		 (density 1.0)
+		 (quality_distribution 10.0 1.0 )
+		 (duration_distribution 1.0 1.0 )
+		 (cost_distribution 10.0 1.0 )
+	#else
+		 (density 1.0)
+		 (quality_distribution 20.0 1.0 )
+		 (duration_distribution 1.0 1.0 )
+		 (cost_distribution 10.0 1.0 )
+	#endif
+#enddefine
+
+#define PROB1 = #SUM(#RANDOM_FLOAT(0,1),0.3,$VERSION)
+
+#define PRODUCE = #PROD(15.0,$VERSION)
+
+#define OUTCOME_2
+	#if ($PROB1 < 0.5)
+	(density 1.0)
+		 (quality_distribution 30.0 1.0 )
+		 (duration_distribution 1.0 1.0 )
+		 (cost_distribution 10.0 1.0)
+	#else
+		(density 1.0)
+		 (quality_distribution 40.0 1.0 )
+		 (duration_distribution 1.0 1.0 )
+		 (cost_distribution 10.0 1.0 )
+	#endif
+#enddefine
+
+(spec_method
+(spec_attributes
+   (MyBool Boolean False)
+   (MyInt Integer 3)
+   (MyDouble Double 3.14159)
+   (MyVector Vector billy,joe the bad boy,bob,jane)
+   (MyHash Hashtable DELIM=- name1-billy the kid-name2-joe montana)
+)   
+   (label Make-Hot-Water-VeryFast_$VERSION)
+   (agent WaterHeater)
+   (supertasks Make-Hot-Water_$VERSION )
+   (outcomes
+      (Make-Hot-Water-VeryFast_o0
+	$OUTCOME_1
+      )
+    )
+)
+(spec_method
+   (label Make-Hot-Water-Slow_$VERSION)
+   (agent WaterHeater)
+   (supertasks Make-Hot-Water_$VERSION)
+   (outcomes
+      (Make-Hot-Water-Slow_o0
+       $OUTCOME_2
+      )
+    )
+)
+(spec_method
+   (label Make-Hot-Water-Medium_$VERSION)
+   (agent WaterHeater)
+   (supertasks Make-Hot-Water_$VERSION)
+   (outcomes
+      (Make-Hot-Water-Medium_o0
+         (density 1.0)
+         (quality_distribution 10.0 1.0 )
+         (duration_distribution 1.0 1.0 )
+         (cost_distribution 4.0 1.0 )
+      )
+    )
+)
+(spec_method
+   (spec_attributes
+      (MyBool Boolean False)
+      (MyInt Integer 3)
+      (MyDouble Double 3.14159)
+      (MyVector Vector billy,joe,bob,jane)
+      (MyHash Hashtable DELIM=, name1,billy,name2,joe)
+   )
+   (label Make-Hot-Water-Fast_$VERSION)
+   (agent WaterHeater)
+   (supertasks Make-Hot-Water_$VERSION)
+   (outcomes
+      (Make-Hot-Water-Fast_o0
+         (density 1.0)
+         (quality_distribution 10.0 1.0 )
+         (duration_distribution 1.0 1.0 )
+         (cost_distribution 6.0 1.0 )
+      )
+    )
+)
+(spec_task_group
+   (label Make-Hot-Water_$VERSION)
+   (agent WaterHeater)
+   (subtasks Make-Hot-Water-Slow_$VERSION Make-Hot-Water-Medium_$VERSION Make-Hot-Water-Fast_$VERSION Make-Hot-Water-VeryFast_$VERSION)
+   (qaf q_exactly_one)
+)
+(spec_consumable_resource
+   (label HotWater)
+   (state 20.0)
+   (depleted_at 0.0)
+   (spec_attributes
+      (overloaded_at Double 200)
+      (low_bound Double 50)
+   )
+)
+(spec_agent
+   (label WaterHeater_$VERSION)
+)
+(spec_produces
+   (label produces1_$VERSION)
+   (agent WaterHeater)
+   (from Make-Hot-Water-Slow_$VERSION)
+   (to HotWater)
+   (produces 4.0 1.0 )
+)
+(spec_produces
+   (label produces2_$VERSION)
+   (agent WaterHeater)
+   (from Make-Hot-Water-Medium_$VERSION)
+   (to HotWater)
+   (produces 9.0 1.0 )
+)
+(spec_produces
+   (label produces3_$VERSION)
+   (agent WaterHeater)
+   (from Make-Hot-Water-Fast_$VERSION)
+   (to HotWater)
+; Do we want that ($ITEMS*15.0 1.0)
+;   (produces #PROD(15.0,$ITEMS) 1.0 )
+#if (VIEW == conditionnel)
+    (produces 15.0 1.0)
+#else 
+   (produces $PRODUCE 1.0)
+#endif
+   )
+
+(spec_produces
+   (label produces4_$VERSION)
+   (agent WaterHeater)
+   (from Make-Hot-Water-VeryFast_$VERSION)
+   (to HotWater)
+   (produces 25.0 1.0 )
+)

@@ -1,0 +1,48 @@
+;;;;
+;; Begin Task Structure null (Output v.1.1)
+;;;;
+
+(spec_task_group
+   (label Some_Task)
+   (agent Pyle)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (subtasks Short1A Short2B Method_jack10)
+;  ** Note: node Short1A is virtual
+;  ** Note: node Short2B is virtual
+   (qaf q_min)
+)
+
+;(spec_virt_task_base
+;   (label Short1A)
+;   (supertasks Some_Task)
+;)
+
+;(spec_virt_task_base
+;   (label Short2B)
+;   (supertasks Some_Task)
+;)
+
+(spec_method
+   (spec_attributes
+      (coordtimeout Float 36.0)
+      (goal String Do_Chores)
+      (random String jack)
+      (coordpartner String Harry)
+   )
+   (label Method_jack10)
+   (agent Pyle)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Some_Task)
+   (outcomes
+      (Some_Outcome_1
+         (density 0.5)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 5.0 1.0)
+         (cost_distribution 2.0 1.0)
+      )
+   )
+)
+
+

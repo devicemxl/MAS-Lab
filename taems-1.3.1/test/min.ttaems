@@ -1,0 +1,85 @@
+(spec_agent
+    (label agent_a)
+)
+ 
+(spec_task_group
+    (label P)
+    (agent agent_a)
+    (qaf q_min)
+    (subtasks M1 M2)
+(deadline 18)
+)
+ 
+ 
+(spec_method
+    (label M1)
+    (agent agent_a)
+    (supertasks  P)
+    (outcomes 
+       (Outcome_1
+           (density 1.0)
+           (quality_distribution 6.0 0.6 8.0 0.4)
+           (duration_distribution 8 0.2 9 0.8)
+;           (cost_distribution 5.0 0.15 3.0 0.85))
+           (cost_distribution 5.0 1.0))
+	)
+)
+
+(spec_method
+    (label M2)
+    (agent agent_a)
+    (supertasks P)
+    (outcomes 
+       (Outcome_1
+           (density 1.0)
+           (quality_distribution 5.0 0.3 6.0 0.7)
+           (duration_distribution 7.0 1.0)
+;           (cost_distribution 6.0 0.25 3.0 0.75)
+           (cost_distribution 6.0 1.0)	
+        )
+    )
+    (nonlocal)
+)
+
+(spec_schedule
+	(schedule_elements
+	    (M1
+	        (start_time_distribution  100.000000 1.000000)
+	        (finish_time_distribution  101.000000 1.000000)
+	        (quality_distribution  1.000000 1.000000)
+	        (cost_distribution  1.000000 1.000000)
+	        (duration_distribution  1.000000 1.000000)
+	    )
+	    (M3
+	        (start_time_distribution  101.000000 1.000000)
+	        (finish_time_distribution  102.000000 0.500000 103.000000 0.500000)
+	        (quality_distribution  1.000000 1.000000)
+	        (cost_distribution  1.000000 1.000000)
+	        (duration_distribution  1.000000 0.500000 2.000000 0.500000)
+	    )
+	)
+	(start_time_distribution 100.000000 1.0)
+	(finish_time_distribution 102.000000 0.500000 103.000000 0.500000)
+	(quality_distribution  2.000000 1.000000)
+	(duration_distribution  2.000000 0.500000 3.000000 0.500000)
+	(cost_distribution  7.500000 1.000000)
+	(rating 0.500000)
+)
+
+(spec_schedule
+	(schedule_elements
+	    (M2
+	        (start_time_distribution  100.000000 1.000000)
+	        (finish_time_distribution  101.000000 1.000000)
+	        (quality_distribution  1.000000 1.000000)
+	        (cost_distribution  1.000000 1.000000)
+	        (duration_distribution  1.000000 1.000000)
+	    )
+	)
+	(start_time_distribution 100.000000 1.0)
+	(finish_time_distribution 101.000000 1.000000)
+	(quality_distribution  1.000000 1.000000)
+	(duration_distribution  1.000000 1.000000)
+	(cost_distribution  6.500000 1.000000)
+	(rating 0.500000)
+)

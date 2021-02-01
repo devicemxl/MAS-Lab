@@ -1,0 +1,104 @@
+;;;;
+;; Begin Task Structure Structure_1 (Output v.1.0)
+;;;;
+
+(spec_agent
+  (label agentA)
+)
+
+(spec_method
+   (label B1)
+   (agent agentA)
+;  ** In IRs: 1
+;  ** Out IRs: 0
+   (supertasks TA)
+   (outcomes
+      (B1_o0
+         (density 1.0)
+         (quality_distribution 100.0 1.0)
+         (duration_distribution 5.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_task_group
+   (label TA)
+   (agent agentA)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (deadline -6)
+   (subtasks A1 A2 B1)
+   (qaf q_max)
+)
+
+(spec_method
+   (label A1)
+   (agent agentA)
+;  ** In IRs: 0
+;  ** Out IRs: 1
+   (supertasks TA)
+   (outcomes
+      (A1_o0
+         (density 1.0)
+         (quality_distribution 100.0 1.0)
+         (duration_distribution 5.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_enables
+   (label enables1)
+   (agent agentA)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from A1)
+   (to B1)
+   (delay 0.0 1.0)
+)
+
+; Node B1 previously defined
+
+(spec_method
+   (label A2)
+   (agent agentA)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks TA)
+   (outcomes
+      (A2_o0
+         (density 1.0)
+         (quality_distribution 50.0 1.0)
+         (duration_distribution 4.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_evaluation_criteria
+   (label blah)
+   (goodness_quality_slider 60.0)
+   (goodness_cost_slider 40.0)
+   (goodness_duration_slider 0.0)
+   (threshold_quality_slider 45.0)
+   (threshold_cost_slider 45.0)
+   (threshold_duration_slider 5.0)
+   (quality_threshold 50.0)
+   (cost_limit 100.0)
+   (duration_limit 200.0)
+   (uncertainty_quality_slider 0.0)
+   (uncertainty_cost_slider 0.0)
+   (uncertainty_duration_slider 100.0)
+   (threshold_certainty_quality_slider 0.0)
+   (threshold_certainty_cost_slider 0.0)
+   (threshold_certainty_duration_slider 0.0)
+   (quality_certainty_threshold 0.0)
+   (cost_certainty_threshold 0.0)
+   (duration_certainty_threshold 0.0)
+   (meta_goodness_slider 100.0)
+   (meta_threshold_slider 0.0)
+   (meta_uncertainty_slider 0.0)
+   (meta_uncertainty_threshold_slider 0.0)
+)
+

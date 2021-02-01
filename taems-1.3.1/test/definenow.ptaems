@@ -1,0 +1,10 @@
+#define SUBTASKS = ""
+#definenow SUBTASKS = #CONCAT($SUBTASKS, "Task_1")
+#definenow SUBTASKS = #CONCAT($SUBTASKS, #SPACE(), "Task_2")
+
+(spec_task_group
+  (label Some_Task)
+  (agent Some_Agent)
+  (subtasks $SUBTASKS)
+  (qaf q_sum)
+)

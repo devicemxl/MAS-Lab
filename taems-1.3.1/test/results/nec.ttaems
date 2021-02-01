@@ -1,0 +1,233 @@
+;;;;
+;; Begin Task Structure null (Output v.1.1)
+;;;;
+
+(spec_agent
+  (label NEC)
+)
+
+(spec_consumable_resource
+   (label Memory)
+;  ** In IRs: 1
+;  ** Out IRs: 1
+   (state 120.0)
+   (depleted_at 0.0)
+;  ** Status is: 0
+   (overloaded_at 1000.0)
+)
+
+(spec_limits
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Limits-Memory)
+   (agent NEC)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Memory)
+   (to Assemble-PC__123)
+   (model per_time_unit)
+   (quality_power 1.0 1.0)
+   (duration_power 0.0 1.0)
+   (cost_power 0.0 1.0)
+)
+
+(spec_consumable_resource
+   (label intel)
+;  ** In IRs: 1
+;  ** Out IRs: 1
+   (state 20.0)
+   (depleted_at 0.0)
+;  ** Status is: 0
+   (overloaded_at 800.0)
+)
+
+(spec_limits
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Limits-CPU)
+   (agent NEC)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from intel)
+   (to Assemble-PC__123)
+   (model per_time_unit)
+   (quality_power 1.0 1.0)
+   (duration_power 0.0 1.0)
+   (cost_power 0.0 1.0)
+)
+
+(spec_consumable_resource
+   (label big-HD)
+;  ** In IRs: 1
+;  ** Out IRs: 1
+   (state 100.0)
+   (depleted_at 0.0)
+;  ** Status is: 0
+   (overloaded_at 400.0)
+)
+
+(spec_limits
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Limits-big-HD)
+   (agent NEC)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from big-HD)
+   (to Assemble-PC__123)
+   (model per_time_unit)
+   (quality_power 1.0 1.0)
+   (duration_power 0.0 1.0)
+   (cost_power 0.0 1.0)
+)
+
+(spec_consumable_resource
+   (label PC)
+;  ** In IRs: 1
+;  ** Out IRs: 0
+   (state 20.0)
+   (depleted_at 0.0)
+;  ** Status is: 0
+   (overloaded_at 100.0)
+)
+
+(spec_task_group
+   (label Manufacture-PC__123)
+   (agent NEC)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (subtasks Assemble-PC__123)
+   (qaf q_min)
+)
+
+(spec_method
+   (label Assemble-PC__123)
+   (agent NEC)
+;  ** In IRs: 4
+;  ** Out IRs: 5
+   (supertasks Manufacture-PC__123)
+   (outcomes
+      (Outcome_1
+         (density 1.0)
+         (quality_distribution 20.0 0.9 0.0 0.1)
+         (duration_distribution 305.0 1.0)
+         (cost_distribution 426.22952 1.0)
+      )
+   )
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Consume-CPU)
+   (agent NEC)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Assemble-PC__123)
+   (to intel)
+   (model per_time_unit)
+   (consumes 0.32786885 1.0)
+)
+
+; Node intel previously defined
+
+; Node Limits-CPU previously defined
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Consume-Memory)
+   (agent NEC)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Assemble-PC__123)
+   (to Memory)
+   (model per_time_unit)
+   (consumes 0.32786885 1.0)
+)
+
+; Node Memory previously defined
+
+; Node Limits-Memory previously defined
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Consume-Multimedia)
+   (agent NEC)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Assemble-PC__123)
+   (to Multimedia-Kit)
+   (model per_time_unit)
+   (consumes 0.32786885 1.0)
+)
+
+(spec_consumable_resource
+   (label Multimedia-Kit)
+;  ** In IRs: 1
+;  ** Out IRs: 1
+   (state 200.0)
+   (depleted_at 0.0)
+;  ** Status is: 0
+   (overloaded_at 800.0)
+)
+
+(spec_limits
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Limits-Multimedia)
+   (agent NEC)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Multimedia-Kit)
+   (to Assemble-PC__123)
+   (model per_time_unit)
+   (quality_power 1.0 1.0)
+   (duration_power 0.0 1.0)
+   (cost_power 0.0 1.0)
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Consume-big-HD)
+   (agent NEC)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Assemble-PC__123)
+   (to big-HD)
+   (model per_time_unit)
+   (consumes 0.32786885 1.0)
+)
+
+; Node big-HD previously defined
+
+; Node Limits-big-HD previously defined
+
+(spec_produces
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Produce-PC)
+   (agent NEC)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Assemble-PC__123)
+   (to PC)
+   (model per_time_unit)
+   (produces 0.32786885 1.0)
+)
+
+; Node PC previously defined
+
+
+

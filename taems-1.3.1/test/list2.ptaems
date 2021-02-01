@@ -1,0 +1,26 @@
+#define X = @(h,i,j)
+#define L = @(b,c,d)
+#define E = e
+#define L = #addItemAt(@X,0,@L, $E,"f",g)
+
+(spec_agent
+	(label A)
+)
+
+
+(spec_task_group
+	(label A)
+	(agent A)
+	(subtasks @L)
+	(qaf q_min)
+)
+
+#definenow X = @(x,z,y)
+#definenow E = m
+
+(spec_task
+	(label K)
+	(agent A)
+	(subtasks @L)
+	(qaf q_min)
+)

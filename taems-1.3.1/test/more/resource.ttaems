@@ -1,0 +1,92 @@
+;;;;
+;; Begin Task Structure null (Output v.1.0)
+;;;;
+
+(spec_agent
+  (label A1)
+)
+
+(spec_task_group
+   (label Test-Resource)
+   (agent A1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (subtasks Producer User)
+   (qaf q_max)
+)
+
+(spec_method
+   (label Producer)
+   (agent A1)
+;  ** In IRs: 0
+;  ** Out IRs: 1
+   (supertasks Test-Resource)
+   (outcomes
+      (Outcome_1
+         (density 1.0)
+         (quality_distribution 1.0 1.0)
+         (duration_distribution 1.0 1.0)
+         (cost_distribution 1.0 1.0)
+      )
+   )
+)
+
+(spec_consumable_resource
+   (label Resource)
+   (agent A1)
+;  ** In IRs: 2
+;  ** Out IRs: 1
+   (state 1.0)
+   (depleted_at 0.0)
+;  ** Status is: 0
+)
+
+(spec_produces
+   (label produce)
+   (agent A1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Producer)
+   (to Resource)
+   (produces 1.0 1.0)
+)
+
+(spec_limits
+   (label limit)
+   (agent A1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Resource)
+   (to User)
+   (quality_power 1.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 1.0 1.0)
+)
+
+(spec_method
+   (label User)
+   (agent A1)
+;  ** In IRs: 1
+;  ** Out IRs: 1
+   (supertasks Test-Resource)
+   (outcomes
+      (o1
+         (density 1.0)
+         (quality_distribution 2.0 1.0)
+         (duration_distribution 1.0 1.0)
+         (cost_distribution 1.0 1.0)
+      )
+   )
+)
+
+(spec_uses
+   (label consume)
+   (agent A1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from User)
+   (to Resource)
+   (consumes 1.0 1.0)
+)
+
+

@@ -1,0 +1,98 @@
+#define RandomSeed = 10 ; Implicit, passed in as parameter
+#define AGENT = "Pyle"  ; Implicit, passed in as parameter
+#define TIME = "10"  ; Implicit, passed in as parameter
+
+#define DEFAULT_DQ
+  (density 0.5)
+  (quality_distribution 10 1.0)
+#enddefine
+
+#define COST = #RANDOM_FLOAT(-1.5, 1.5)
+
+#define B = 20
+#define C = 10
+#define D = 0
+#define HILL = hill
+#define A = #SUM($B, $C, 10, $D) 
+#define A = #PROD($B, $C, 10, $D) 
+#define A = #DIFF($B, 10) 
+#define A = #QUOT(10, $B)
+#define A = #RANDOM_INT($B, #SUM($C, $B))
+#define A = #RANDOM_FLOAT(-1.5, $B)
+#definenow A = #RANDOM_LIST(jack,jill,$HILL,"pail_of_water",#DIFF($B,$C))
+#define MNAME = #CONCAT(Method_,#TRIM($A,$C))
+
+#define QUALITY = #RANDOM_INT(5, 10)
+#define DURATION = #PROD($QUALITY, 2)
+#define COST = #QUOT($QUALITY, #RANDOM_INT(1, 4))
+
+#define GOAL = #RANDOM_LIST(Do_Chores, Watch_TV)
+#if ($GOAL == Do_Chores)
+   #define COORD_PARTNER = #RANDOM_LIST(Sister, Brother, $AGENT)
+#else
+   #define COORD_PARTNER = #RANDOM_LIST(Tom, Dick, Harry)
+#endif
+#define GOAL_DEADLINE = #SUM($TIME, #RANDOM_INT(20,40))
+#define COORD_TIMEOUT = #DIFF($GOAL_DEADLINE, 10)
+
+#define EMPTY = " "
+#define OUTCOME1 = $EMPTY
+#define OUTCOME2 = $EMPTY
+#if ($AGENT == Gomer)
+  #define OUTCOME1
+     (Some_Outcome_1
+	$DEFAULT_DQ
+	(duration_distribution 5.0 1.0)
+	(cost_distribution $COST 1.0)
+     )
+  #enddefine
+  #define OUTCOME2
+     (Some_Outcome_2
+	$DEFAULT_DQ
+	(duration_distribution 5.0 1.0)
+	(cost_distribution 2 1.0)
+     )
+  #enddefine
+
+#elseif (($TIME < 25) && ($AGENT == Pyle))
+  #define OUTCOME1
+     (Some_Outcome_1
+	$DEFAULT_DQ
+	(duration_distribution 5.0 1.0)
+	(cost_distribution $COST 1.0)
+     )
+  #enddefine
+#endif
+
+#if (($OUTCOME1 != $EMPTY) || ($OUTCOME2 != $EMPTY))
+(spec_method
+  (spec_attributes
+     (random String $A)
+     (goal String $GOAL)
+     (coordpartner String $COORD_PARTNER)
+     (coordtimeout Float $COORD_TIMEOUT)
+  )
+  (label $MNAME)
+  (agent $AGENT)
+  (supertasks Some_Task)
+          (outcomes
+             $OUTCOME1
+             $OUTCOME2
+          )
+       )
+;	#else
+; <Nothing Generated>
+#endif
+
+(spec_task
+   (label Some_Task)
+   (agent $AGENT)
+   (qaf #RANDOM_LIST(q_min, q_max, q_sum))
+#if ($TIME_REMAINING < 10)
+   (subtasks #RANDOM_LIST(Short1A, Short2A)
+             #RANDOM_LIST(Short1B, Short2B) $MNAME)
+#else
+   (subtasks Some_Method #RANDOM_LIST(Normal1A, Normal2A)
+             #RANDOM_LIST(Normal1B, Normal2B, Normal3B))
+#endif
+)

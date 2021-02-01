@@ -1,0 +1,134 @@
+;;;;
+;; Begin Task Structure null (Output v.1.1)
+;;;;
+
+(spec_agent
+  (label A)
+)
+
+(spec_task_group
+   (label T)
+   (agent A)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (subtasks T1 T2)
+   (qaf q_min)
+)
+
+(spec_task
+   (label T1)
+   (agent A)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks T)
+   (subtasks a b c)
+   (qaf q_max)
+)
+
+(spec_method
+   (label a)
+   (agent A)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks T1)
+   (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 15.0 1.0)
+         (duration_distribution 500.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_method
+   (label b)
+   (agent A)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks T1)
+   (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 15.0 1.0)
+         (duration_distribution 500.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_method
+   (label c)
+   (agent A)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks T1)
+   (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 15.0 1.0)
+         (duration_distribution 500.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_task
+   (label T2)
+   (agent A)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks T)
+   (subtasks d e f)
+   (qaf q_max)
+)
+
+(spec_method
+   (label d)
+   (agent A)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks T2)
+   (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 15.0 1.0)
+         (duration_distribution 500.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_method
+   (label e)
+   (agent A)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks T2)
+   (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 15.0 1.0)
+         (duration_distribution 500.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_method
+   (label f)
+   (agent A)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks T2)
+   (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 15.0 1.0)
+         (duration_distribution 500.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+

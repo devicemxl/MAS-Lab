@@ -1,0 +1,17 @@
+#define MYLIST = @(you, should, not, see, this)
+
+#define A = a
+;#define MYLIST = @($A, #CONCAT("B_", #TRIM(#SUM(10, 20))), c, "d")
+#definenow MYLIST = @($A, #CONCAT("B_", #TRIM(#SUM(10, 20))), c, "d")
+#define A = nota
+
+#define MYLIST = q_sum
+
+(spec_task_group
+   (label ListTest)
+   (agent WaterHeater)
+   (subtasks @MYLIST)
+   (qaf $MYLIST)
+)
+
+#define MYLIST = @(you, should, not, see, this, either)

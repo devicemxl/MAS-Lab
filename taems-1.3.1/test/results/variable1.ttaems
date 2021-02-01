@@ -1,0 +1,30 @@
+;;;;
+;; Begin Task Structure null (Output v.1.1)
+;;;;
+
+(spec_agent
+  (label Billy)
+)
+
+(spec_method
+   (label Some_Method_1)
+   (agent Billy)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (outcomes
+      (Some_Outcome_1
+         (density 0.5)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 5.0 1.0)
+         (cost_distribution 2.0 1.0)
+      )
+      (Some_Outcome_2
+         (density 0.5)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 10.0 1.0)
+         (cost_distribution 6.0 1.0)
+      )
+   )
+)
+
+

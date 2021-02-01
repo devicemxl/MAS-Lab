@@ -1,0 +1,3652 @@
+;;;;
+;; Begin Task Structure null (Output v.1.0)
+;;;;
+
+(spec_schedule
+; Schedule contains 7 schedule element(s)
+   (schedule_elements
+     (load-dishes-slow__Dishwasher
+;     ** Note: method load-dishes-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-slow__Dishwasher
+;     ** Note: method load-glasses-slow__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 15.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 15.0 1.0)
+        (finish_time_distribution 35.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 35.0 1.0)
+        (finish_time_distribution 55.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 55.0 1.0)
+        (finish_time_distribution 80.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 80.0 1.0)
+        (finish_time_distribution 90.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 155.0 1.0E-4 160.0 0.0198 165.0 0.9801)
+   (duration_distribution 90.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.843478)
+)
+
+(spec_schedule
+; Schedule contains 7 schedule element(s)
+   (schedule_elements
+     (load-dishes-fast__Dishwasher
+;     ** Note: method load-dishes-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.1 10.0 0.9)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-slow__Dishwasher
+;     ** Note: method load-glasses-slow__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 32.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 32.0 1.0)
+        (finish_time_distribution 52.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 52.0 1.0)
+        (finish_time_distribution 77.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 77.0 1.0)
+        (finish_time_distribution 87.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 155.0 0.0010 160.0 0.108 165.0 0.891)
+   (duration_distribution 87.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.840041)
+)
+
+(spec_schedule
+; Schedule contains 7 schedule element(s)
+   (schedule_elements
+     (load-dishes-slow__Dishwasher
+;     ** Note: method load-dishes-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-fast__Dishwasher
+;     ** Note: method load-glasses-fast__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 5.0 0.25 10.0 0.75)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 32.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 32.0 1.0)
+        (finish_time_distribution 52.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 52.0 1.0)
+        (finish_time_distribution 77.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 77.0 1.0)
+        (finish_time_distribution 87.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 155.0 0.0025 160.0 0.255 165.0 0.7425)
+   (duration_distribution 87.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.823444)
+)
+
+(spec_schedule
+; Schedule contains 7 schedule element(s)
+   (schedule_elements
+     (load-dishes-fast__Dishwasher
+;     ** Note: method load-dishes-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.1 10.0 0.9)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-fast__Dishwasher
+;     ** Note: method load-glasses-fast__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.25 10.0 0.75)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 29.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 29.0 1.0)
+        (finish_time_distribution 49.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 49.0 1.0)
+        (finish_time_distribution 74.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 74.0 1.0)
+        (finish_time_distribution 84.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 155.0 0.025 160.0 0.3 165.0 0.675)
+   (duration_distribution 84.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.820007)
+)
+
+(spec_schedule
+; Schedule contains 7 schedule element(s)
+   (schedule_elements
+     (load-dishes-slow__Dishwasher
+;     ** Note: method load-dishes-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-slow__Dishwasher
+;     ** Note: method load-glasses-slow__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 15.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 15.0 1.0)
+        (finish_time_distribution 35.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 35.0 1.0)
+        (finish_time_distribution 55.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 55.0 1.0)
+        (finish_time_distribution 80.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (slow-dry__Dishwasher
+;     ** Note: method slow-dry__Dishwasher is virtual
+        (start_time_distribution 80.0 1.0)
+        (finish_time_distribution 110.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 30.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 155.0 1.0E-4 160.0 0.0198 165.0 0.9801)
+   (duration_distribution 110.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.8)
+)
+
+(spec_schedule
+; Schedule contains 7 schedule element(s)
+   (schedule_elements
+     (load-dishes-fast__Dishwasher
+;     ** Note: method load-dishes-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.1 10.0 0.9)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-slow__Dishwasher
+;     ** Note: method load-glasses-slow__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 32.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 32.0 1.0)
+        (finish_time_distribution 52.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 52.0 1.0)
+        (finish_time_distribution 77.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (slow-dry__Dishwasher
+;     ** Note: method slow-dry__Dishwasher is virtual
+        (start_time_distribution 77.0 1.0)
+        (finish_time_distribution 107.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 30.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 155.0 0.0010 160.0 0.108 165.0 0.891)
+   (duration_distribution 107.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.796563)
+)
+
+(spec_schedule
+; Schedule contains 7 schedule element(s)
+   (schedule_elements
+     (load-dishes-slow__Dishwasher
+;     ** Note: method load-dishes-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-fast__Dishwasher
+;     ** Note: method load-glasses-fast__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 5.0 0.25 10.0 0.75)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 32.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 32.0 1.0)
+        (finish_time_distribution 52.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 52.0 1.0)
+        (finish_time_distribution 77.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (slow-dry__Dishwasher
+;     ** Note: method slow-dry__Dishwasher is virtual
+        (start_time_distribution 77.0 1.0)
+        (finish_time_distribution 107.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 30.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 155.0 0.0025 160.0 0.255 165.0 0.7425)
+   (duration_distribution 107.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.779966)
+)
+
+(spec_schedule
+; Schedule contains 7 schedule element(s)
+   (schedule_elements
+     (load-dishes-fast__Dishwasher
+;     ** Note: method load-dishes-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.1 10.0 0.9)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-fast__Dishwasher
+;     ** Note: method load-glasses-fast__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.25 10.0 0.75)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 29.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 29.0 1.0)
+        (finish_time_distribution 49.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 49.0 1.0)
+        (finish_time_distribution 74.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (slow-dry__Dishwasher
+;     ** Note: method slow-dry__Dishwasher is virtual
+        (start_time_distribution 74.0 1.0)
+        (finish_time_distribution 104.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 30.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 155.0 0.025 160.0 0.3 165.0 0.675)
+   (duration_distribution 104.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.776528)
+)
+
+(spec_schedule
+; Schedule contains 7 schedule element(s)
+   (schedule_elements
+     (load-dishes-slow__Dishwasher
+;     ** Note: method load-dishes-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-slow__Dishwasher
+;     ** Note: method load-glasses-slow__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 15.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 15.0 1.0)
+        (finish_time_distribution 35.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 35.0 1.0)
+        (finish_time_distribution 55.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-rinse__Dishwasher
+;     ** Note: method fast-rinse__Dishwasher is virtual
+        (start_time_distribution 55.0 1.0)
+        (finish_time_distribution 70.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 70.0 1.0)
+        (finish_time_distribution 80.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 145.0 1.0E-4 150.0 0.0198 155.0 0.9801)
+   (duration_distribution 80.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.643917)
+)
+
+(spec_schedule
+; Schedule contains 7 schedule element(s)
+   (schedule_elements
+     (load-dishes-fast__Dishwasher
+;     ** Note: method load-dishes-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.1 10.0 0.9)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-slow__Dishwasher
+;     ** Note: method load-glasses-slow__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 32.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 32.0 1.0)
+        (finish_time_distribution 52.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-rinse__Dishwasher
+;     ** Note: method fast-rinse__Dishwasher is virtual
+        (start_time_distribution 52.0 1.0)
+        (finish_time_distribution 67.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 67.0 1.0)
+        (finish_time_distribution 77.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 145.0 0.0010 150.0 0.108 155.0 0.891)
+   (duration_distribution 77.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.64048)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-glasses-slow__Dishwasher
+;     ** Note: method load-glasses-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 29.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 29.0 1.0)
+        (finish_time_distribution 49.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 49.0 1.0)
+        (finish_time_distribution 74.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 74.0 1.0)
+        (finish_time_distribution 84.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 150.0 0.01 155.0 0.99)
+   (duration_distribution 84.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.636328)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-dishes-slow__Dishwasher
+;     ** Note: method load-dishes-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 29.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 29.0 1.0)
+        (finish_time_distribution 49.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 49.0 1.0)
+        (finish_time_distribution 74.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 74.0 1.0)
+        (finish_time_distribution 84.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 150.0 0.01 155.0 0.99)
+   (duration_distribution 84.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.636328)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-dishes-fast__Dishwasher
+;     ** Note: method load-dishes-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.1 10.0 0.9)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 26.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 26.0 1.0)
+        (finish_time_distribution 46.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 46.0 1.0)
+        (finish_time_distribution 71.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 71.0 1.0)
+        (finish_time_distribution 81.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 150.0 0.1 155.0 0.9)
+   (duration_distribution 81.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.632891)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-dishes-slow__Dishwasher
+;     ** Note: method load-dishes-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-slow__Dishwasher
+;     ** Note: method load-glasses-slow__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 32.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 32.0 1.0)
+        (finish_time_distribution 52.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 52.0 1.0)
+        (finish_time_distribution 77.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 77.0 1.0)
+        (finish_time_distribution 87.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 145.0 1.0E-4 150.0 0.0198 155.0 0.9801)
+   (duration_distribution 87.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.6287)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-dishes-fast__Dishwasher
+;     ** Note: method load-dishes-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.1 10.0 0.9)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-slow__Dishwasher
+;     ** Note: method load-glasses-slow__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 29.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 29.0 1.0)
+        (finish_time_distribution 49.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 49.0 1.0)
+        (finish_time_distribution 74.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 74.0 1.0)
+        (finish_time_distribution 84.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 145.0 0.0010 150.0 0.108 155.0 0.891)
+   (duration_distribution 84.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.625263)
+)
+
+(spec_schedule
+; Schedule contains 7 schedule element(s)
+   (schedule_elements
+     (load-dishes-slow__Dishwasher
+;     ** Note: method load-dishes-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-fast__Dishwasher
+;     ** Note: method load-glasses-fast__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 5.0 0.25 10.0 0.75)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 32.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 32.0 1.0)
+        (finish_time_distribution 52.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-rinse__Dishwasher
+;     ** Note: method fast-rinse__Dishwasher is virtual
+        (start_time_distribution 52.0 1.0)
+        (finish_time_distribution 67.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 67.0 1.0)
+        (finish_time_distribution 77.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 145.0 0.0025 150.0 0.255 155.0 0.7425)
+   (duration_distribution 77.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.623883)
+)
+
+(spec_schedule
+; Schedule contains 7 schedule element(s)
+   (schedule_elements
+     (load-dishes-fast__Dishwasher
+;     ** Note: method load-dishes-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.1 10.0 0.9)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-fast__Dishwasher
+;     ** Note: method load-glasses-fast__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.25 10.0 0.75)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 29.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 29.0 1.0)
+        (finish_time_distribution 49.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-rinse__Dishwasher
+;     ** Note: method fast-rinse__Dishwasher is virtual
+        (start_time_distribution 49.0 1.0)
+        (finish_time_distribution 64.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 64.0 1.0)
+        (finish_time_distribution 74.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 145.0 0.025 150.0 0.3 155.0 0.675)
+   (duration_distribution 74.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.620446)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-glasses-fast__Dishwasher
+;     ** Note: method load-glasses-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.25 10.0 0.75)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 26.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 26.0 1.0)
+        (finish_time_distribution 46.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 46.0 1.0)
+        (finish_time_distribution 71.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 71.0 1.0)
+        (finish_time_distribution 81.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 150.0 0.25 155.0 0.75)
+   (duration_distribution 81.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.616294)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-dishes-slow__Dishwasher
+;     ** Note: method load-dishes-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-fast__Dishwasher
+;     ** Note: method load-glasses-fast__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 5.0 0.25 10.0 0.75)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 29.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 29.0 1.0)
+        (finish_time_distribution 49.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 49.0 1.0)
+        (finish_time_distribution 74.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 74.0 1.0)
+        (finish_time_distribution 84.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 145.0 0.0025 150.0 0.255 155.0 0.7425)
+   (duration_distribution 84.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.608665)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-dishes-fast__Dishwasher
+;     ** Note: method load-dishes-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.1 10.0 0.9)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-fast__Dishwasher
+;     ** Note: method load-glasses-fast__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.25 10.0 0.75)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 26.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 26.0 1.0)
+        (finish_time_distribution 46.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 46.0 1.0)
+        (finish_time_distribution 71.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 71.0 1.0)
+        (finish_time_distribution 81.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 145.0 0.025 150.0 0.3 155.0 0.675)
+   (duration_distribution 81.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.605229)
+)
+
+(spec_schedule
+; Schedule contains 7 schedule element(s)
+   (schedule_elements
+     (load-dishes-slow__Dishwasher
+;     ** Note: method load-dishes-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-slow__Dishwasher
+;     ** Note: method load-glasses-slow__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 15.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 15.0 1.0)
+        (finish_time_distribution 35.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 35.0 1.0)
+        (finish_time_distribution 55.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-rinse__Dishwasher
+;     ** Note: method fast-rinse__Dishwasher is virtual
+        (start_time_distribution 55.0 1.0)
+        (finish_time_distribution 70.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (slow-dry__Dishwasher
+;     ** Note: method slow-dry__Dishwasher is virtual
+        (start_time_distribution 70.0 1.0)
+        (finish_time_distribution 100.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 30.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 145.0 1.0E-4 150.0 0.0198 155.0 0.9801)
+   (duration_distribution 100.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.600439)
+)
+
+(spec_schedule
+; Schedule contains 7 schedule element(s)
+   (schedule_elements
+     (load-dishes-fast__Dishwasher
+;     ** Note: method load-dishes-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.1 10.0 0.9)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-slow__Dishwasher
+;     ** Note: method load-glasses-slow__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 32.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 32.0 1.0)
+        (finish_time_distribution 52.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-rinse__Dishwasher
+;     ** Note: method fast-rinse__Dishwasher is virtual
+        (start_time_distribution 52.0 1.0)
+        (finish_time_distribution 67.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (slow-dry__Dishwasher
+;     ** Note: method slow-dry__Dishwasher is virtual
+        (start_time_distribution 67.0 1.0)
+        (finish_time_distribution 97.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 30.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 145.0 0.0010 150.0 0.108 155.0 0.891)
+   (duration_distribution 97.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.597002)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-glasses-slow__Dishwasher
+;     ** Note: method load-glasses-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 29.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 29.0 1.0)
+        (finish_time_distribution 49.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 49.0 1.0)
+        (finish_time_distribution 74.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (slow-dry__Dishwasher
+;     ** Note: method slow-dry__Dishwasher is virtual
+        (start_time_distribution 74.0 1.0)
+        (finish_time_distribution 104.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 30.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 150.0 0.01 155.0 0.99)
+   (duration_distribution 104.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.59285)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-dishes-slow__Dishwasher
+;     ** Note: method load-dishes-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 29.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 29.0 1.0)
+        (finish_time_distribution 49.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 49.0 1.0)
+        (finish_time_distribution 74.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (slow-dry__Dishwasher
+;     ** Note: method slow-dry__Dishwasher is virtual
+        (start_time_distribution 74.0 1.0)
+        (finish_time_distribution 104.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 30.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 150.0 0.01 155.0 0.99)
+   (duration_distribution 104.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.59285)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-dishes-fast__Dishwasher
+;     ** Note: method load-dishes-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.1 10.0 0.9)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 26.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 26.0 1.0)
+        (finish_time_distribution 46.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 46.0 1.0)
+        (finish_time_distribution 71.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (slow-dry__Dishwasher
+;     ** Note: method slow-dry__Dishwasher is virtual
+        (start_time_distribution 71.0 1.0)
+        (finish_time_distribution 101.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 30.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 150.0 0.1 155.0 0.9)
+   (duration_distribution 101.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.589413)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-dishes-slow__Dishwasher
+;     ** Note: method load-dishes-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-slow__Dishwasher
+;     ** Note: method load-glasses-slow__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 32.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 32.0 1.0)
+        (finish_time_distribution 52.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 52.0 1.0)
+        (finish_time_distribution 77.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (slow-dry__Dishwasher
+;     ** Note: method slow-dry__Dishwasher is virtual
+        (start_time_distribution 77.0 1.0)
+        (finish_time_distribution 107.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 30.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 145.0 1.0E-4 150.0 0.0198 155.0 0.9801)
+   (duration_distribution 107.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.585222)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-dishes-fast__Dishwasher
+;     ** Note: method load-dishes-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.1 10.0 0.9)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-slow__Dishwasher
+;     ** Note: method load-glasses-slow__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 29.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 29.0 1.0)
+        (finish_time_distribution 49.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 49.0 1.0)
+        (finish_time_distribution 74.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (slow-dry__Dishwasher
+;     ** Note: method slow-dry__Dishwasher is virtual
+        (start_time_distribution 74.0 1.0)
+        (finish_time_distribution 104.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 30.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 145.0 0.0010 150.0 0.108 155.0 0.891)
+   (duration_distribution 104.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.581785)
+)
+
+(spec_schedule
+; Schedule contains 7 schedule element(s)
+   (schedule_elements
+     (load-dishes-slow__Dishwasher
+;     ** Note: method load-dishes-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-fast__Dishwasher
+;     ** Note: method load-glasses-fast__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 5.0 0.25 10.0 0.75)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 32.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 32.0 1.0)
+        (finish_time_distribution 52.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-rinse__Dishwasher
+;     ** Note: method fast-rinse__Dishwasher is virtual
+        (start_time_distribution 52.0 1.0)
+        (finish_time_distribution 67.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (slow-dry__Dishwasher
+;     ** Note: method slow-dry__Dishwasher is virtual
+        (start_time_distribution 67.0 1.0)
+        (finish_time_distribution 97.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 30.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 145.0 0.0025 150.0 0.255 155.0 0.7425)
+   (duration_distribution 97.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.580405)
+)
+
+(spec_schedule
+; Schedule contains 7 schedule element(s)
+   (schedule_elements
+     (load-dishes-fast__Dishwasher
+;     ** Note: method load-dishes-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.1 10.0 0.9)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-fast__Dishwasher
+;     ** Note: method load-glasses-fast__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.25 10.0 0.75)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 29.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 29.0 1.0)
+        (finish_time_distribution 49.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-rinse__Dishwasher
+;     ** Note: method fast-rinse__Dishwasher is virtual
+        (start_time_distribution 49.0 1.0)
+        (finish_time_distribution 64.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (slow-dry__Dishwasher
+;     ** Note: method slow-dry__Dishwasher is virtual
+        (start_time_distribution 64.0 1.0)
+        (finish_time_distribution 94.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 30.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 145.0 0.025 150.0 0.3 155.0 0.675)
+   (duration_distribution 94.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.576968)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-glasses-fast__Dishwasher
+;     ** Note: method load-glasses-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.25 10.0 0.75)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 26.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 26.0 1.0)
+        (finish_time_distribution 46.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 46.0 1.0)
+        (finish_time_distribution 71.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (slow-dry__Dishwasher
+;     ** Note: method slow-dry__Dishwasher is virtual
+        (start_time_distribution 71.0 1.0)
+        (finish_time_distribution 101.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 30.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 150.0 0.25 155.0 0.75)
+   (duration_distribution 101.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.572815)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-dishes-slow__Dishwasher
+;     ** Note: method load-dishes-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-fast__Dishwasher
+;     ** Note: method load-glasses-fast__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 5.0 0.25 10.0 0.75)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 29.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 29.0 1.0)
+        (finish_time_distribution 49.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 49.0 1.0)
+        (finish_time_distribution 74.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (slow-dry__Dishwasher
+;     ** Note: method slow-dry__Dishwasher is virtual
+        (start_time_distribution 74.0 1.0)
+        (finish_time_distribution 104.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 30.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 145.0 0.0025 150.0 0.255 155.0 0.7425)
+   (duration_distribution 104.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.565187)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-dishes-fast__Dishwasher
+;     ** Note: method load-dishes-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.1 10.0 0.9)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-fast__Dishwasher
+;     ** Note: method load-glasses-fast__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.25 10.0 0.75)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 26.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 26.0 1.0)
+        (finish_time_distribution 46.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 46.0 1.0)
+        (finish_time_distribution 71.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (slow-dry__Dishwasher
+;     ** Note: method slow-dry__Dishwasher is virtual
+        (start_time_distribution 71.0 1.0)
+        (finish_time_distribution 101.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 30.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 145.0 0.025 150.0 0.3 155.0 0.675)
+   (duration_distribution 101.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.56175)
+)
+
+(spec_schedule
+; Schedule contains 7 schedule element(s)
+   (schedule_elements
+     (load-dishes-fast__Dishwasher
+;     ** Note: method load-dishes-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.1 10.0 0.9)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-slow__Dishwasher
+;     ** Note: method load-glasses-slow__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 32.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (quick-wash__Dishwasher
+;     ** Note: method quick-wash__Dishwasher is virtual
+        (start_time_distribution 32.0 1.0)
+        (finish_time_distribution 42.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 42.0 1.0)
+        (finish_time_distribution 67.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 67.0 1.0)
+        (finish_time_distribution 77.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 140.0 0.0010 145.0 0.108 150.0 0.891)
+   (duration_distribution 77.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.52983)
+)
+
+(spec_schedule
+; Schedule contains 7 schedule element(s)
+   (schedule_elements
+     (load-dishes-slow__Dishwasher
+;     ** Note: method load-dishes-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-fast__Dishwasher
+;     ** Note: method load-glasses-fast__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 5.0 0.25 10.0 0.75)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 32.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (quick-wash__Dishwasher
+;     ** Note: method quick-wash__Dishwasher is virtual
+        (start_time_distribution 32.0 1.0)
+        (finish_time_distribution 42.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 42.0 1.0)
+        (finish_time_distribution 67.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 67.0 1.0)
+        (finish_time_distribution 77.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 140.0 0.0025 145.0 0.255 150.0 0.7425)
+   (duration_distribution 77.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.513233)
+)
+
+(spec_schedule
+; Schedule contains 7 schedule element(s)
+   (schedule_elements
+     (load-dishes-fast__Dishwasher
+;     ** Note: method load-dishes-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.1 10.0 0.9)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-fast__Dishwasher
+;     ** Note: method load-glasses-fast__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.25 10.0 0.75)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 29.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (quick-wash__Dishwasher
+;     ** Note: method quick-wash__Dishwasher is virtual
+        (start_time_distribution 29.0 1.0)
+        (finish_time_distribution 39.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 39.0 1.0)
+        (finish_time_distribution 64.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 64.0 1.0)
+        (finish_time_distribution 74.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 140.0 0.025 145.0 0.3 150.0 0.675)
+   (duration_distribution 74.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.509796)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-glasses-slow__Dishwasher
+;     ** Note: method load-glasses-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 29.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 29.0 1.0)
+        (finish_time_distribution 49.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-rinse__Dishwasher
+;     ** Note: method fast-rinse__Dishwasher is virtual
+        (start_time_distribution 49.0 1.0)
+        (finish_time_distribution 64.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 64.0 1.0)
+        (finish_time_distribution 74.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 140.0 0.01 145.0 0.99)
+   (duration_distribution 74.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.436767)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-dishes-fast__Dishwasher
+;     ** Note: method load-dishes-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.1 10.0 0.9)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 26.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 26.0 1.0)
+        (finish_time_distribution 46.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-rinse__Dishwasher
+;     ** Note: method fast-rinse__Dishwasher is virtual
+        (start_time_distribution 46.0 1.0)
+        (finish_time_distribution 61.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 61.0 1.0)
+        (finish_time_distribution 71.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 140.0 0.1 145.0 0.9)
+   (duration_distribution 71.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.43333)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-dishes-slow__Dishwasher
+;     ** Note: method load-dishes-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-slow__Dishwasher
+;     ** Note: method load-glasses-slow__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 32.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 32.0 1.0)
+        (finish_time_distribution 52.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-rinse__Dishwasher
+;     ** Note: method fast-rinse__Dishwasher is virtual
+        (start_time_distribution 52.0 1.0)
+        (finish_time_distribution 67.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 67.0 1.0)
+        (finish_time_distribution 77.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 135.0 1.0E-4 140.0 0.0198 145.0 0.9801)
+   (duration_distribution 77.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.429139)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-glasses-fast__Dishwasher
+;     ** Note: method load-glasses-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.25 10.0 0.75)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 26.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 26.0 1.0)
+        (finish_time_distribution 46.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-rinse__Dishwasher
+;     ** Note: method fast-rinse__Dishwasher is virtual
+        (start_time_distribution 46.0 1.0)
+        (finish_time_distribution 61.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 61.0 1.0)
+        (finish_time_distribution 71.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 140.0 0.25 145.0 0.75)
+   (duration_distribution 71.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.416733)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-dishes-fast__Dishwasher
+;     ** Note: method load-dishes-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.1 10.0 0.9)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-fast__Dishwasher
+;     ** Note: method load-glasses-fast__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.25 10.0 0.75)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 26.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 26.0 1.0)
+        (finish_time_distribution 46.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-rinse__Dishwasher
+;     ** Note: method fast-rinse__Dishwasher is virtual
+        (start_time_distribution 46.0 1.0)
+        (finish_time_distribution 61.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 61.0 1.0)
+        (finish_time_distribution 71.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 135.0 0.025 140.0 0.3 145.0 0.675)
+   (duration_distribution 71.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.405668)
+)
+
+(spec_schedule
+; Schedule contains 7 schedule element(s)
+   (schedule_elements
+     (load-dishes-fast__Dishwasher
+;     ** Note: method load-dishes-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.1 10.0 0.9)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-slow__Dishwasher
+;     ** Note: method load-glasses-slow__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 32.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (quick-wash__Dishwasher
+;     ** Note: method quick-wash__Dishwasher is virtual
+        (start_time_distribution 32.0 1.0)
+        (finish_time_distribution 42.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-rinse__Dishwasher
+;     ** Note: method fast-rinse__Dishwasher is virtual
+        (start_time_distribution 42.0 1.0)
+        (finish_time_distribution 57.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 57.0 1.0)
+        (finish_time_distribution 67.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 130.0 0.0010 135.0 0.108 140.0 0.891)
+   (duration_distribution 67.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.330269)
+)
+
+(spec_schedule
+; Schedule contains 7 schedule element(s)
+   (schedule_elements
+     (load-dishes-slow__Dishwasher
+;     ** Note: method load-dishes-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-slow__Dishwasher
+;     ** Note: method load-glasses-slow__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 15.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 15.0 1.0)
+        (finish_time_distribution 35.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (cheap-wash__Dishwasher
+;     ** Note: method cheap-wash__Dishwasher is virtual
+        (start_time_distribution 35.0 1.0)
+        (finish_time_distribution 50.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-rinse__Dishwasher
+;     ** Note: method fast-rinse__Dishwasher is virtual
+        (start_time_distribution 50.0 1.0)
+        (finish_time_distribution 65.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 65.0 1.0)
+        (finish_time_distribution 75.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 130.0 1.0E-4 135.0 0.0198 140.0 0.9801)
+   (duration_distribution 75.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.322837)
+)
+
+(spec_schedule
+; Schedule contains 7 schedule element(s)
+   (schedule_elements
+     (load-dishes-fast__Dishwasher
+;     ** Note: method load-dishes-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.1 10.0 0.9)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-slow__Dishwasher
+;     ** Note: method load-glasses-slow__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 32.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (cheap-wash__Dishwasher
+;     ** Note: method cheap-wash__Dishwasher is virtual
+        (start_time_distribution 32.0 1.0)
+        (finish_time_distribution 47.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-rinse__Dishwasher
+;     ** Note: method fast-rinse__Dishwasher is virtual
+        (start_time_distribution 47.0 1.0)
+        (finish_time_distribution 62.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 62.0 1.0)
+        (finish_time_distribution 72.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 130.0 0.0010 135.0 0.108 140.0 0.891)
+   (duration_distribution 72.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.3194)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-dishes-slow__Dishwasher
+;     ** Note: method load-dishes-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-slow__Dishwasher
+;     ** Note: method load-glasses-slow__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 32.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (quick-wash__Dishwasher
+;     ** Note: method quick-wash__Dishwasher is virtual
+        (start_time_distribution 32.0 1.0)
+        (finish_time_distribution 42.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 42.0 1.0)
+        (finish_time_distribution 67.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 67.0 1.0)
+        (finish_time_distribution 77.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 130.0 1.0E-4 135.0 0.0198 140.0 0.9801)
+   (duration_distribution 77.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.318489)
+)
+
+(spec_schedule
+; Schedule contains 7 schedule element(s)
+   (schedule_elements
+     (load-dishes-slow__Dishwasher
+;     ** Note: method load-dishes-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-fast__Dishwasher
+;     ** Note: method load-glasses-fast__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 5.0 0.25 10.0 0.75)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 32.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (quick-wash__Dishwasher
+;     ** Note: method quick-wash__Dishwasher is virtual
+        (start_time_distribution 32.0 1.0)
+        (finish_time_distribution 42.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-rinse__Dishwasher
+;     ** Note: method fast-rinse__Dishwasher is virtual
+        (start_time_distribution 42.0 1.0)
+        (finish_time_distribution 57.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 57.0 1.0)
+        (finish_time_distribution 67.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 130.0 0.0025 135.0 0.255 140.0 0.7425)
+   (duration_distribution 67.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.313672)
+)
+
+(spec_schedule
+; Schedule contains 7 schedule element(s)
+   (schedule_elements
+     (load-dishes-fast__Dishwasher
+;     ** Note: method load-dishes-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.1 10.0 0.9)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-fast__Dishwasher
+;     ** Note: method load-glasses-fast__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.25 10.0 0.75)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 29.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (quick-wash__Dishwasher
+;     ** Note: method quick-wash__Dishwasher is virtual
+        (start_time_distribution 29.0 1.0)
+        (finish_time_distribution 39.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-rinse__Dishwasher
+;     ** Note: method fast-rinse__Dishwasher is virtual
+        (start_time_distribution 39.0 1.0)
+        (finish_time_distribution 54.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 54.0 1.0)
+        (finish_time_distribution 64.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 130.0 0.025 135.0 0.3 140.0 0.675)
+   (duration_distribution 64.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.310235)
+)
+
+(spec_schedule
+; Schedule contains 7 schedule element(s)
+   (schedule_elements
+     (load-dishes-slow__Dishwasher
+;     ** Note: method load-dishes-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-fast__Dishwasher
+;     ** Note: method load-glasses-fast__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 5.0 0.25 10.0 0.75)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 32.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (cheap-wash__Dishwasher
+;     ** Note: method cheap-wash__Dishwasher is virtual
+        (start_time_distribution 32.0 1.0)
+        (finish_time_distribution 47.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-rinse__Dishwasher
+;     ** Note: method fast-rinse__Dishwasher is virtual
+        (start_time_distribution 47.0 1.0)
+        (finish_time_distribution 62.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 62.0 1.0)
+        (finish_time_distribution 72.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 130.0 0.0025 135.0 0.255 140.0 0.7425)
+   (duration_distribution 72.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.302802)
+)
+
+(spec_schedule
+; Schedule contains 7 schedule element(s)
+   (schedule_elements
+     (load-dishes-fast__Dishwasher
+;     ** Note: method load-dishes-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.1 10.0 0.9)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-fast__Dishwasher
+;     ** Note: method load-glasses-fast__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.25 10.0 0.75)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 29.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (cheap-wash__Dishwasher
+;     ** Note: method cheap-wash__Dishwasher is virtual
+        (start_time_distribution 29.0 1.0)
+        (finish_time_distribution 44.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-rinse__Dishwasher
+;     ** Note: method fast-rinse__Dishwasher is virtual
+        (start_time_distribution 44.0 1.0)
+        (finish_time_distribution 59.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 59.0 1.0)
+        (finish_time_distribution 69.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 130.0 0.025 135.0 0.3 140.0 0.675)
+   (duration_distribution 69.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.299366)
+)
+
+(spec_schedule
+; Schedule contains 5 schedule element(s)
+   (schedule_elements
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 23.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 23.0 1.0)
+        (finish_time_distribution 43.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-rinse__Dishwasher
+;     ** Note: method fast-rinse__Dishwasher is virtual
+        (start_time_distribution 43.0 1.0)
+        (finish_time_distribution 58.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 58.0 1.0)
+        (finish_time_distribution 68.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 135.0 1.0)
+   (duration_distribution 68.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.229617)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-glasses-slow__Dishwasher
+;     ** Note: method load-glasses-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 29.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (cheap-wash__Dishwasher
+;     ** Note: method cheap-wash__Dishwasher is virtual
+        (start_time_distribution 29.0 1.0)
+        (finish_time_distribution 44.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-rinse__Dishwasher
+;     ** Note: method fast-rinse__Dishwasher is virtual
+        (start_time_distribution 44.0 1.0)
+        (finish_time_distribution 59.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 59.0 1.0)
+        (finish_time_distribution 69.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 125.0 0.01 130.0 0.99)
+   (duration_distribution 69.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.115686)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-dishes-slow__Dishwasher
+;     ** Note: method load-dishes-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 29.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (cheap-wash__Dishwasher
+;     ** Note: method cheap-wash__Dishwasher is virtual
+        (start_time_distribution 29.0 1.0)
+        (finish_time_distribution 44.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-rinse__Dishwasher
+;     ** Note: method fast-rinse__Dishwasher is virtual
+        (start_time_distribution 44.0 1.0)
+        (finish_time_distribution 59.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 59.0 1.0)
+        (finish_time_distribution 69.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 125.0 0.01 130.0 0.99)
+   (duration_distribution 69.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.115686)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-dishes-fast__Dishwasher
+;     ** Note: method load-dishes-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.1 10.0 0.9)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 26.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (cheap-wash__Dishwasher
+;     ** Note: method cheap-wash__Dishwasher is virtual
+        (start_time_distribution 26.0 1.0)
+        (finish_time_distribution 41.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-rinse__Dishwasher
+;     ** Note: method fast-rinse__Dishwasher is virtual
+        (start_time_distribution 41.0 1.0)
+        (finish_time_distribution 56.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 56.0 1.0)
+        (finish_time_distribution 66.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 125.0 0.1 130.0 0.9)
+   (duration_distribution 66.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.11225)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-dishes-slow__Dishwasher
+;     ** Note: method load-dishes-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-slow__Dishwasher
+;     ** Note: method load-glasses-slow__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 32.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (cheap-wash__Dishwasher
+;     ** Note: method cheap-wash__Dishwasher is virtual
+        (start_time_distribution 32.0 1.0)
+        (finish_time_distribution 47.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-rinse__Dishwasher
+;     ** Note: method fast-rinse__Dishwasher is virtual
+        (start_time_distribution 47.0 1.0)
+        (finish_time_distribution 62.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 62.0 1.0)
+        (finish_time_distribution 72.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 120.0 1.0E-4 125.0 0.0198 130.0 0.9801)
+   (duration_distribution 72.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.108058)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-glasses-fast__Dishwasher
+;     ** Note: method load-glasses-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.25 10.0 0.75)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 26.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (cheap-wash__Dishwasher
+;     ** Note: method cheap-wash__Dishwasher is virtual
+        (start_time_distribution 26.0 1.0)
+        (finish_time_distribution 41.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-rinse__Dishwasher
+;     ** Note: method fast-rinse__Dishwasher is virtual
+        (start_time_distribution 41.0 1.0)
+        (finish_time_distribution 56.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 15.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (fast-dry__Dishwasher
+;     ** Note: method fast-dry__Dishwasher is virtual
+        (start_time_distribution 56.0 1.0)
+        (finish_time_distribution 66.0 1.0)
+        (quality_distribution 20.0 1.0)
+        (duration_distribution 10.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 125.0 0.25 130.0 0.75)
+   (duration_distribution 66.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating 0.0956522)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-dishes-slow__Dishwasher
+;     ** Note: method load-dishes-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-fast__Dishwasher
+;     ** Note: method load-glasses-fast__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 5.0 0.25 10.0 0.75)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 32.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 32.0 1.0)
+        (finish_time_distribution 52.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 52.0 1.0)
+        (finish_time_distribution 77.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 0.0 1.0)
+   (duration_distribution 77.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating -1.0)
+)
+
+(spec_schedule
+; Schedule contains 5 schedule element(s)
+   (schedule_elements
+     (load-dishes-fast__Dishwasher
+;     ** Note: method load-dishes-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.1 10.0 0.9)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-fast__Dishwasher
+;     ** Note: method load-glasses-fast__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.25 10.0 0.75)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 29.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 29.0 1.0)
+        (finish_time_distribution 49.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 0.0 1.0)
+   (duration_distribution 49.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating -1.0)
+)
+
+(spec_schedule
+; Schedule contains 6 schedule element(s)
+   (schedule_elements
+     (load-dishes-fast__Dishwasher
+;     ** Note: method load-dishes-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.1 10.0 0.9)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-slow__Dishwasher
+;     ** Note: method load-glasses-slow__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 32.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 32.0 1.0)
+        (finish_time_distribution 52.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (standard-rinse__Dishwasher
+;     ** Note: method standard-rinse__Dishwasher is virtual
+        (start_time_distribution 52.0 1.0)
+        (finish_time_distribution 77.0 1.0)
+        (quality_distribution 30.0 1.0)
+        (duration_distribution 25.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 0.0 1.0)
+   (duration_distribution 77.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating -1.0)
+)
+
+(spec_schedule
+; Schedule contains 5 schedule element(s)
+   (schedule_elements
+     (load-dishes-slow__Dishwasher
+;     ** Note: method load-dishes-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-fast__Dishwasher
+;     ** Note: method load-glasses-fast__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 5.0 0.25 10.0 0.75)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 32.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 32.0 1.0)
+        (finish_time_distribution 52.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 0.0 1.0)
+   (duration_distribution 52.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating -1.0)
+)
+
+(spec_schedule
+; Schedule contains 5 schedule element(s)
+   (schedule_elements
+     (load-dishes-fast__Dishwasher
+;     ** Note: method load-dishes-fast__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 3.0 1.0)
+        (quality_distribution 5.0 0.1 10.0 0.9)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-slow__Dishwasher
+;     ** Note: method load-glasses-slow__Dishwasher is virtual
+        (start_time_distribution 3.0 1.0)
+        (finish_time_distribution 9.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 9.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 32.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 32.0 1.0)
+        (finish_time_distribution 52.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 0.0 1.0)
+   (duration_distribution 52.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating -1.0)
+)
+
+(spec_schedule
+; Schedule contains 5 schedule element(s)
+   (schedule_elements
+     (load-dishes-slow__Dishwasher
+;     ** Note: method load-dishes-slow__Dishwasher is virtual
+        (start_time_distribution 0.0 1.0)
+        (finish_time_distribution 6.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-glasses-slow__Dishwasher
+;     ** Note: method load-glasses-slow__Dishwasher is virtual
+        (start_time_distribution 6.0 1.0)
+        (finish_time_distribution 12.0 1.0)
+        (quality_distribution 5.0 0.01 10.0 0.99)
+        (duration_distribution 6.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (load-silverware__Dishwasher
+;     ** Note: method load-silverware__Dishwasher is virtual
+        (start_time_distribution 12.0 1.0)
+        (finish_time_distribution 15.0 1.0)
+        (quality_distribution 10.0 1.0)
+        (duration_distribution 3.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (pre-rinse-hot__Dishwasher
+;     ** Note: method pre-rinse-hot__Dishwasher is virtual
+        (start_time_distribution 15.0 1.0)
+        (finish_time_distribution 35.0 1.0)
+        (quality_distribution 40.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+     (high-quality-wash__Dishwasher
+;     ** Note: method high-quality-wash__Dishwasher is virtual
+        (start_time_distribution 35.0 1.0)
+        (finish_time_distribution 55.0 1.0)
+        (quality_distribution 45.0 1.0)
+        (duration_distribution 20.0 1.0)
+        (cost_distribution 0.0 1.0)
+     )
+   )
+   (quality_distribution 0.0 1.0)
+   (duration_distribution 55.0 1.0)
+   (cost_distribution 0.0 1.0)
+   (rating -1.0)
+)
+

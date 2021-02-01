@@ -1,0 +1,60 @@
+#define L=@(a,b,c)
+#define SIZE=#length(@L)
+;#define A = 0
+;#define SUPER=T1
+
+#define METHODS
+#while ($A < $SIZE)
+        #define M = #getitemat(@L,$A)
+	(spec_method 
+	   (label $M)
+	   (supertasks $SUPER)
+	   (agent A)
+	   (outcomes
+          (Out_1
+            (density 1.0)
+            (quality_distribution 15.0 1.0)
+            (duration_distribution 500.0 1.0)
+            (cost_distribution 0.0 1.0)
+          ))
+         )
+	#definenow A = #sum($A, 1)
+#endwhile
+#enddefine
+
+(spec_agent
+	(label A)
+)
+
+
+(spec_task_group
+	(label T)
+	(agent A)
+	(subtasks T1 T2)
+	(qaf q_min)
+)
+
+#definenow L=@(a,b,c)
+#definenow SUPER=T1
+#definenow A = 0
+
+(spec_task
+	(label T1)
+	(agent A)
+	(subtasks @L)
+	(qaf q_max)
+)
+$METHODS
+
+
+#definenow L = @(d,e,f)
+#definenow SUPER=T2
+#definenow A = 0
+
+(spec_task
+	(label T2)
+	(agent A)
+	(subtasks @L)
+	(qaf q_max)
+)
+$METHODS

@@ -1,0 +1,180 @@
+; PTAEMS file for producing taems structures that manufacture hard disks,
+; monitors, or memory chips
+#define PRODUCE_HARDDISK = yes
+#define HARDDISK_QUANTITY = 0
+;#define HARDDISK_COST = #RANDOM_INT(124, 163)
+#define HARDDISK_COST = 150
+#define HARDDISK_BUILD_SPEED = 5 ; units per turn
+#define HARDDISK_OVERHEAD = 5
+
+#define PRODUCE_MONITOR = no
+#define MONITOR_QUANTITY = 0
+;#define MONITOR_COST = #RANDOM_INT(279, 316)
+#define MONITOR_COST = 300
+#define MONITOR_BUILD_SPEED = 3 ; units per turn
+#define MONITOR_OVERHEAD = 8
+
+#define PRODUCE_MEMORY = no
+#define MEMORY_QUANTITY = 0
+;#define MEMORY_COST = #RANDOM_INT(175, 239)
+#define MEMORY_COST = 200
+#define MEMORY_BUILD_SPEED = 10 ; units per turn
+#define MEMORY_OVERHEAD = 2
+
+#define CONSUME_HARDDISK = no
+#define CONSUME_HARDDISK_QUANTITY = 0
+#define CONSUME_HARDDISK_SPEED = 2
+
+#define AGENT = JRandomHacker
+
+;; Resources
+(spec_consumable_resource
+ (label HardDisk)
+ (state 0)
+ (depleted_at 0.0)
+ (overloaded_at 1000.0))
+
+(spec_consumable_resource
+ (label Monitor)
+ (state 15.0)
+ (depleted_at 0.0)
+ (overloaded_at 800.0))
+
+(spec_consumable_resource
+ (label Memory)
+ (state 33.0)
+ (depleted_at 0.0)
+ (overloaded_at 1200.0))
+
+; consumes stuff starts here
+
+(spec_task_group 
+ (label Use-Stuff)
+ (agent $AGENT)
+#if ($CONSUME_HARDDISK == yes)
+ (subtasks Use-Harddisk)
+#else
+ (subtasks)
+#endif
+)
+
+#if ($CONSUME_HARDDISK == yes)
+(spec_method
+ (label Use-Harddisk)
+ (agent $AGENT)
+ (outcomes
+    (o1
+	(density 1.0)
+	(quality_distribution 20 0.9 0 0.1)
+	(duration_distribution #QUOT($CONSUME_HARDDISK_QUANTITY, $CONSUME_HARDDISK_SPEED) 1.0)
+	(cost_distribution #PROD($CONSUME_HARDDISK_QUANTITY, $HARDDISK_COST) 1.0)
+    )
+  )
+)
+
+(spec_consumes
+ (label Consume-Harddisk)
+ (agent $AGENT)
+ (to HardDisk)
+ (from Use-Harddisk)
+ (model per_time_unit)
+ (consumes $CONSUME_HARDDISK_SPEED)
+)
+#endif
+
+; produces stuff starts here
+#if ($PRODUCE_HARDDISK == yes)
+#define SUBTASKS = "Manufacture-Harddisk"
+#else
+#define SUBTASKS = ""
+#endif
+; #if ($PRODUCE_HARDDISK == yes)
+;   #define SUBTASKS = #CONCAT($SUBTASKS, Manufacture-Harddisk)
+; #endif
+; #if ($PRODUCE_MONITOR == yes)
+;   #define SUBTASKS = #CONCAT($SUBTASKS, Manufacture-Monitor)
+; #endif
+; #if ($PRODUCE_MEMORY == yes)
+;   #define SUBTASKS = #CONCAT($SUBTASKS, Manufacture-Memory)
+; #endif
+
+(spec_task_group 
+ (label Build-Stuff)
+ (agent $AGENT)
+ (subtasks $SUBTASKS)
+)
+
+#if ($PRODUCE_HARDDISK == yes)
+(spec_method 
+ (label Manufacture-Harddisk)
+ (agent $AGENT)
+ (supertasks Build-Stuff)
+ (outcomes
+     (o1
+	(density 1.0)
+	(quality_distribution 20 0.9 0 0.1)
+	(duration_distribution #sum($HARDDISK_OVERHEAD, #quot($HARDDISK_QUANTITY, $HARDDISK_BUILD_SPEED)) 1.0)
+	(cost_distribution #prod($HARDDISK_QUANTITY, $HARDDISK_COST) 1.0)
+      )
+  )
+)
+
+(spec_produces
+ (label Produce-HARDDISK)
+ (agent $AGENT)
+ (to HardDisk)
+ (from Manufacture-Harddisk)
+ (model duration_independent)  ; don't release anything until we're ready to deliver
+ (produces $HARDDISK_QUANTITY 1.0)
+)
+#endif
+
+#if ($PRODUCE_MONITOR == yes)
+(spec_method 
+ (label Manufacture-Monitor)
+ (agent $AGENT)
+ (supertasks Build-Stuff)
+ (outcomes
+    (o1
+	(density 1.0)
+	(quality_distribution 20 0.9 0 0.1)
+	(duration_distribution #sum($MONITOR_OVERHEAD, #quot($MONITOR_QUANTITY, $MONITOR_BUILD_SPEED)) 1.0)
+	(cost_distribution #prod($MONITOR_QUANTITY, $MONITOR_COST) 1.0)
+     )
+  )
+)
+
+(spec_produces
+ (label Produce-Monitor)
+ (agent $AGENT)
+ (to Monitor)
+ (from Manufacture-Monitor)
+ (model duration_independent)  ; don't release anything until we're ready to deliver
+ (produces $MONITOR_QUANTITY 1.0)
+)
+#endif
+
+#if ($PRODUCE_MEMORY == yes)
+(spec_method 
+ (label Manufacture-Memory)
+ (agent $AGENT)
+ (supertasks Build-Stuff)
+ (outcomes
+    (o1
+	(density 1.0)
+	(quality_distribution 20 0.9 0 0.1)
+	(duration_distribution #sum($MEMORY_OVERHEAD, #quot($MEMORY_QUANTITY, $MEMORY_BUILD_SPEED)) 1.0)
+	(cost_distribution #prod($MEMORY_QUANTITY, $MEMORY_COST) 1.0)
+    )
+  )
+)
+
+(spec_produces
+ (label Produce-Memory)
+ (agent $AGENT)
+ (to Memory)
+ (from Manufacture-Memory)
+ (model duration_independent)
+ (produces $MEMORY_QUANTITY 1.0)
+)
+#endif

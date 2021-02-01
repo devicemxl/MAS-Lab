@@ -1,0 +1,120 @@
+;;;;
+;; Begin Task Structure null (Output v.1.1)
+;;;;
+
+(spec_agent
+  (label A)
+)
+
+(spec_task_group
+   (label A)
+   (agent A)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (subtasks b c d e f g h i j)
+;  ** Note: node b is virtual
+;  ** Note: node c is virtual
+;  ** Note: node d is virtual
+;  ** Note: node e is virtual
+;  ** Note: node f is virtual
+;  ** Note: node g is virtual
+;  ** Note: node h is virtual
+;  ** Note: node i is virtual
+;  ** Note: node j is virtual
+   (qaf q_min)
+)
+
+;(spec_virt_task_base
+;   (label b)
+;   (supertasks A K)
+;)
+
+;(spec_virt_task_base
+;   (label c)
+;   (supertasks A K)
+;)
+
+;(spec_virt_task_base
+;   (label d)
+;   (supertasks A K)
+;)
+
+;(spec_virt_task_base
+;   (label e)
+;   (supertasks A)
+;)
+
+;(spec_virt_task_base
+;   (label f)
+;   (supertasks A K)
+;)
+
+;(spec_virt_task_base
+;   (label g)
+;   (supertasks A K)
+;)
+
+;(spec_virt_task_base
+;   (label h)
+;   (supertasks A)
+;)
+
+;(spec_virt_task_base
+;   (label i)
+;   (supertasks A)
+;)
+
+;(spec_virt_task_base
+;   (label j)
+;   (supertasks A)
+;)
+
+(spec_task_group
+   (label K)
+   (agent A)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (subtasks b c d m f g x z y)
+;  ** Note: node b is virtual
+;  ** Note: node c is virtual
+;  ** Note: node d is virtual
+;  ** Note: node m is virtual
+;  ** Note: node f is virtual
+;  ** Note: node g is virtual
+;  ** Note: node x is virtual
+;  ** Note: node z is virtual
+;  ** Note: node y is virtual
+   (qaf q_min)
+)
+
+; Node b previously defined
+
+; Node c previously defined
+
+; Node d previously defined
+
+;(spec_virt_task_base
+;   (label m)
+;   (supertasks K)
+;)
+
+; Node f previously defined
+
+; Node g previously defined
+
+;(spec_virt_task_base
+;   (label x)
+;   (supertasks K)
+;)
+
+;(spec_virt_task_base
+;   (label z)
+;   (supertasks K)
+;)
+
+;(spec_virt_task_base
+;   (label y)
+;   (supertasks K)
+;)
+
+

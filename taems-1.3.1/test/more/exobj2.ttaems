@@ -1,0 +1,23 @@
+(spec_task_group
+	(label Agency_A)
+	(subtasks Rehash-Old-Documentation)
+	(qaf q_min)
+)
+
+(spec_task_group
+	(label Agency_B)
+	(subtasks Generate-New-Documentation)
+	(qaf q_min)
+)
+
+(spec_task_group
+	(label Agency_C)
+	(subtasks Copy-Someone-Elses-Documentation)
+	(qaf q_min)
+)
+
+(spec_task_group
+	(label Agency_D)
+	(subtasks Subcontract-Documentation)
+	(qaf q_min)
+)

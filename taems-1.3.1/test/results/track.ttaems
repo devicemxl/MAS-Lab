@@ -1,0 +1,984 @@
+;;;;
+;; Begin Task Structure null (Output v.1.1)
+;;;;
+
+(spec_agent
+  (label Agent_1)
+)
+
+(spec_task_group
+   (label Perform_Tasks)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (subtasks Perform_Scan Generate_Track)
+   (qaf q_sum)
+)
+
+(spec_task
+   (label Perform_Scan)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Perform_Tasks)
+   (subtasks Scan_1 Scan_3)
+   (qaf q_sum)
+)
+
+(spec_task
+   (label Scan_1)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Perform_Scan)
+   (subtasks Init_1 Activate_1 Query_1 Retrieve_1)
+   (qaf q_sum_all)
+)
+
+(spec_method
+   (label Init_1)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 2
+   (supertasks Scan_1)
+   (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 1.0 1.0)
+         (duration_distribution 1000.0 0.5 2000.0 0.5)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Consume_P1)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Init_1)
+   (to Power)
+   (model per_time_unit)
+   (consumes 1.0 1.0)
+)
+
+(spec_consumable_resource
+   (label Power)
+   (agent Agent_1)
+;  ** In IRs: 4
+;  ** Out IRs: 0
+   (state 100.0)
+   (depleted_at 0.0)
+;  ** Status is: 0
+   (overloaded_at 100.0)
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Consume_A1)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Activate_1)
+   (to Power)
+   (model per_time_unit)
+   (consumes 1.0 1.0)
+)
+
+(spec_method
+   (label Activate_1)
+   (agent Agent_1)
+;  ** In IRs: 1
+;  ** Out IRs: 2
+   (supertasks Scan_1)
+   (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 1.0 1.0)
+         (duration_distribution 1000.0 0.5 2000.0 0.5)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+)
+
+(spec_produces
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Prod_A1)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Activate_1)
+   (to Sector_1)
+   (model per_time_unit)
+   (produces 1.0 1.0)
+)
+
+(spec_non_consumable_resource
+   (label Sector_1)
+   (agent Agent_1)
+;  ** In IRs: 1
+;  ** Out IRs: 2
+   (state 0.0)
+   (depleted_at 0.0)
+;  ** Status is: 0
+   (overloaded_at 1.0)
+)
+
+(spec_limits
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Lim_SecL1)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Sector_1)
+   (to Lo_1)
+   (model per_time_unit)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 0.0 1.0)
+)
+
+(spec_method
+   (label Lo_1)
+   (agent Agent_1)
+;  ** In IRs: 1
+;  ** Out IRs: 1
+   (supertasks Query_1)
+   (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 300.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Cons_SenL1)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Lo_1)
+   (to Sensor)
+   (model per_time_unit)
+   (consumes 1.0 1.0)
+)
+
+(spec_non_consumable_resource
+   (label Sensor)
+   (agent Agent_1)
+;  ** In IRs: 4
+;  ** Out IRs: 0
+   (state 1.0)
+   (depleted_at 0.0)
+;  ** Status is: 0
+   (overloaded_at 1.0)
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Cons_SenH1)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Hi_1)
+   (to Sensor)
+   (model duration_independent)
+   (consumes 1.0 1.0)
+)
+
+(spec_method
+   (label Hi_1)
+   (agent Agent_1)
+;  ** In IRs: 1
+;  ** Out IRs: 1
+   (supertasks Query_1)
+   (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 15.0 1.0)
+         (duration_distribution 500.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_limits
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Lim_SecH1)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Sector_1)
+   (to Hi_1)
+   (model per_time_unit)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 0.0 1.0)
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Cons_SenL3)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Lo_3)
+   (to Sensor)
+   (model per_time_unit)
+   (consumes 1.0 1.0)
+)
+
+(spec_method
+   (label Lo_3)
+   (agent Agent_1)
+;  ** In IRs: 1
+;  ** Out IRs: 1
+   (supertasks Query_3)
+   (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 300.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_limits
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Lim_SecL3)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Sector_3)
+   (to Lo_3)
+   (model per_time_unit)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 0.0 1.0)
+)
+
+(spec_non_consumable_resource
+   (label Sector_3)
+   (agent Agent_1)
+;  ** In IRs: 1
+;  ** Out IRs: 2
+   (state 0.0)
+   (depleted_at 0.0)
+;  ** Status is: 0
+   (overloaded_at 1.0)
+)
+
+(spec_limits
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Lim_SecH3)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Sector_3)
+   (to Hi_3)
+   (model per_time_unit)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 0.0 1.0)
+)
+
+(spec_method
+   (label Hi_3)
+   (agent Agent_1)
+;  ** In IRs: 1
+;  ** Out IRs: 1
+   (supertasks Query_3)
+   (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 15.0 1.0)
+         (duration_distribution 500.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Cons_SenH3)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Hi_3)
+   (to Sensor)
+   (model duration_independent)
+   (consumes 1.0 1.0)
+)
+
+(spec_produces
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Prod_A3)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Activate_3)
+   (to Sector_3)
+   (model per_time_unit)
+   (produces 1.0 1.0)
+)
+
+(spec_method
+   (label Activate_3)
+   (agent Agent_1)
+;  ** In IRs: 1
+;  ** Out IRs: 2
+   (supertasks Scan_3)
+   (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 1.0 1.0)
+         (duration_distribution 1000.0 0.5 2000.0 0.5)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Consume_A3)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Activate_3)
+   (to Power)
+   (model per_time_unit)
+   (consumes 1.0 1.0)
+)
+
+(spec_enables
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Enab_A3)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Init_3)
+   (to Activate_3)
+   (delay 0.0 1.0)
+)
+
+(spec_method
+   (label Init_3)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 2
+   (supertasks Scan_3)
+   (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 1.0 1.0)
+         (duration_distribution 1000.0 0.5 2000.0 0.5)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+)
+
+(spec_consumes
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Consume_P3)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Init_3)
+   (to Power)
+   (model per_time_unit)
+   (consumes 1.0 1.0)
+)
+
+(spec_enables
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Enab_A1)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Init_1)
+   (to Activate_1)
+   (delay 0.0 1.0)
+)
+
+(spec_task
+   (label Query_1)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 2
+   (earliest_start_time 10)
+   (deadline 12)
+   (supertasks Scan_1)
+   (subtasks Lo_1 Hi_1)
+   (qaf q_exactly_one)
+)
+
+(spec_enables
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Enab_R1)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Query_1)
+   (to Retrieve_1)
+   (delay 0.0 1.0)
+)
+
+(spec_method
+   (label Retrieve_1)
+   (agent Agent_1)
+;  ** In IRs: 1
+;  ** Out IRs: 0
+   (supertasks Scan_1)
+   (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 1.0 1.0)
+         (duration_distribution 100.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_facilitates
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Fac_1)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Query_1)
+   (to Obtain_Current_Position)
+   (quality_power 0.4 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 1.0 1.0)
+   (delay 0.0 1.0)
+)
+
+(spec_method
+   (label Obtain_Current_Position)
+   (agent Agent_1)
+;  ** In IRs: 4
+;  ** Out IRs: 1
+   (supertasks Obtain_Information)
+   (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 1.0 1.0)
+         (duration_distribution 100.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_facilitates
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Fac_CP)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Obtain_Current_Position)
+   (to Calculate_Track)
+   (quality_power 0.4 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 1.0 1.0)
+   (delay 0.0 1.0)
+)
+
+(spec_method
+   (label Calculate_Track)
+   (agent Agent_1)
+;  ** In IRs: 2
+;  ** Out IRs: 0
+   (supertasks Generate_Track)
+   (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 1.0 1.0)
+         (duration_distribution 100.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_facilitates
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Fac_PT)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Obtain_Prior_Track)
+   (to Calculate_Track)
+   (quality_power 0.4 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 1.0 1.0)
+   (delay 0.0 1.0)
+)
+
+(spec_method
+   (label Obtain_Prior_Track)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 1
+   (supertasks Obtain_Information)
+   (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 1.0 1.0)
+         (duration_distribution 100.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_facilitates
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Fac_3)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Query_3)
+   (to Obtain_Current_Position)
+   (quality_power 0.4 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 1.0 1.0)
+   (delay 0.0 1.0)
+)
+
+(spec_task
+   (label Query_3)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 2
+   (earliest_start_time 10)
+   (deadline 12)
+   (supertasks Scan_3)
+   (subtasks Lo_3 Hi_3)
+   (qaf q_exactly_one)
+)
+
+(spec_enables
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Enab_R3)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Query_3)
+   (to Retrieve_3)
+   (delay 0.0 1.0)
+)
+
+(spec_method
+   (label Retrieve_3)
+   (agent Agent_1)
+;  ** In IRs: 1
+;  ** Out IRs: 0
+   (supertasks Scan_3)
+   (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 1.0 1.0)
+         (duration_distribution 100.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_facilitates
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Fac_Jack)
+   (agent Jack)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Query_Jack)
+   (to Obtain_Current_Position)
+   (quality_power 0.4 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 1.0 1.0)
+   (delay 0.0 1.0)
+)
+
+(spec_task_group
+   (label Query_Jack)
+   (agent Jack)
+;  ** In IRs: 0
+;  ** Out IRs: 1
+   (earliest_start_time 10)
+   (deadline 12)
+   (subtasks Lo_Jack Hi_Jack)
+)
+
+(spec_method
+   (label Lo_Jack)
+   (agent Jack)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (nonlocal)
+   (supertasks Query_Jack)
+   (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 10.0 0.5 15.0 0.5)
+         (duration_distribution 300.0 0.5 500.0 0.5)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_method
+   (label Hi_Jack)
+   (agent Jack)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (nonlocal)
+   (supertasks Query_Jack)
+   (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 10.0 0.5 15.0 0.5)
+         (duration_distribution 300.0 0.5 500.0 0.5)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_facilitates
+   (spec_attributes
+      (active Boolean false)
+   )
+   (label Fac_Jill)
+   (agent Jill)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (from Query_Jill)
+   (to Obtain_Current_Position)
+   (quality_power 0.4 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 1.0 1.0)
+   (delay 0.0 1.0)
+)
+
+(spec_task_group
+   (label Query_Jill)
+   (agent Jill)
+;  ** In IRs: 0
+;  ** Out IRs: 1
+   (earliest_start_time 10)
+   (deadline 12)
+   (subtasks Lo_Jill Hi_Jill)
+)
+
+(spec_method
+   (label Lo_Jill)
+   (agent Jill)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (nonlocal)
+   (supertasks Query_Jill)
+   (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 10.0 0.5 15.0 0.5)
+         (duration_distribution 300.0 0.5 500.0 0.5)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_method
+   (label Hi_Jill)
+   (agent Jill)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (nonlocal)
+   (supertasks Query_Jill)
+   (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 10.0 0.5 15.0 0.5)
+         (duration_distribution 300.0 0.5 500.0 0.5)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_task
+   (label Scan_3)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Perform_Scan)
+   (subtasks Init_3 Activate_3 Query_3 Retrieve_3)
+   (qaf q_sum_all)
+)
+
+(spec_task
+   (label Generate_Track)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Perform_Tasks)
+   (subtasks Obtain_Information Calculate_Track)
+   (qaf q_seq_last)
+)
+
+(spec_task
+   (label Obtain_Information)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Generate_Track)
+   (subtasks Obtain_Prior_Track Obtain_Current_Position)
+   (qaf q_sum)
+)
+
+
+
+
+
+; Node Query_Jack previously defined
+
+; Node Fac_Jack previously defined
+
+; Node Obtain_Current_Position previously defined
+
+; Node Fac_CP previously defined
+
+; Node Calculate_Track previously defined
+
+; Node Fac_PT previously defined
+
+; Node Obtain_Prior_Track previously defined
+
+; Node Fac_1 previously defined
+
+; Node Query_1 previously defined
+
+; Node Enab_R1 previously defined
+
+; Node Retrieve_1 previously defined
+
+; Node Lo_1 previously defined
+
+; Node Cons_SenL1 previously defined
+
+; Node Sensor previously defined
+
+; Node Cons_SenH1 previously defined
+
+; Node Hi_1 previously defined
+
+; Node Lim_SecH1 previously defined
+
+; Node Sector_1 previously defined
+
+; Node Lim_SecL1 previously defined
+
+; Node Prod_A1 previously defined
+
+; Node Activate_1 previously defined
+
+; Node Consume_A1 previously defined
+
+; Node Power previously defined
+
+; Node Consume_P1 previously defined
+
+; Node Init_1 previously defined
+
+; Node Enab_A1 previously defined
+
+; Node Consume_P3 previously defined
+
+; Node Init_3 previously defined
+
+; Node Enab_A3 previously defined
+
+; Node Activate_3 previously defined
+
+; Node Consume_A3 previously defined
+
+; Node Prod_A3 previously defined
+
+; Node Sector_3 previously defined
+
+; Node Lim_SecL3 previously defined
+
+; Node Lo_3 previously defined
+
+; Node Cons_SenL3 previously defined
+
+; Node Lim_SecH3 previously defined
+
+; Node Hi_3 previously defined
+
+; Node Cons_SenH3 previously defined
+
+; Node Fac_3 previously defined
+
+; Node Query_3 previously defined
+
+; Node Enab_R3 previously defined
+
+; Node Retrieve_3 previously defined
+
+; Node Fac_Jill previously defined
+
+; Node Query_Jill previously defined
+
+; Node Lo_Jill previously defined
+
+; Node Hi_Jill previously defined
+
+; Node Lo_Jack previously defined
+
+; Node Hi_Jack previously defined
+
+; Node Query_Jill previously defined
+
+; Node Fac_Jill previously defined
+
+; Node Obtain_Current_Position previously defined
+
+; Node Fac_CP previously defined
+
+; Node Calculate_Track previously defined
+
+; Node Fac_PT previously defined
+
+; Node Obtain_Prior_Track previously defined
+
+; Node Fac_1 previously defined
+
+; Node Query_1 previously defined
+
+; Node Enab_R1 previously defined
+
+; Node Retrieve_1 previously defined
+
+; Node Lo_1 previously defined
+
+; Node Cons_SenL1 previously defined
+
+; Node Sensor previously defined
+
+; Node Cons_SenH1 previously defined
+
+; Node Hi_1 previously defined
+
+; Node Lim_SecH1 previously defined
+
+; Node Sector_1 previously defined
+
+; Node Lim_SecL1 previously defined
+
+; Node Prod_A1 previously defined
+
+; Node Activate_1 previously defined
+
+; Node Consume_A1 previously defined
+
+; Node Power previously defined
+
+; Node Consume_P1 previously defined
+
+; Node Init_1 previously defined
+
+; Node Enab_A1 previously defined
+
+; Node Consume_P3 previously defined
+
+; Node Init_3 previously defined
+
+; Node Enab_A3 previously defined
+
+; Node Activate_3 previously defined
+
+; Node Consume_A3 previously defined
+
+; Node Prod_A3 previously defined
+
+; Node Sector_3 previously defined
+
+; Node Lim_SecL3 previously defined
+
+; Node Lo_3 previously defined
+
+; Node Cons_SenL3 previously defined
+
+; Node Lim_SecH3 previously defined
+
+; Node Hi_3 previously defined
+
+; Node Cons_SenH3 previously defined
+
+; Node Fac_3 previously defined
+
+; Node Query_3 previously defined
+
+; Node Enab_R3 previously defined
+
+; Node Retrieve_3 previously defined
+
+; Node Fac_Jack previously defined
+
+; Node Query_Jack previously defined
+
+; Node Lo_Jack previously defined
+
+; Node Hi_Jack previously defined
+
+; Node Lo_Jill previously defined
+
+; Node Hi_Jill previously defined
+
+

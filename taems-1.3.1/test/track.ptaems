@@ -1,0 +1,487 @@
+;;;;;;;;;;;;
+;; Input data
+;;   AGENT	= name of local agent
+;;   SCAN	= boolean, if instantiate print scan methods 
+;;   TRACK	= boolean, if instantiate print track methods 
+;;   SECTORx	= if true, instantiate scan task for active sector x
+;;   LO_WIN	= the earliest time the scan measurement can be made
+;;   HI_WIN	= the latest time the scan measurement can be completed
+;;;;;;;;;;;;
+
+#define AGENT	= Agent_1
+
+#define SCAN	= true
+#define TRACK	= true
+
+#define SECTOR1	= true
+;#define SECTOR2	= true
+#define SECTOR3	= true
+
+#define LO_WIN	= 10
+#define HI_WIN	= 12
+
+;#define LIMITS	= true
+
+;;;;;;;;;;;;
+;; Defaults
+;;;;;;;;;;;;
+
+#if (#ndef($SCAN) == true)
+   #define SCAN = false
+#endif
+#if (#ndef($TRACK) == true)
+   #define TRACK = false
+#endif
+
+#if (#ndef($SECTOR1) == true)
+   #define SECTOR1 = false
+#endif
+#if (#ndef($SECTOR2) == true)
+   #define SECTOR2 = false
+#endif
+#if (#ndef($SECTOR3) == true)
+   #define SECTOR3 = false
+#endif
+
+;;;;;;;;;;;;
+;; Generic outcomes
+;;   INIT_OUT	= Outcomes for local scan init method
+;;   ACTIV_OUT	= Outcomes for local scan activate method
+;;   LO_OUT	= Outcomes for local low scan method
+;;   HI_OUT	= Outcomes for local high scan method
+;;   RET_OUT	= Outcomes for local data retrieval method
+;;   NL_OUT	= Outcomes for nonlocal scan method
+;;;;;;;;;;;;
+
+#define INIT_OUT
+  (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 1.0 1.0)
+         (duration_distribution 1000.0 0.5 2000.0 0.5)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+#enddefine
+
+#define ACTIV_OUT
+  (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 1.0 1.0)
+         (duration_distribution 1000.0 0.5 2000.0 0.5)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+#enddefine
+
+#define LO_OUT
+  (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 300.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+#enddefine
+
+#define HI_OUT
+  (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 15.0 1.0)
+         (duration_distribution 500.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+#enddefine
+
+#define RET_OUT
+  (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 1.0 1.0)
+         (duration_distribution 100.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+#enddefine
+
+#define NL_OUT
+  (outcomes
+      (Out_1
+         (density 1.0)
+         (quality_distribution 10.0 0.5 15 0.5)
+         (duration_distribution 300.0 0.5 500 0.5)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+#enddefine
+
+;;;;;;;;;;;;
+;; Scan quality facilitation effects on track generation
+;;;;;;;;;;;;
+
+#define FACIL_POWER
+   (quality_power 0.4 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 1.0 1.0)
+#enddefine
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Local scans
+;;   SECTOR	= number/name of sector to scan
+;;   LO_OUT	= outcome of lo quality scan
+;;   HI_OUT	= outcome of hi quality scan
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+#define SCAN_TASK
+(spec_task
+   (label Scan_$SECTOR)
+   (agent $AGENT)
+   (subtasks Init_$SECTOR Activate_$SECTOR Query_$SECTOR Retrieve_$SECTOR)
+   (qaf q_sum_all)
+)
+
+(spec_method
+   (label Init_$SECTOR)
+   (agent $AGENT)
+   $INIT_OUT
+)
+
+(spec_consumes
+   (label Consume_P$SECTOR)
+   (agent $AGENT)
+   (from Init_$SECTOR)
+   (to Power)
+   (model per_time_unit)
+   (consumes 1 1.0)
+)
+
+(spec_enables
+   (label Enab_A$SECTOR)
+   (agent $AGENT)
+   (from Init_$SECTOR)
+   (to Activate_$SECTOR)
+)
+
+(spec_method
+   (label Activate_$SECTOR)
+   (agent $AGENT)
+   $ACTIV_OUT
+)
+
+(spec_consumes
+   (label Consume_A$SECTOR)
+   (agent $AGENT)
+   (from Activate_$SECTOR)
+   (to Power)
+   (model per_time_unit)
+   (consumes 1 1.0)
+)
+
+(spec_produces
+   (label Prod_A$SECTOR)
+   (agent $AGENT)
+   (from Activate_$SECTOR)
+   (to Sector_$SECTOR)
+   (model per_time_unit)
+   (produces 1 1.0)
+)
+
+(spec_task
+   (label Query_$SECTOR)
+   (agent $AGENT)
+   (subtasks Lo_$SECTOR Hi_$SECTOR)
+   (qaf q_exactly_one)
+   (earliest_start_time $LO_WIN)
+   (deadline $HI_WIN)
+)
+
+(spec_enables
+   (label Enab_R$SECTOR)
+   (agent $AGENT)
+   (from Query_$SECTOR)
+   (to Retrieve_$SECTOR)
+)
+
+(spec_method
+   (label Retrieve_$SECTOR)
+   (agent $AGENT)
+   $RET_OUT
+)
+
+(spec_non_consumable_resource
+   (label Sector_$SECTOR)
+   (agent $AGENT)
+   (state 0)
+   (depleted_at 0)
+   (overloaded_at 1)
+)
+
+#if ($TRACK == true)
+(spec_facilitates
+   (label Fac_$SECTOR)
+   (agent $AGENT)
+   (from Query_$SECTOR)
+   (to Obtain_Current_Position)
+   $FACIL_POWER
+)
+#endif
+
+;; Lo Method
+(spec_method
+   (label Lo_$SECTOR)
+   (agent $AGENT)
+   $LO_OUT
+)
+
+(spec_consumes
+   (label Cons_SenL$SECTOR)
+   (agent $AGENT)
+   (from Lo_$SECTOR)
+   (to Sensor)
+   (model per_time_unit)
+   (consumes 1 1.0)
+)
+
+#if ($LIMITS == true)
+(spec_limits
+   (label Lim_SenL$SECTOR)
+   (agent $AGENT)
+   (from Sensor)
+   (to Lo_$SECTOR)
+   (model per_time_unit)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 0.0 1.0)
+)
+#endif
+
+(spec_limits
+   (label Lim_SecL$SECTOR)
+   (agent $AGENT)
+   (from Sector_$SECTOR)
+   (to Lo_$SECTOR)
+   (model per_time_unit)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 0.0 1.0)
+)
+
+;; Hi Method
+(spec_method
+   (label Hi_$SECTOR)
+   (agent $AGENT)
+   $HI_OUT
+)
+
+(spec_consumes
+   (label Cons_SenH$SECTOR)
+   (agent $AGENT)
+   (from Hi_$SECTOR)
+   (to Sensor)
+   (model duration_independent)
+   (consumes 1 1.0)
+)
+
+#if ($LIMITS == true)
+(spec_limits
+   (label Lim_SenH$SECTOR)
+   (agent $AGENT)
+   (from Sensor)
+   (to Hi_$SECTOR)
+   (model per_time_unit)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 0.0 1.0)
+)
+#endif
+
+(spec_limits
+   (label Lim_SecH$SECTOR)
+   (agent $AGENT)
+   (from Sector_$SECTOR)
+   (to Hi_$SECTOR)
+   (model per_time_unit)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power 0.0 1.0)
+)
+
+#enddefine
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Nonlocal scans
+;;   NLAGENT	= name of nonlocal agent
+;;   NL_OUT	= outcome of nonlocal task
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+#define NLSCAN_TASK
+
+(spec_method
+   (label Lo_$NLAGENT)
+   (agent $NLAGENT)
+   $NL_OUT
+   (nonlocal)
+)
+
+(spec_method
+   (label Hi_$NLAGENT)
+   (agent $NLAGENT)
+   $NL_OUT
+   (nonlocal)
+)
+
+(spec_task
+   (label Query_$NLAGENT)
+   (agent $NLAGENT)
+   (subtasks Lo_$NLAGENT Hi_$NLAGENT)
+   (earliest_start_time $LO_WIN)
+   (deadline $HI_WIN)
+)
+
+(spec_facilitates
+   (label Fac_$NLAGENT)
+   (agent $NLAGENT)
+   (from Query_$NLAGENT)
+   (to Obtain_Current_Position)
+   $FACIL_POWER
+)
+#enddefine
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Main Task Group
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(spec_agent
+  (label $AGENT)
+)
+
+(spec_task_group
+   (label Perform_Tasks)
+   (agent $AGENT)
+   (subtasks 
+#if ($SCAN == true)
+	Perform_Scan
+#endif
+#if ($TRACK == true)
+	Generate_Track
+#endif
+   )
+   (qaf q_sum)
+)
+
+(spec_non_consumable_resource
+   (label Sensor)
+   (agent $AGENT)
+   (state 1)
+   (depleted_at 0)
+   (overloaded_at 1)
+)
+
+(spec_consumable_resource
+   (label Power)
+   (agent $AGENT)
+   (state 100.0)
+   (depleted_at 0.0)
+   (overloaded_at 100.0)
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Scan stuff
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+#if ($SCAN == true)
+
+#define SUBTASKS = ""
+#if ($SECTOR1 == true) 
+	#define SECTOR = 1
+	#definenow SUBTASKS = #concat($SUBTASKS, #space(), "Scan_", $SECTOR)
+	$SCAN_TASK
+#endif
+#if ($SECTOR2 == true) 
+	#define SECTOR = 2
+	#definenow SUBTASKS = #concat($SUBTASKS, #space(), "Scan_", $SECTOR)
+	$SCAN_TASK
+#endif
+#if ($SECTOR3 == true) 
+	#define SECTOR = 3
+	#definenow SUBTASKS = #concat($SUBTASKS, #space(), "Scan_", $SECTOR)
+	$SCAN_TASK
+#endif
+
+(spec_task
+   (label Perform_Scan)
+   (agent $AGENT)
+   (subtasks $SUBTASKS)
+   (qaf q_sum)
+)
+
+#endif
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Generate stuff
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+#if ($TRACK == true)
+
+(spec_task
+   (label Generate_Track)
+   (agent $AGENT)
+   (subtasks Obtain_Information Calculate_Track)
+   (qaf q_seq_last)
+)
+
+(spec_task
+   (label Obtain_Information)
+   (agent $AGENT)
+   (subtasks Obtain_Prior_Track Obtain_Current_Position)
+   (qaf q_sum)
+)
+
+(spec_method
+   (label Obtain_Prior_Track)
+   (agent $AGENT)
+   $RET_OUT
+)
+
+(spec_facilitates
+   (label Fac_PT)
+   (agent $AGENT)
+   (from Obtain_Prior_Track)
+   (to Calculate_Track)
+   $FACIL_POWER
+)
+
+(spec_method
+   (label Obtain_Current_Position)
+   (agent $AGENT)
+   $RET_OUT
+)
+
+(spec_facilitates
+   (label Fac_CP)
+   (agent $AGENT)
+   (from Obtain_Current_Position)
+   (to Calculate_Track)
+   $FACIL_POWER
+)
+
+(spec_method
+   (label Calculate_Track)
+   (agent $AGENT)
+   $RET_OUT
+)
+
+#define NLAGENT = "Jack"
+$NLSCAN_TASK
+
+#define NLAGENT = "Jill"
+$NLSCAN_TASK
+
+;#define NLAGENT = "Bob"
+;$NLSCAN_TASK
+
+#endif

@@ -1,0 +1,259 @@
+;;;;
+;; Begin Task Structure null (Output v.1.1)
+;;;;
+
+(spec_agent
+  (label TLS)
+)
+
+(spec_task_group
+   (label TG_1)
+   (agent TLS)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (deadline 18)
+   (subtasks T1 T2 T3)
+   (qaf q_min)
+)
+
+(spec_task
+   (label T1)
+   (agent TLS)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks TG_1)
+   (subtasks A M T)
+   (qaf q_min)
+)
+
+(spec_method
+   (label A)
+   (agent TLS)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks T1)
+)
+
+(spec_method
+   (label M)
+   (agent TLS)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks T1)
+   (outcomes
+      (A_o0
+         (density 0.703125)
+         (quality_distribution 10.0 0.5 20.0 0.5)
+         (duration_distribution 13.0 1.0)
+         (cost_distribution 1.0 1.0)
+      )
+      (A_o1
+         (density 0.94140625)
+         (quality_distribution 2.0 1.0)
+         (duration_distribution 16.0 1.0)
+         (cost_distribution 3.0 1.0)
+      )
+   )
+)
+
+(spec_method
+   (label T)
+   (agent TLS)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks T1)
+   (outcomes
+      (A_o0
+         (density 0.9609375)
+         (quality_distribution 10.0 0.5 20.0 0.5)
+         (duration_distribution 15.0 1.0)
+         (cost_distribution 7.0 1.0)
+      )
+      (A_o1
+         (density 0.5234375)
+         (quality_distribution 1.0 1.0)
+         (duration_distribution 14.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_task
+   (label T2)
+   (agent TLS)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks TG_1)
+   (subtasks Z Q D)
+   (qaf q_min)
+)
+
+(spec_method
+   (label Z)
+   (agent TLS)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks T2)
+   (outcomes
+      (A_o0
+         (density 0.8828125)
+         (quality_distribution 10.0 0.5 20.0 0.5)
+         (duration_distribution 3.0 1.0)
+         (cost_distribution 6.0 1.0)
+      )
+      (A_o1
+         (density 0.40625)
+         (quality_distribution 13.0 1.0)
+         (duration_distribution 12.0 1.0)
+         (cost_distribution 0.0 1.0)
+      )
+   )
+)
+
+(spec_method
+   (label Q)
+   (agent TLS)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks T2)
+   (outcomes
+      (A_o0
+         (density 0.7890625)
+         (quality_distribution 10.0 0.5 20.0 0.5)
+         (duration_distribution 3.0 1.0)
+         (cost_distribution 8.0 1.0)
+      )
+      (A_o1
+         (density 0.14453125)
+         (quality_distribution 7.0 1.0)
+         (duration_distribution 4.0 1.0)
+         (cost_distribution 4.0 1.0)
+      )
+   )
+)
+
+(spec_method
+   (label D)
+   (agent TLS)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks T2)
+   (outcomes
+      (A_o0
+         (density 0.1953125)
+         (quality_distribution 10.0 0.5 20.0 0.5)
+         (duration_distribution 18.0 1.0)
+         (cost_distribution 8.0 1.0)
+      )
+      (A_o1
+         (density 0.90625)
+         (quality_distribution 5.0 1.0)
+         (duration_distribution 5.0 1.0)
+         (cost_distribution 9.0 1.0)
+      )
+   )
+)
+
+(spec_task
+   (label T3)
+   (agent TLS)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks TG_1)
+   (subtasks F L W)
+   (qaf q_min)
+)
+
+(spec_method
+   (label F)
+   (agent TLS)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks T3)
+   (outcomes
+      (A_o0
+         (density 0.26367188)
+         (quality_distribution 10.0 0.5 20.0 0.5)
+         (duration_distribution 7.0 1.0)
+         (cost_distribution 4.0 1.0)
+      )
+      (A_o1
+         (density 0.2265625)
+         (quality_distribution 9.0 1.0)
+         (duration_distribution 2.0 1.0)
+         (cost_distribution 4.0 1.0)
+      )
+   )
+)
+
+(spec_method
+   (label L)
+   (agent TLS)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks T3)
+   (outcomes
+      (A_o0
+         (density 0.0546875)
+         (quality_distribution 10.0 0.5 20.0 0.5)
+         (duration_distribution 14.0 1.0)
+         (cost_distribution 5.0 1.0)
+      )
+      (A_o1
+         (density 0.3359375)
+         (quality_distribution 14.0 1.0)
+         (duration_distribution 7.0 1.0)
+         (cost_distribution 7.0 1.0)
+      )
+   )
+)
+
+(spec_method
+   (label W)
+   (agent TLS)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks T3)
+   (outcomes
+      (A_o0
+         (density 0.2578125)
+         (quality_distribution 10.0 0.5 20.0 0.5)
+         (duration_distribution 2.0 1.0)
+         (cost_distribution 6.0 1.0)
+      )
+      (A_o1
+         (density 0.53515625)
+         (quality_distribution 22.0 1.0)
+         (duration_distribution 4.0 1.0)
+         (cost_distribution 4.0 1.0)
+      )
+   )
+)
+
+(spec_evaluation_criteria
+   (label blah)
+   (goodness_quality_slider 1.0)
+   (goodness_cost_slider 0.0)
+   (goodness_duration_slider 0.0)
+   (threshold_quality_slider 1.0)
+   (threshold_cost_slider 0.0)
+   (threshold_duration_slider 0.0)
+   (quality_threshold 60.0)
+   (cost_limit 5.0)
+   (duration_limit 100.0)
+   (uncertainty_quality_slider 1.0)
+   (uncertainty_cost_slider 0.0)
+   (uncertainty_duration_slider 0.0)
+   (threshold_certainty_quality_slider 1.0)
+   (threshold_certainty_cost_slider 0.0)
+   (threshold_certainty_duration_slider 0.0)
+   (quality_certainty_threshold 1.0)
+   (cost_certainty_threshold 0.0)
+   (duration_certainty_threshold 0.0)
+   (meta_goodness_slider 1.0)
+   (meta_threshold_slider 0.0)
+   (meta_uncertainty_slider 0.0)
+   (meta_uncertainty_threshold_slider 0.0)
+)
+
+

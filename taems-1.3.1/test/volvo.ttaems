@@ -1,0 +1,131 @@
+(spec_agent
+   (label Volvo)
+)  
+
+(spec_method
+	(label make-S70)
+	(agent Volvo)
+	(supertasks deliver-S70)
+	(outcomes
+	   (make-S70_o0
+		(density 1.0)
+		(quality_distribution 99.0 1.0 )
+         	(duration_distribution 10.0 1.0 )
+         	(cost_distribution 30000.0 1.0 )
+      )
+    )
+)         
+
+(spec_method
+        (label ship-S70)
+        (agent Volvo)
+        (supertasks deliver-S70)
+        (outcomes
+           (ship-S70_o0
+                (density 1.0)
+                (quality_distribution 50.0 1.0 )
+                (duration_distribution 10.0 1.0 )
+                (cost_distribution 500.0 1.0 )
+      )
+    )
+)        
+
+(spec_nonlocal_commitment
+                   (label nlc3)
+                   (from_agent Agent_A)
+                   (to_agent Agent_B)
+                   (task Method2)
+
+                   (quality_distribution 12 0.5 15 0.5)
+                   (time_distribution 13 1.0)
+                )
+
+(spec_task_group
+   (label deliver-S70)
+   (agent Volvo)
+   (subtasks make-S70 ship-S70 )
+   (qaf q_seq_sum)
+)     
+
+(spec_non_consumable_resource
+   (label Truck)
+   (state 1.0)
+   (depleted_at 0.0)
+   (overloaded_at 10)
+)    
+
+(spec_consumable_resource
+   (label Volvo-S70)
+   (state 0.0)
+   (depleted_at 0.0)
+   (overloaded_at 200)
+)    
+
+(spec_consumable_resource
+   (label Volvo-S70-at-dealer)
+   (state 5.0)
+   (depleted_at 0.0)
+   (overloaded_at 10)
+)    
+
+
+(spec_consumes
+   (label load-S70)
+   (agent Volvo)
+   (from ship-S70)
+   (to Volvo-S70)
+   (model duration_independent)
+   (consumes 1.0 1.0 )
+)        
+
+(spec_consumes
+   (label drive)
+   (agent Volvo)
+   (from ship-S70)
+   (to Truck)
+   (model per_time_unit)
+   (consumes 1.0 1.0 )
+)
+
+(spec_produces
+   (label unload)
+   (agent Volvo)
+   (from ship-S70)
+   (to Volvo-S70-at-dealer)
+   (produces 10.0 1.0 )
+)       
+
+
+(spec_limits
+       (label no-S70)
+       (agent Volvo)
+       (from Volvo-S70)
+       (to ship-S70)
+       (model duration_independent)
+       (quality_power 0.0 1.0 )
+       (duration_power 1.0 1.0 )
+       (cost_power 0.5 1.0)
+)                              
+
+(spec_limits
+       (label no-space-for-S70)
+       (agent Volvo)
+       (from Volvo-S70-at-dealer)
+       (to ship-S70)
+       (model duration_independent)
+       (quality_power 0.0 1.0 )
+       (duration_power 1.0 1.0 )
+       (cost_power 0.5 1.0)
+)                                    
+
+(spec_limits
+       (label no-Truck)
+       (agent Volvo)
+       (from Truck)
+       (to ship-S70)
+       (model per_time_unit)
+       (quality_power 0.0 1.0 )
+       (duration_power 1.0 1.0 )
+       (cost_power -1.0 1.0)
+)                                    
+

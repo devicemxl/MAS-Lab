@@ -1,0 +1,99 @@
+;;;;
+;; Begin Task Structure null (Output v.1.1)
+;;;;
+
+(spec_agent
+  (label agent_a)
+)
+
+(spec_task_group
+   (label P)
+   (agent agent_a)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (deadline 18)
+   (subtasks M1 M2)
+   (qaf q_min)
+)
+
+(spec_method
+   (spec_attributes
+      (sched_num Integer 1)
+   )
+   (label M1)
+   (agent agent_a)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks P)
+   (outcomes
+      (Outcome_1
+         (density 1.0)
+         (quality_distribution 6.0 0.6 8.0 0.4)
+         (duration_distribution 8.0 0.2 9.0 0.8)
+         (cost_distribution 5.0 1.0)
+      )
+   )
+)
+
+(spec_method
+   (spec_attributes
+      (sched_num Integer -1)
+   )
+   (label M2)
+   (agent agent_a)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (nonlocal)
+   (supertasks P)
+   (outcomes
+      (Outcome_1
+         (density 1.0)
+         (quality_distribution 5.0 0.3 6.0 0.7)
+         (duration_distribution 7.0 1.0)
+         (cost_distribution 6.0 1.0)
+      )
+   )
+)
+
+(spec_schedule
+; Schedule contains 2 schedule element(s)
+   (schedule_elements
+     (M1
+        (start_time_distribution 100.0 1.0)
+        (finish_time_distribution 101.0 1.0)
+        (quality_distribution 1.0 1.0)
+        (duration_distribution 1.0 1.0)
+        (cost_distribution 1.0 1.0)
+     )
+     (M3
+;     ** Note: method M3 is virtual
+        (start_time_distribution 101.0 1.0)
+        (finish_time_distribution 102.0 0.5 103.0 0.5)
+        (quality_distribution 1.0 1.0)
+        (duration_distribution 1.0 0.5 2.0 0.5)
+        (cost_distribution 1.0 1.0)
+     )
+   )
+   (quality_distribution 2.0 1.0)
+   (duration_distribution 2.0 0.5 3.0 0.5)
+   (cost_distribution 7.5 1.0)
+   (rating 0.5)
+)
+
+(spec_schedule
+; Schedule contains 1 schedule element(s)
+   (schedule_elements
+     (M2
+        (start_time_distribution 100.0 1.0)
+        (finish_time_distribution 101.0 1.0)
+        (quality_distribution 1.0 1.0)
+        (duration_distribution 1.0 1.0)
+        (cost_distribution 1.0 1.0)
+     )
+   )
+   (quality_distribution 1.0 1.0)
+   (duration_distribution 1.0 1.0)
+   (cost_distribution 6.5 1.0)
+   (rating 0.5)
+)
+

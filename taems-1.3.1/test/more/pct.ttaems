@@ -1,0 +1,192 @@
+(spec_agent
+  (label Agent_A)
+)
+
+(spec_task_group
+   (label Plan_1)
+   (subtasks Step_1 Step_2 Step_3)
+)
+
+(spec_method
+   (label Step_1)
+   (agent Agent_A)
+   (supertasks Plan_1)
+)
+
+(spec_method
+   (label Step_2)
+   (agent Agent_A)
+   (supertasks Plan_1)
+)
+
+(spec_method
+   (label Step_3)
+   (agent Agent_A)
+   (supertasks Plan_1)
+)
+
+(spec_uses 
+   (label Consumes_1) 
+   (agent Agent_A)  
+   (from Step_1) 
+   (to A) 
+   (consumes 60.0 1.0 ) 
+) 
+(spec_limits
+   (label Limits_1)
+   (agent Agent_A)
+   (from A)
+   (to Step_1)
+   (quality_power 0.0 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power 1.0 1.0)
+)
+(spec_uses 
+   (label Consumes_2) 
+   (agent Agent_A)  
+   (from Step_1) 
+   (to B) 
+   (consumes 60.0 1.0 ) 
+) 
+(spec_limits
+   (label Limits_2)
+   (agent Agent_A)
+   (from B)
+   (to Step_1)
+   (quality_power 0.0 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power 1.0 1.0)
+)
+(spec_uses 
+   (label Consumes_3) 
+   (agent Agent_A)  
+   (from Step_2) 
+   (to C) 
+   (consumes 60.0 1.0 ) 
+) 
+(spec_limits
+   (label Limits_3)
+   (agent Agent_A)
+   (from C)
+   (to Step_2)
+   (quality_power 0.0 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power 1.0 1.0)
+)
+(spec_produces
+   (label Produces_1)
+   (agent Agent_A)
+   (from Step_3)
+   (to Z)
+   (produces 60.0 1.0 )
+)
+
+(spec_consumable_resource
+   (label A)
+   (state 20.0)
+   (depleted_at 0.0)
+)
+(spec_non_consumable_resource
+   (label B)
+   (state 0.0)
+   (spec_attributes
+       (overloaded_at Double 16.0)
+   )
+   (depleted_at 0.0)
+)
+(spec_consumable_resource
+   (label C)
+   (state 20.0)
+   (depleted_at 0.0)
+)
+(spec_consumable_resource
+   (label Z)
+   (state 20.0)
+   (depleted_at 0.0)
+)
+
+
+(spec_task_group
+   (label Plan_2)
+   (subtasks Step_1B Step_2B Step_3B)
+)
+
+(spec_method
+   (label Step_1B)
+   (agent Agent_A)
+   (supertasks Plan_2)
+)
+
+(spec_method
+   (label Step_2B)
+   (agent Agent_A)
+   (supertasks Plan_2)
+)
+
+(spec_method
+   (label Step_3B)
+   (agent Agent_A)
+   (supertasks Plan_2)
+)
+
+(spec_uses 
+   (label Consumes_4) 
+   (agent Agent_A)  
+   (from Step_1B) 
+   (to D) 
+   (consumes 60.0 1.0 ) 
+) 
+(spec_limits
+   (label Limits_4)
+   (agent Agent_A)
+   (from D)
+   (to Step_1B)
+   (quality_power 0.0 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power 1.0 1.0)
+)
+(spec_uses 
+   (label Consumes_5) 
+   (agent Agent_A)  
+   (from Step_2B) 
+   (to E) 
+   (consumes 60.0 1.0 ) 
+)
+(spec_limits
+   (label Limits_5)
+   (agent Agent_A)
+   (from E)
+   (to Step_2B)
+   (quality_power 0.0 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power 1.0 1.0)
+)
+(spec_produces
+   (label Produces_2)
+   (agent Agent_A)
+   (from Step_2B)
+   (to Z)
+   (produces 60.0 1.0 )
+) 
+(spec_produces
+   (label Produces_3)
+   (agent Agent_A)
+   (from Step_3B)
+   (to Y)
+   (produces 60.0 1.0 )
+)
+(spec_consumable_resource
+   (label D)
+   (state 20.0)
+   (depleted_at 0.0)
+) 
+(spec_consumable_resource
+   (label E)
+   (state 20.0)
+   (depleted_at 0.0)
+) 
+(spec_consumable_resource
+   (label Y)
+   (state 20.0)
+   (depleted_at 0.0)
+) 

@@ -1,0 +1,38 @@
+;;;;
+;; Begin Task Structure null (Output v.1.1)
+;;;;
+
+(spec_task_group
+   (label ListTest)
+   (agent WaterHeater)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (subtasks a B_30.0 c d)
+;  ** Note: node a is virtual
+;  ** Note: node B_30.0 is virtual
+;  ** Note: node c is virtual
+;  ** Note: node d is virtual
+   (qaf q_sum)
+)
+
+;(spec_virt_task_base
+;   (label a)
+;   (supertasks ListTest)
+;)
+
+;(spec_virt_task_base
+;   (label B_30.0)
+;   (supertasks ListTest)
+;)
+
+;(spec_virt_task_base
+;   (label c)
+;   (supertasks ListTest)
+;)
+
+;(spec_virt_task_base
+;   (label d)
+;   (supertasks ListTest)
+;)
+
+

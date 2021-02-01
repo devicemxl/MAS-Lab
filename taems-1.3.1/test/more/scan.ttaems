@@ -1,0 +1,270 @@
+;;;;
+;; Begin Task Structure null (Output v.1.1)
+;;;;
+
+(spec_agent
+  (label Agent_1)
+)
+
+(spec_task_group
+   (label Perform-Scan)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (subtasks Scan_1 Scan_2 Scan_3)
+   (qaf q_sum)
+)
+
+(spec_task
+   (label Scan_1)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Perform-Scan)
+   (subtasks Init_1 Query_1 Retrieve_1)
+   (qaf q_seq_sum)
+)
+
+(spec_method
+   (label Init_1)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Scan_1)
+   (outcomes
+      (Outcome_1
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 10.0 1.0)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+)
+
+(spec_task
+   (label Query_1)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Scan_1)
+   (subtasks Lo_1 Hi_1)
+   (qaf q_exactly_one)
+)
+
+(spec_method
+   (label Lo_1)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Query_1)
+   (outcomes
+      (Outcome_1
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 10.0 1.0)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+)
+
+(spec_method
+   (label Hi_1)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Query_1)
+   (outcomes
+      (Outcome_1
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 10.0 1.0)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+)
+
+(spec_method
+   (label Retrieve_1)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Scan_1)
+   (outcomes
+      (Outcome_1
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 10.0 1.0)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+)
+
+(spec_task
+   (label Scan_2)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Perform-Scan)
+   (subtasks Init_2 Query_2 Retrieve_2)
+   (qaf q_seq_sum)
+)
+
+(spec_method
+   (label Init_2)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Scan_2)
+   (outcomes
+      (Outcome_1
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 10.0 1.0)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+)
+
+(spec_task
+   (label Query_2)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Scan_2)
+   (subtasks Lo_2 Hi_2)
+   (qaf q_exactly_one)
+)
+
+(spec_method
+   (label Lo_2)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Query_2)
+   (outcomes
+      (Outcome_1
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 10.0 1.0)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+)
+
+(spec_method
+   (label Hi_2)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Query_2)
+   (outcomes
+      (Outcome_1
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 10.0 1.0)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+)
+
+(spec_method
+   (label Retrieve_2)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Scan_2)
+   (outcomes
+      (Outcome_1
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 10.0 1.0)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+)
+
+(spec_task
+   (label Scan_3)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Perform-Scan)
+   (subtasks Init_3 Query_3 Retrieve_3)
+   (qaf q_seq_sum)
+)
+
+(spec_method
+   (label Init_3)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Scan_3)
+   (outcomes
+      (Outcome_1
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 10.0 1.0)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+)
+
+(spec_task
+   (label Query_3)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Scan_3)
+   (subtasks Lo_3 Hi_3)
+   (qaf q_exactly_one)
+)
+
+(spec_method
+   (label Lo_3)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Query_3)
+   (outcomes
+      (Outcome_1
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 10.0 1.0)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+)
+
+(spec_method
+   (label Hi_3)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Query_3)
+   (outcomes
+      (Outcome_1
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 10.0 1.0)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+)
+
+(spec_method
+   (label Retrieve_3)
+   (agent Agent_1)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (supertasks Scan_3)
+   (outcomes
+      (Outcome_1
+         (density 1.0)
+         (quality_distribution 10.0 1.0)
+         (duration_distribution 10.0 1.0)
+         (cost_distribution 10.0 1.0)
+      )
+   )
+)
+
+

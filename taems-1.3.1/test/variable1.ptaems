@@ -1,0 +1,41 @@
+#define AGENT = Gomer  ; Implicit, passed in as parameter
+
+#define FOOBAR = "10.0 1.0"
+
+#define DIST = distribution
+
+#define DEFAULT_DQ
+  (density 0.5)
+  (quality_$DIST $FOOBAR)
+#enddefine
+
+#define DUM = 1
+#definenow TEST = $DUM
+;#define TEST = $DUM
+#define DUM = 2
+
+#define DUM = "Billy" 
+#definenow AGENT = $DUM 
+#define DUM = "Joe" 
+ 
+(spec_agent 
+  (label $AGENT) 
+)
+
+(spec_method
+  (label Some_Method_$TEST)
+  (agent $AGENT)
+  (supertasks Some_Task)
+  (outcomes
+     (Some_Outcome_1
+	$DEFAULT_DQ
+	(duration_$DIST 5.0 1.0)
+	(cost_$DIST 2 1.0)
+     )
+     (Some_Outcome_2
+	$DEFAULT_DQ
+	(duration_$DIST $FOOBAR)
+	(cost_$DIST 6 1.0)
+     )
+  )
+)

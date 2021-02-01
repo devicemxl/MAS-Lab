@@ -1,0 +1,117 @@
+(spec_agent
+	(label some_agent))
+
+(spec_task_group
+	(label TaskRoot)
+	(agent some_agent)
+	(subtasks TaskA TaskB)
+	(qaf q_sum)
+)
+
+(spec_task
+	(label TaskA)
+	(agent some_agent)
+	(supertasks TaskRoot)
+	(subtasks MethodA1 MethodMultipleParents)
+	(qaf q_sum)
+)
+
+(spec_method
+	(spec_attributes
+		(cur_quality	Float	2)
+	)
+	(label MethodA1)
+	(agent some_agent)
+	(supertasks TaskA)
+	(outcomes
+		(Outcome_3
+		   (density 1.)
+		   (quality_distribution 2.0 1.0)
+		   (duration_distribution 2.0 1.0)
+		   (cost_distribution 0 1.0)
+		)
+	)
+)
+
+
+(spec_method
+	(spec_attributes
+		(cur_quality	Float	2)
+	)
+	(label MethodMultipleParents)
+	(agent some_agent)
+	(supertasks TaskA TaskB)
+	(outcomes
+		(Outcome_3
+		   (density 1.)
+		   (quality_distribution 2.0 1.0)
+		   (duration_distribution 2.0 1.0)
+		   (cost_distribution 0 1.0)
+		)
+	)
+)
+
+
+(spec_task
+    (label TaskB)
+    (agent some_agent)
+    (supertasks TaskRoot)
+    (subtasks MethodMultipleParents MethodB1)
+    (qaf q_min)
+)
+
+(spec_method
+	(spec_attributes
+		(cur_quality	Float	2)
+	)
+    (label MethodB1)
+    (agent some_agent)
+    (supertasks TaskB)
+    (outcomes
+        (Outcome_4
+           (density 1.)
+		   (quality_distribution 2.0 1.0)
+		   (duration_distribution 2.0 1.0)
+		   (cost_distribution 0 1.0)
+        )
+    )
+)
+
+
+
+; (spec_enables
+;	(label enables_0)
+;	(agent some_agent)
+;	(from TaskA)
+;	(to TaskB)
+;	(delay 0 1)
+;)
+
+
+
+(spec_evaluation_criteria
+   (label criteria)
+   (goodness_quality_slider 1.0)
+   (goodness_cost_slider 0.00)
+   (goodness_duration_slider 0.00)
+   (threshold_quality_slider 0)
+   (threshold_cost_slider 0)
+   (threshold_duration_slider 0)
+   (quality_threshold 0)
+   (cost_limit 0.0)
+   (duration_limit 0)
+   (uncertainty_quality_slider 0)
+   (uncertainty_cost_slider 0)
+   (uncertainty_duration_slider 0)
+   (threshold_certainty_quality_slider 0)
+   (threshold_certainty_cost_slider    0)
+   (threshold_certainty_duration_slider   0)
+   (quality_certainty_threshold  0)
+   (cost_certainty_threshold  0)
+   (duration_certainty_threshold  0)
+   (meta_goodness_slider 1.0)
+   (meta_threshold_slider 0.0)
+   (meta_uncertainty_slider 0.0)
+   (meta_uncertainty_threshold_slider 0.0)
+)
+

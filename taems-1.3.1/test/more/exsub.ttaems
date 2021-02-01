@@ -1,0 +1,47 @@
+(spec_task_group
+	(label Produce_PC)
+	(agent NEC)
+	(subtasks Assemble-PC Obtain-Peripherals Generate-Documentation)
+	(qaf q_min)
+)
+
+(spec_task
+	(label Assemble-PC)
+	(agent NEC)
+	(qaf q_min)
+)
+
+(spec_task
+	(label Obtain-Peripherals)
+	(agent NEC)
+	(qaf q_min)
+)
+
+(spec_task
+	(label Generate-Documentation)
+	(agent NEC)
+	(subtasks In-House Use-Contractor)
+	(qaf q_max)
+)
+
+(spec_method
+	(label In-House)
+	(agent NEC)
+)
+
+(spec_task
+	(label Use-Contractor)
+	(agent NEC)
+	(subtasks Agency_A Agency_B) 
+	(qaf q_max)
+)
+
+(spec_method
+	(label Agency_A)
+	(agent Agent_A)
+)
+
+(spec_method
+	(label Agency_B)
+	(agent Agent_B)
+)

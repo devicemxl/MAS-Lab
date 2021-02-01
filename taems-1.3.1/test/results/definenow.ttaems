@@ -1,0 +1,26 @@
+;;;;
+;; Begin Task Structure null (Output v.1.1)
+;;;;
+
+(spec_task_group
+   (label Some_Task)
+   (agent Some_Agent)
+;  ** In IRs: 0
+;  ** Out IRs: 0
+   (subtasks Task_1 Task_2)
+;  ** Note: node Task_1 is virtual
+;  ** Note: node Task_2 is virtual
+   (qaf q_sum)
+)
+
+;(spec_virt_task_base
+;   (label Task_1)
+;   (supertasks Some_Task)
+;)
+
+;(spec_virt_task_base
+;   (label Task_2)
+;   (supertasks Some_Task)
+;)
+
+

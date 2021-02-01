@@ -1,0 +1,52 @@
+#define AGENT = "Pyle"  ; Implicit, passed in as parameter
+#define TIME = "10"  ; Implicit, passed in as parameter
+
+#define DEFAULT_DQ
+  (density 0.5)
+  (quality_distribution 10 1.0)
+#enddefine
+
+#define EMPTY = " "
+#define OUTCOME1 = $EMPTY
+#define OUTCOME2 = $EMPTY
+#define OUTCOME1 = " "
+#define OUTCOME2 = " "
+#if ($AGENT == Gomer)
+  #define OUTCOME1
+     (Some_Outcome_1
+	$DEFAULT_DQ
+	(duration_distribution 5.0 1.0)
+	(cost_distribution 2 1.0)
+     )
+  #enddefine
+  #define OUTCOME2
+     (Some_Outcome_2
+	$DEFAULT_DQ
+	(duration_distribution 5.0 1.0)
+	(cost_distribution 2 1.0)
+     )
+  #enddefine
+
+#elseif (($TIME < 25) && ($AGENT == Pyle))
+  #define OUTCOME1
+     (Some_Outcome_1
+	$DEFAULT_DQ
+	(duration_distribution 5.0 1.0)
+	(cost_distribution 2 1.0)
+     )
+  #enddefine
+#endif
+
+#if (($OUTCOME1 != $EMPTY) || ($OUTCOME2 != $EMPTY))
+(spec_method
+  (label Some_Method)
+  (agent $AGENT)
+  (supertasks Some_Task)
+          (outcomes
+             $OUTCOME1
+             $OUTCOME2
+          )
+       )
+;	#else
+; <Nothing Generated>
+#endif

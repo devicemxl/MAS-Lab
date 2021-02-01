@@ -1,0 +1,35 @@
+#define TIME = 8
+
+#if (($FOOBAR == 10) && (($BARFOO < 2) || ($BARFOO > 5)))
+       (Some_Outcome
+          (density 8.0)
+             (quality_distribution 10 1.0)
+             (duration_distribution 5.0 0.3 6.0 0.7)
+             (cost_distribution 10 1.0)
+          )
+#endif
+
+#define OUTCOME1
+    (Some_Outcome_1
+      #if ($TIME < 5)
+          (quality_distribution 10 1.0)
+       #elseif ($TIME < 10)
+          (quality_distribution 8 1.0)
+       #elseif ($TIME < 15)
+          (quality_distribution 5 1.0)
+       #else
+          (quality_distribution 1 1.0)
+       #endif
+                (duration_distribution 5.0 1.0)
+                (cost_distribution 2 1.0)
+             )
+#enddefine
+
+(spec_method
+          (label Some_Method)
+          (agent toto)
+          (supertasks Some_Task)
+          (outcomes
+             $OUTCOME1
+          )
+       )

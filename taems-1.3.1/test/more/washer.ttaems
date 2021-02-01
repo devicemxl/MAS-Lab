@@ -1,0 +1,1070 @@
+
+(spec_method
+   (label add-bleach)
+   (agent washer)
+   (supertasks options )
+   (outcomes
+      (o1
+         (density 1.0)
+         (quality_distribution 10.0 1.0 )
+         (duration_distribution 1.0 1.0 )
+         (cost_distribution 1.0 1.0 )
+      )
+    )
+)
+
+(spec_method
+   (label add-softener)
+   (agent washer)
+   (supertasks options )
+   (outcomes
+      (o1
+         (density 1.0)
+         (quality_distribution 40.0 1.0 )
+         (duration_distribution 1.0 1.0 )
+         (cost_distribution 1.0 1.0 )
+      )
+    )
+)
+
+
+(spec_method
+   (label cold-short-wash)
+   (agent washer)
+   (supertasks clean )
+   (outcomes
+      (c-2-H_o0
+         (density 1.0)
+         (quality_distribution 20.0 1.0 )
+         (duration_distribution 20.0 1.0 )
+         (cost_distribution 1.0 1.0 )
+      )
+    )
+)
+
+(spec_method
+   (label warm-short-wash)
+   (agent washer)
+   (supertasks clean )
+   (outcomes
+      (w-2-H_o0
+         (density 1.0)
+         (quality_distribution 30.0 1.0 )
+         (duration_distribution 20.0 1.0 )
+         (cost_distribution 5.0 1.0 )
+      )
+    )
+)
+
+(spec_method
+   (label hot-short-wash)
+   (agent washer)
+   (supertasks clean )
+   (outcomes
+      (h-1-L_o0
+         (density 1.0)
+         (quality_distribution 40.0 1.0 )
+         (duration_distribution 20.0 1.0 )
+         (cost_distribution 10.0 1.0 )
+      )
+    )
+)
+
+(spec_method
+   (label cold-medium-wash)
+   (agent washer)
+   (supertasks clean )
+   (outcomes
+      (c-2-H_o0
+         (density 1.0)
+         (quality_distribution 40.0 1.0 )
+         (duration_distribution 40.0 1.0 )
+         (cost_distribution 2.0 1.0 )
+      )
+    )
+)
+(spec_method
+   (label warm-medium-wash)
+   (agent washer)
+   (supertasks clean )
+   (outcomes
+      (w-2-H_o0
+         (density 1.0)
+         (quality_distribution 50.0 1.0 )
+         (duration_distribution 40.0 1.0 )
+         (cost_distribution 10.0 1.0 )
+      )
+    )
+)
+
+(spec_method
+   (label hot-medium-wash)
+   (agent washer)
+   (supertasks clean )
+   (outcomes
+      (h-1-L_o0
+         (density 1.0)
+         (quality_distribution 60.0 1.0 )
+         (duration_distribution 40.0 1.0 )
+         (cost_distribution 20.0 1.0 )
+      )
+    )
+)
+
+(spec_method
+   (label cold-long-wash)
+   (agent washer)
+   (supertasks clean )
+   (outcomes
+      (c-2-H_o0
+         (density 1.0)
+         (quality_distribution 60.0 1.0 )
+         (duration_distribution 50.0 1.0 )
+         (cost_distribution 5.0 1.0 )
+      )
+    )
+)
+(spec_method
+   (label warm-long-wash)
+   (agent washer)
+   (supertasks clean )
+   (outcomes
+      (w-2-H_o0
+         (density 1.0)
+         (quality_distribution 70.0 1.0 )
+         (duration_distribution 50.0 1.0 )
+         (cost_distribution 20.0 1.0 )
+      )
+    )
+)
+
+(spec_method
+   (label hot-long-wash)
+   (agent washer)
+   (supertasks clean )
+   (outcomes
+      (h-1-L_o0
+         (density 1.0)
+         (quality_distribution 80.0 1.0 )
+         (duration_distribution 50.0 1.0 )
+         (cost_distribution 30.0 1.0 )
+      )
+    )
+)
+ 
+(spec_method
+   (label get-towels)
+   (agent washer)
+   (supertasks fetch )
+   (outcomes
+      (get-towels_o0
+         (density 1.0)
+         (quality_distribution 1.0 1.0 )
+         (duration_distribution 10.0 1.0 )
+         (cost_distribution 0.0 1.0 )
+      )
+    )
+)
+
+(spec_method
+   (label get-clothes)
+   (agent washer)
+   (supertasks fetch )
+   (outcomes
+      (get-clothes_o0
+         (density 1.0)
+         (quality_distribution 1.0 1.0 )
+         (duration_distribution 10.0 1.0 )
+         (cost_distribution 0.0 1.0 )
+      )
+    )
+)
+
+(spec_method
+   (label get-sheets)
+   (agent washer)
+   (supertasks fetch)
+   (outcomes
+      (get-sheets_o0
+         (density 1.0)
+         (quality_distribution 1.0 1.0 )
+         (duration_distribution 10.0 1.0 )
+         (cost_distribution 0.0 1.0 )
+      )
+    )
+)
+
+(spec_method
+   (label unload-washer)
+   (agent washer)
+   (supertasks clean-stuff)
+   (nonlocal)
+   (outcomes
+      (o0
+         (density 1.0)
+         (quality_distribution 1.0 1.0 )
+         (duration_distribution 10.0 1.0 )
+         (cost_distribution 0.0 1.0 )
+      )
+    )
+)
+
+(spec_task 
+   (label options)
+   (agent washer)
+   (subtasks add-softener add-bleach)
+   (supertasks clean-stuff )
+   (qaf q_sum)
+)
+
+(spec_method
+   (label rinse-cold)
+   (agent washer)
+   (supertasks rinse)
+   (outcomes
+      (c-2-H_o0
+         (density 1.0)
+         (quality_distribution 20.0 1.0 )
+         (duration_distribution 20.0 1.0 )
+         (cost_distribution 1.0 1.0 )
+      )
+    )
+)
+
+(spec_method
+   (label rinse-warm)
+   (agent washer)
+   (supertasks rinse)
+   (outcomes
+      (c-2-H_o0
+         (density 1.0)
+         (quality_distribution 30.0 1.0 )
+         (duration_distribution 20.0 1.0 )
+         (cost_distribution 5.0 1.0 )
+      )
+    )
+)
+
+(spec_method
+   (label rinse-hot)
+   (agent washer)
+   (supertasks rinse)
+   (outcomes
+      (c-2-H_o0
+         (density 1.0)
+         (quality_distribution 40.0 1.0 )
+         (duration_distribution 20.0 1.0 )
+         (cost_distribution 10.0 1.0 )
+      )
+    )
+)
+
+(spec_task
+   (label rinse)
+   (agent washer)
+   (subtasks rinse-cold rinse-warm rinse-hot)
+   (supertasks clean-stuff )
+   (qaf q_max)
+)
+
+(spec_method
+   (label no-spin)
+   (agent washer)
+   (supertasks spin)
+   (outcomes
+      (c-2-H_o0
+         (density 1.0)
+         (quality_distribution 20.0 1.0 )
+         (duration_distribution 0.0 1.0 )
+         (cost_distribution 0.0 1.0 )
+      )
+    )
+)
+
+(spec_method
+   (label spin-fast)
+   (agent washer)
+   (supertasks spin)
+   (outcomes
+      (c-2-H_o0
+         (density 1.0)
+         (quality_distribution 20.0 1.0 )
+         (duration_distribution 10.0 1.0 )
+         (cost_distribution 5.0 1.0 )
+      )
+    )
+)
+
+
+(spec_method
+   (label spin-very-fast)
+   (agent washer)
+   (supertasks spin)
+   (outcomes
+      (c-2-H_o0
+         (density 1.0)
+         (quality_distribution 40.0 1.0 )
+         (duration_distribution 10.0 1.0 )
+         (cost_distribution 10.0 1.0 )
+      )
+    )
+)
+
+(spec_task
+   (label spin)
+   (agent washer)
+   (subtasks no-spin spin-fast spin-very-fast)
+   (supertasks clean-stuff )
+   (qaf q_max)
+)
+
+(spec_task
+   (label clean)
+   (agent washer)
+   (subtasks  cold-short-wash warm-short-wash hot-short-wash cold-medium-wash warm-medium-wash hot-medium-wash  cold-long-wash warm-long-wash hot-long-wash )
+   (supertasks clean-stuff )
+   (qaf q_max)
+)
+
+(spec_task
+   (label fetch)
+   (agent washer)
+   (subtasks get-towels get-sheets get-clothes )
+   (supertasks clean-stuff )
+   (qaf q_sum)
+)
+(spec_task_group
+   (label clean-stuff)
+   (agent washer)
+   (subtasks fetch options clean rinse spin unload-washer)
+   (deadline 129)
+   (qaf q_sum)
+)
+
+(spec_consumable_resource
+   (label HotWater)
+   (state 100.0)
+   (agent WaterHeater)
+   (depleted_at 0.0)
+)
+
+(spec_non_consumable_resource
+   (label Noise)
+   (state 20.0)
+   (depleted_at 0)
+   (overloaded_at 120)
+)
+(spec_non_consumable_resource
+   (label Electricity)
+   (state 16)
+   (depleted_at 0)
+   (overloaded_at 16)
+)
+
+(spec_agent
+   (label washer)
+)
+
+(spec_enables
+   (label fill-up)
+   (agent washer)
+   (from fetch)
+   (to clean)
+   (delay 0.0 1.0 )
+)
+
+(spec_enables
+   (label fill-up2)
+   (agent washer)
+   (from fetch)
+   (to options)
+   (delay 0.0 1.0 )
+)
+
+(spec_enables
+   (label spin-finished)
+   (agent washer)
+   (from spin)
+   (to unload-washer)
+   (delay 0.0 1.0 )
+)
+
+
+(spec_facilitates
+   (label adding-bleach)
+   (agent washer)
+   (from add-bleach)
+   (to clean)
+   (quality_power 0.7 0.5 0.3 0.5)
+   (duration_power 0.0 1.0)
+   (cost_power 0.0 1.0)
+   (delay 2.0 1.0 )
+)
+
+(spec_enables
+   (label adding-softener)
+   (agent washer)
+   (from clean)
+   (to add-softener)
+   (delay 1.0 1.0 )
+)
+
+(spec_enables
+   (label rinsing)
+   (agent washer)
+   (from clean)
+   (to rinse)
+   (delay 1.0 1.0 )
+)
+
+(spec_enables
+   (label spinning) 
+   (agent washer)
+   (from rinse)
+   (to spin)
+   (delay 1.0 1.0 )
+)
+
+
+(spec_consumes
+   (label uses3)
+   (agent washer)
+   (from cold-short-wash)
+   (to Electricity)
+   (consumes 2.0 1.0 )
+)
+
+(spec_limits
+   (label limit3)
+   (agent washer)
+   (to cold-short-wash)
+   (from Electricity)
+   (quality_power 0.0 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power -1.0 1.0 )
+)
+
+(spec_produces
+   (label uses4)
+   (agent washer)
+   (from cold-short-wash)
+   (to Noise)
+   (produces 20.0 1.0 )
+)
+
+(spec_limits
+   (label limits4)
+   (agent washer)
+   (to cold-short-wash)
+   (from Noise)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power -1.0 1.0)
+)
+
+(spec_consumes
+   (label uses5)
+   (agent washer)
+   (from warm-short-wash)
+   (to HotWater)
+   (consumes 1.5 1.0 )
+)
+
+(spec_limits
+   (label limit5)
+   (agent washer)
+   (to warm-short-wash)
+   (from HotWater)
+   (quality_power 0.5 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power -1.0 1.0 )
+)
+(spec_consumes
+   (label uses6)
+   (agent washer)
+   (from warm-short-wash)
+   (to Electricity)
+   (consumes 2.0 1.0 )
+)
+
+(spec_limits
+   (label limit6)
+   (agent washer)
+   (to warm-short-wash)
+   (from Electricity)
+   (quality_power 0.0 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power -1.0 1.0 )
+)
+
+(spec_produces
+   (label uses7)
+   (agent washer)
+   (from warm-short-wash)
+   (to Noise)
+   (produces 20.0 1.0 )
+)
+
+(spec_limits
+   (label limits7)
+   (agent washer)
+   (to warm-short-wash)
+   (from Noise)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power -1.0 1.0)
+)
+
+
+(spec_consumes
+   (label uses8)
+   (agent washer)
+   (from hot-short-wash)
+   (to HotWater)
+   (consumes 3.0 1.0 )
+)
+
+(spec_limits
+   (label limit8)
+   (agent washer)
+   (to hot-short-wash)
+   (from HotWater)
+   (quality_power 0.0 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power -1.0 1.0 )
+)
+(spec_consumes
+   (label uses9)
+   (agent washer)
+   (from hot-short-wash)
+   (to Electricity)
+   (consumes 2.0 1.0 )
+)
+
+(spec_limits
+   (label limit9)
+   (agent washer)
+   (to hot-short-wash)
+   (from Electricity)
+   (quality_power 0.0 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power -1.0 1.0 )
+)
+(spec_produces
+   (label uses10)
+   (agent washer)
+   (from hot-short-wash)
+   (to Noise)
+   (produces 20.0 1.0 )
+)
+
+(spec_limits
+   (label limits10)
+   (agent washer)
+   (to hot-short-wash)
+   (from Noise)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power -1.0 1.0)
+)
+
+
+
+(spec_consumes
+   (label uses31)
+   (agent washer)
+   (from cold-medium-wash)
+   (to Electricity)
+   (consumes 2.0 1.0 )
+)
+
+(spec_limits
+   (label limit31)
+   (agent washer)
+   (to cold-medium-wash)
+   (from Electricity)
+   (quality_power 0.0 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power -1.0 1.0 )
+)
+(spec_produces
+   (label uses41)
+   (agent washer)
+   (from cold-medium-wash)
+   (to Noise)
+   (produces 20.0 1.0 )
+)
+
+(spec_limits
+   (label limits41)
+   (agent washer)
+   (to cold-medium-wash)
+   (from Noise)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power -1.0 1.0)
+)
+
+(spec_consumes
+   (label uses51)
+   (agent washer)
+   (from warm-medium-wash)
+   (to HotWater)
+   (consumes 1.5 1.0 )
+)
+
+(spec_limits
+   (label limit51)
+   (agent washer)
+   (to warm-medium-wash)
+   (from HotWater)
+   (quality_power 0.0 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power -1.0 1.0 )
+)
+(spec_consumes
+   (label uses61)
+   (agent washer)
+   (from warm-medium-wash)
+   (to Electricity)
+   (consumes 2.0 1.0 )
+)
+
+(spec_limits
+   (label limit61)
+   (agent washer)
+   (to warm-medium-wash)
+   (from Electricity)
+   (quality_power 0.0 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power -1.0 1.0 )
+)
+(spec_produces
+   (label uses71)
+   (agent washer)
+   (from warm-medium-wash)
+   (to Noise)
+   (produces 20.0 1.0 )
+)
+
+(spec_limits
+   (label limits71)
+   (agent washer)
+   (to warm-medium-wash)
+   (from Noise)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power -1.0 1.0)
+)
+
+(spec_consumes
+   (label uses81)
+   (agent washer)
+   (from hot-medium-wash)
+   (to HotWater)
+   (consumes 3.0 1.0 )
+)
+
+(spec_limits
+   (label limit81)
+   (agent washer)
+   (to hot-medium-wash)
+   (from HotWater)
+   (quality_power 0.0 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power -1.0 1.0 )
+)
+(spec_consumes
+   (label uses91)
+   (agent washer)
+   (from hot-medium-wash)
+   (to Electricity)
+   (consumes 2.0 1.0 )
+)
+
+(spec_limits
+   (label limit91)
+   (agent washer)
+   (to hot-medium-wash)
+   (from Electricity)
+   (quality_power 0.0 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power -1.0 1.0 )
+)
+(spec_produces
+   (label uses101)
+   (agent washer)
+   (from hot-medium-wash)
+   (to Noise)
+   (produces 20.0 1.0 )
+)
+
+(spec_limits
+   (label limits101)
+   (agent washer)
+   (to hot-medium-wash)
+   (from Noise)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power -1.0 1.0)
+)
+
+
+(spec_consumes
+   (label uses32)
+   (agent washer)
+   (from cold-long-wash)
+   (to Electricity)
+   (consumes 2.0 1.0 )
+)
+
+(spec_limits
+   (label limit32)
+   (agent washer)
+   (to cold-long-wash)
+   (from Electricity)
+   (quality_power 0.0 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power -1.0 1.0 )
+)
+(spec_produces
+   (label uses42)
+   (agent washer)
+   (from cold-long-wash)
+   (to Noise)
+   (produces 20.0 1.0 )
+)
+
+(spec_limits
+   (label limits42)
+   (agent washer)
+   (to cold-long-wash)
+   (from Noise)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power -1.0 1.0)
+)
+
+(spec_consumes
+   (label uses52)
+   (agent washer)
+   (from warm-long-wash)
+   (to HotWater)
+   (consumes 1.5 1.0 )
+)
+
+(spec_limits
+   (label limit52)
+   (agent washer)
+   (to warm-long-wash)
+   (from HotWater)
+   (quality_power 0.0 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power -1.0 1.0 )
+)
+(spec_consumes
+   (label uses62)
+   (agent washer)
+   (from warm-long-wash)
+   (to Electricity)
+   (consumes 2.0 1.0 )
+)
+
+(spec_limits
+   (label limit62)
+   (agent washer)
+   (to warm-long-wash)
+   (from Electricity)
+   (quality_power 0.0 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power -1.0 1.0 )
+)
+(spec_produces
+   (label uses72)
+   (agent washer)
+   (from warm-long-wash)
+   (to Noise)
+   (produces 20.0 1.0 )
+)
+
+(spec_limits
+   (label limits72)
+   (agent washer)
+   (to warm-long-wash)
+   (from Noise)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power -1.0 1.0)
+)
+
+(spec_consumes
+   (label uses82)
+   (agent washer)
+   (from hot-long-wash)
+   (to HotWater)
+   (consumes 3.0 1.0 )
+)
+
+(spec_limits
+   (label limit82)
+   (agent washer)
+   (to hot-long-wash)
+   (from HotWater)
+   (quality_power 0.0 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power -1.0 1.0 )
+)
+(spec_consumes
+   (label uses92)
+   (agent washer)
+   (from hot-long-wash)
+   (to Electricity)
+   (consumes 2.0 1.0 )
+)
+
+(spec_limits
+   (label limit92)
+   (agent washer)
+   (to hot-long-wash)
+   (from Electricity)
+   (quality_power 0.0 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power -1.0 1.0 )
+)
+(spec_produces
+   (label uses102)
+   (agent washer)
+   (from hot-long-wash)
+   (to Noise)
+   (produces 20.0 1.0 )
+)
+
+(spec_limits
+   (label limits102)
+   (agent washer)
+   (to hot-long-wash)
+   (from Noise)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power -1.0 1.0)
+)
+
+
+
+;;;
+
+
+(spec_consumes
+   (label uses12)
+   (agent washer)
+   (from rinse-cold)
+   (to Electricity)
+   (consumes 2.0 1.0 )
+)
+
+(spec_limits
+   (label limit12)
+   (agent washer)
+   (to rinse-cold)
+   (from Electricity)
+   (quality_power 0.0 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power -1.0 1.0 )
+)
+(spec_produces
+   (label uses13)
+   (agent washer)
+   (from rinse-cold)
+   (to Noise)
+   (produces 20.0 1.0 )
+)
+
+(spec_limits
+   (label limits13)
+   (agent washer)
+   (to rinse-cold)
+   (from Noise)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power -1.0 1.0)
+)
+
+(spec_consumes
+   (label uses14)
+   (agent washer)
+   (from rinse-warm)
+   (to HotWater)
+   (consumes 3.0 1.0 )
+)
+
+(spec_limits
+   (label limit14)
+   (agent washer)
+   (to rinse-warm)
+   (from HotWater)
+   (quality_power 0.0 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power -1.0 1.0 )
+)
+(spec_consumes
+   (label uses15)
+   (agent washer)
+   (from rinse-warm)
+   (to Electricity)
+   (consumes 2.0 1.0 )
+)
+
+(spec_limits
+   (label limit15)
+   (agent washer)
+   (to rinse-warm)
+   (from Electricity)
+   (quality_power 0.0 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power -1.0 1.0 )
+)
+(spec_produces
+   (label uses16)
+   (agent washer)
+   (from rinse-warm)
+   (to Noise)
+   (produces 20.0 1.0 )
+)
+
+(spec_limits
+   (label limits16)
+   (agent washer)
+   (to rinse-warm)
+   (from Noise)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power -1.0 1.0)
+)
+
+(spec_consumes
+   (label uses17)
+   (agent washer)
+   (from rinse-hot)
+   (to HotWater)
+   (consumes 5.0 1.0 )
+)
+
+(spec_limits
+   (label limit17)
+   (agent washer)
+   (to rinse-hot)
+   (from HotWater)
+   (quality_power 0.0 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power -1.0 1.0 )
+)
+(spec_consumes
+   (label uses18)
+   (agent washer)
+   (from rinse-hot)
+   (to Electricity)
+   (consumes 2.0 1.0 )
+)
+
+(spec_limits
+   (label limit18)
+   (agent washer)
+   (to rinse-hot)
+   (from Electricity)
+   (quality_power 0.0 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power -1.0 1.0 )
+)
+(spec_produces
+   (label uses19)
+   (agent washer)
+   (from rinse-hot)
+   (to Noise)
+   (produces 20.0 1.0 )
+)
+
+(spec_limits
+   (label limits19)
+   (agent washer)
+   (to rinse-hot)
+   (from Noise)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power -1.0 1.0)
+)
+
+
+
+(spec_consumes
+   (label uses21)
+   (agent washer)
+   (from spin-fast)
+   (to Electricity)
+   (consumes 6.0 1.0 )
+)
+
+(spec_limits
+   (label limit21)
+   (agent washer)
+   (to spin-fast)
+   (from Electricity)
+   (quality_power 0.0 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power -1.0 1.0 )
+)
+
+(spec_produces
+   (label uses22)
+   (agent washer)
+   (from spin-fast)
+   (to Noise)
+   (produces 40.0 1.0 )
+)
+
+(spec_limits
+   (label limits22)
+   (agent washer)
+   (to spin-fast)
+   (from Noise)
+   (quality_power 0.0 1.0)
+   (duration_power 1.0 1.0)
+   (cost_power -1.0 1.0)
+)
+
+
+(spec_consumes
+   (label uses23)
+   (agent washer)
+   (from spin-very-fast)
+   (to Electricity)
+   (consumes 6.0 1.0 )
+)
+
+(spec_limits
+   (label limit23)
+   (agent washer)
+   (to spin-very-fast)
+   (from Electricity)
+   (quality_power 0.0 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power -1.0 1.0 )
+)
+(spec_produces
+   (label uses24)
+   (agent washer)
+   (from spin-very-fast)
+   (to Noise)
+   (produces 40.0 1.0 )
+)
+
+(spec_limits
+   (label limits24)
+   (agent washer)
+   (to spin-very-fast)
+   (from Noise)
+   (quality_power 0.0 1.0 )
+   (duration_power 1.0 1.0 )
+   (cost_power -1.0 1.0 )
+)
+
+
