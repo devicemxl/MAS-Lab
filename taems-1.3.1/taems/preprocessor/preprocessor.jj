@@ -1,0 +1,533 @@
+/* Copyright (C) 2005, University of Massachusetts, Multi-Agent Systems Lab
+ * See LICENSE for license information
+ */
+
+PARSER_BEGIN(PreProcessorParser)
+
+
+package taems.preprocessor;
+import java.util.*;
+import taems.*;
+import utilities.Log;
+
+public class PreProcessorParser { 
+       
+public static void main(String argv[]) throws ParseException {
+       PreProcessorParser parser = new PreProcessorParser(System.in);
+       boolean output=false;
+       PreProcessor pre = parser.Input();
+       taems.parser.ReadTTaems reader = null;
+
+	Log log = Log.getDefault();
+	log.setLevel(Log.LOG_EMERG);
+	reader = new taems.parser.ReadTTaems(log);
+
+       Hashtable ht = new Hashtable();	
+       for (int i=0; i<argv.length; i++) {
+	 if (argv[i].equals("-ptaems")) {
+	        System.out.println(pre.toString());	
+		output=true;
+	 }
+         if (argv[i].equals("-tmpttaems")) {
+     	      System.out.println(pre.toTTaems(ht));
+	      pre.reset();
+	      output=true;
+	      }
+	 if (argv[i].equals("-ttaems")) {
+            taems.Taems task = reader.readTTaems(new java.io.StringReader(pre.toTTaems(ht)));
+            System.out.println(task.toTTaems(Taems.V1_1));      
+	    pre.reset();
+            output=true;
+	     }
+	}
+	if (!output) {
+	    taems.Taems task = reader.readTTaems(new java.io.StringReader(pre.toTTaems(ht)));
+            System.out.println(task.toTTaems(Taems.V1_1));  
+	    }
+	System.exit(0);
+	}
+}
+       
+PARSER_END(PreProcessorParser)
+
+SPECIAL_TOKEN : /* comments */ 
+{ <COMMENT: ";" (~["\n","\r"])* ("\n"|"\r"|"\r\n")> }
+
+SKIP :
+{
+  " "
+| "\t"
+| "\r"
+| "\f"
+| "\n"
+}
+
+TOKEN [IGNORE_CASE] :
+{
+  <IF:			"#if">
+| <ENDIF:		"#endif">
+| <ELSEIF:		"#elseif">
+| <ELSE:		"#else">
+| <DEFINE:		"#define">
+| <DEFINENOW:		"#definenow">
+| <ENDDEFINE:		"#enddefine">
+| <WHILE:		"#while">
+| <ENDWHILE:		"#endwhile">
+| <GREATER:		">">
+| <LESSER:		"<">
+| <EQUAL:		"==">
+| <NOTEQUAL:		"!=">
+| <LPAREN:       	"(">
+| <RPAREN:       	")">
+| <AND:			"&&">
+| <OR:			"||">
+| <DOLLAR:		"$">
+| <AT:			"@">
+| <RANDOMFLOAT:		"random_float">
+| <RANDOMLIST:		"random_list">
+| <RANDOMINT:		"random_int">
+| <PROD:		"prod">
+| <SUM:			"sum">
+| <DIFF:		"diff">
+| <QUOT:		"quot">
+| <ROUND:		"round">
+| <TRIM:		"trim">
+| <SPACE:		"space">
+| <DEF:			"def">
+| <NDEF:		"ndef">
+| <CONCAT:		"concat">
+| <LENGTH:		"length">
+| <GETITEMAT:		"getitemat">
+| <ADDITEMAT:		"additemat">
+| <DELITEMAT:		"delitemat">
+| <POUND:		"#">
+| <AFFECT:		"=">
+| <COMMA:		",">
+}
+
+TOKEN :
+{ < ID: ["a"-"z","A"-"Z","/","-"] ( ["a"-"z","A"-"Z","-","/","_","$",".","0"-"9"] )* >
+| < SPECIAL: (["!","?","/",".",";",":","-","_","[","]","{","}","|","\\","+","="])+ >
+| < NUM: (["-",".","0"-"9","e","E"])+ >
+}
+
+
+
+PreProcessor Input() :
+{
+	Token t = null;
+	Block b;
+  Vector v = new Vector();
+	PreProcessor p = new PreProcessor();
+}
+{
+  (v = readStandardBlocks(p)
+    {
+      p.addBlocks(v);
+    }
+  )+
+  <EOF>
+  {
+    return p;
+  }
+}
+
+Vector readStandardBlocks(PreProcessor p) :
+{
+	Vector v = new Vector();
+	Block b;
+}
+{
+	(LOOKAHEAD(2)
+		  (<DEFINE> b = readDefine(p, false) 
+		    { v.addElement(b); }
+		  )
+		| (<DEFINENOW> b = readDefine(p, true)
+		    { v.addElement(b); }
+		  )
+		| (<WHILE> b = readWhile(p)
+		    { v.addElement(b); }
+		  )
+		| (<IF> b = readIf(p)
+		    { v.addElement(b); }
+		  )
+		| (b = readTTaems(p) 
+		    { v.addElement(b); }
+		  )
+	)+
+	{ return v; }
+}
+
+TaemsBlock readTTaems(PreProcessor p) :
+{
+	String r = "", answer = "", tmp;
+	TaemsBlock b = new TaemsBlock(p);
+	Block b2;
+	Token t;
+	Vector v;
+}
+{
+    (LOOKAHEAD(2)
+         (<DOLLAR> t=<ID>
+		       {
+		         //r = r + " $" + t.image ;
+		         b2 = new Variable(p,t.image);
+		         if(!r.equals("")) {
+		           TaemsBlock b1 = new TaemsBlock(p);
+		           b1.setTaems(r+" ");
+		           r = "";
+		           b.addSubBlock(b1);
+			       }
+		         b.addSubBlock(b2);
+		       }
+         )
+	     | (<AT> t=<ID>
+		       {
+		         //r = r + " @" + t.image ;
+		         b2 = new List(p,t.image);
+		         if(!r.equals("")) {
+		            TaemsBlock b1 = new TaemsBlock(p);
+		            b1.setTaems(r+" ");
+		            r = "";
+		            b.addSubBlock(b1);
+			       }
+		         b.addSubBlock(b2);
+		       }
+        )
+	    | (<POUND> b2=readFunction(p)
+		      {
+            if(!r.equals("")) {
+		          TaemsBlock b1 = new TaemsBlock(p);
+		          b1.setTaems(r);
+		          r = "";
+		          b.addSubBlock(b1);
+			      }
+		        b.addSubBlock(b2);
+		      }
+        )
+	    | (<COMMA>
+	        { r = r + ",";})
+	    | (<AFFECT>
+	        { r = r + "=";})
+	    | (t=<SPECIAL>
+	        { r = r + t.image;})
+	    | (t=<ID>
+	        { r = r + " " + t.image;})
+	    | (t=<NUM>
+	        { r = r + " " + t.image;})
+    	| (<LPAREN>
+          { r = r + "\t(";})
+    	| (<RPAREN>
+          { r = r + "\t)";})
+  )+
+	{
+	  if(!r.equals("")) {
+	     b.setTaems(r);
+	  }
+	  return b;
+	}
+}
+
+Block readFunction(PreProcessor p) :
+{
+  Block b=null;
+  String r="",answer="";
+  Object n1, n2;
+  Vector v;
+  Token t1,t2;
+}
+{
+(((<RANDOMFLOAT> <LPAREN>n1=readArgument(p)<COMMA>n2=readArgument(p)<RPAREN> { b = new randomFunction(p,randomFunction.FLOAT, n1, n2); })
+ | (<SUM> <LPAREN>v=readArguments(p)<RPAREN>
+  { b = new sumFunction(p, v); })
+ | (<DIFF> <LPAREN>v=readArguments(p)<RPAREN>
+   { b = new diffFunction(p, v); })
+ | (<QUOT> <LPAREN>v=readArguments(p)<RPAREN>
+   { b = new quotFunction(p, v); })
+ | (<ROUND> <LPAREN>v=readArguments(p)<RPAREN>
+   { b = new roundFunction(p, v); })
+ | (<TRIM> <LPAREN>v=readArguments(p)<RPAREN>
+   { b = new trimFunction(p, v); })
+ | (<SPACE> <LPAREN>v=readArguments(p)<RPAREN>
+   { b = new spaceFunction(p, v); })
+ | (<DEF> <LPAREN>v=readArguments(p)<RPAREN>
+   { b = new defFunction(p, v); })
+ | (<NDEF> <LPAREN>v=readArguments(p)<RPAREN>
+   { b = new ndefFunction(p, v); })
+ | (<CONCAT> <LPAREN>v=readArguments(p)<RPAREN>
+   { b = new concatFunction(p, v); })
+ | (<LENGTH> <LPAREN>v=readArguments(p)<RPAREN>
+   { b = new lengthFunction(p, v); })
+ | (<GETITEMAT> <LPAREN>v=readArguments(p)<RPAREN>
+   { b = new getitematFunction(p, v); })
+ | (<ADDITEMAT> <LPAREN>v=readArguments(p)<RPAREN>
+   { b = new additematFunction(p, v); })
+ | (<DELITEMAT> <LPAREN>v=readArguments(p)<RPAREN>
+   { b = new delitematFunction(p, v); })
+ | (<RANDOMINT> <LPAREN>n1=readArgument(p)<COMMA>n2=readArgument(p)<RPAREN> { b = new randomFunction(p,randomFunction.INT, n1, n2); })
+ | (<RANDOMLIST> <LPAREN>v=readArguments(p)<RPAREN> 
+ { b = new randomListFunction(p,v); })
+ | (<PROD> <LPAREN>v=readArguments(p)<RPAREN>
+   { b = new prodFunction(p, v);  }))
+  { if (b == null){
+        b = new TaemsBlock(p);
+        ((TaemsBlock)b).setTaems(r); 
+        }
+	 return(b); })
+}
+
+Object readArgument(PreProcessor p) :
+{
+  String r="",answer;
+  Token t;
+  Block b;
+}
+{
+ (
+   (t=<NUM> { r = t.image;})
+ | (t=<ID> { r = t.image;}) 
+ | (<DOLLAR> t=<ID> { return(new Variable(p, t.image));})
+ | (<AT> t=<ID> { return(new List(p, t.image));})
+ | ("\"" r = readText())
+ | (<POUND> b=readFunction(p) { return(b); })
+ )
+ {
+   return r;
+ }
+}
+
+Vector readArguments(PreProcessor p) :
+{
+  Object answer;
+  Vector v = new Vector();
+  Token t;
+}
+{
+  (answer=readArgument(p)
+    {
+      v.addElement(answer);
+    }
+    (<COMMA>)*
+  )*
+	{
+    return(v);
+  }
+}
+
+DefineBlock readDefine(PreProcessor p, boolean i) :
+{
+  Token t=new Token(),t1;
+  DefineBlock d=null;
+  Block b;
+  Vector v;
+  String tmp;
+}
+{	 
+	(LOOKAHEAD(3)
+    (t=<ID> <AFFECT> 
+		  ( 
+			  ("\"" tmp=readText()
+          {
+			      d = new DefineBlock(p, t.image, i,true);
+			      TaemsBlock tb = new TaemsBlock(p);
+			      tb.setTaems(tmp);
+			      d.addSubBlock(tb);
+			    }
+        )
+		  | (<POUND> b=readFunction(p)
+			    { 
+			      d = new DefineBlock(p, t.image, i,true);
+			      d.addSubBlock(b);
+			    }
+        )
+		  | (<AT> <LPAREN> v=readArguments(p) <RPAREN>
+			    { 
+			      d = new ListBlock(p, t.image, v, i,true);
+			    }
+        )
+		  | ((t1=<ID> | t1=<NUM>)
+          { 
+			      d = new DefineBlock(p, t.image, i,true);
+			      tb = new TaemsBlock(p);
+			      tb.setTaems(t1.image);
+			      d.addSubBlock(tb);
+			    }
+        )
+		  | (<DOLLAR> t1=<ID>
+          { 
+			      d = new DefineBlock(p, t.image, i,true);
+			      b = new Variable(p, t1.image);
+			      d.addSubBlock(b);
+			    }
+        )
+		  )
+	  )
+  | (t=<ID> v = readStandardBlocks(p) <ENDDEFINE>
+		  {
+        d = new DefineBlock(p, t.image, i,false);
+		    d.addSubBlocks(v);
+      } 
+	  )
+  )
+	{
+		return d;
+	}
+}
+
+String readText() :
+{
+  String s="";	
+  Token t;
+}
+{
+   (
+   (
+     (t=<ID>
+       {
+         if (s.equals("")) 
+		       s = t.image;
+		     else
+		 	     s = s + " " + t.image;
+       }
+     )
+	 | (t=<SPECIAL>
+       {
+         if (s.equals(""))
+		       s = t.image;
+		     else
+		 	     s = s + " " +t.image;
+       }
+     )
+	 | (<DOLLAR>  t=<ID>
+       {
+         if (s.equals(""))
+		       s = t.image;
+		     else
+           s = s + " $" + t.image;
+       }
+     )
+	 | (t=<NUM>
+       {
+         if (s.equals(""))
+		       s = t.image;
+		     else
+           s = s + " " + t.image;
+       }
+     )
+	 )*
+	 "\"")
+	 {
+	   return(s);
+	 } 
+}
+
+WhileBlock readWhile(PreProcessor p) :
+{
+	WhileBlock b = new WhileBlock(p);
+	Condition c;
+	Vector v;
+}
+{
+	(<LPAREN> c=readMultipleConditions(p) <RPAREN>
+	 v = readStandardBlocks(p)
+	 <ENDWHILE>)
+  {
+		b.setCondition(c);
+		b.addSubBlocks(v);
+		return b;
+	}
+}
+
+IfBlock readIf(PreProcessor p) :
+{
+	IfBlock b = new IfBlock(p),b1;
+	TaemsBlock t;
+	Condition c;
+	Vector v;
+}
+{
+	(
+		(<LPAREN> c=readMultipleConditions(p) <RPAREN> v = readStandardBlocks(p) {
+			b.setCondition(c);
+			b.addIfs(v);
+		  }
+			(<ELSEIF> <LPAREN> c=readMultipleConditions(p) <RPAREN> v = readStandardBlocks(p) {
+				b1 = new IfBlock(p);
+				b1.setCondition(c);
+				b1.addIfs(v);
+				b.addElseIf(b1);
+			  }
+			)*
+			(
+				(<ELSE> v = readStandardBlocks(p) <ENDIF> {
+					b.addElses(v);
+				  }
+				)
+				| (<ENDIF>)
+			)
+		)
+	) {
+		return b;
+	  }
+}
+
+Condition readMultipleConditions(PreProcessor p):
+ {
+ Condition cond = new Condition(p),cond1,cond2,cond3;
+  Token	t;
+  Vector v =new Vector();      
+ }
+{
+  (LOOKAHEAD(2)
+      (<LPAREN> cond1 = readCondition(p) <RPAREN> 
+       (((t=<AND>){cond2= new AndCondition(p);}  
+        |(t=<OR>) {cond2= new OrCondition(p);})
+         <LPAREN> cond3 = readMultipleConditions(p) 
+	       {cond2.addSubBlock(cond1);
+                cond2.addSubBlock(cond3);
+		v.addElement(cond2); } <RPAREN>)*
+       {		
+	for(Enumeration enumr = v.elements(); enumr.hasMoreElements(); )
+        cond.addSubBlock((Condition)enumr.nextElement());		
+	return cond;
+       })
+        | (cond1 = readCondition(p) {
+              return(cond1);}))
+}
+
+
+Condition readCondition(PreProcessor p):
+  {
+  String answer1="",answer2="",answer3="";
+  Token t,t1;
+  Condition c=null;
+  Block b=null,b1=null;
+ }
+{
+	(((<DOLLAR> t=<ID> { b1 = new Variable(p,t.image);}) 
+	 | (<POUND> b1=readFunction(p))
+	 | ("\"" answer1 = readText())
+         | (t=<ID> { answer1= t.image;} )) ((<EQUAL> { c = new EqualCondition(p) ; })
+	          | (<NOTEQUAL> { c = new NotEqualCondition(p) ; })
+	          | (<LESSER> { c = new LesserCondition(p) ; })
+	          | (<GREATER> { c = new GreaterCondition(p) ; })) 
+		  (
+		  ( (t1=<NUM>) { answer3=t1.image;} | (t1=<ID>) { answer3=t1.image;})
+		  | (<DOLLAR> t=<ID> { b = new Variable(p,t.image);})
+		  | ("\"" answer3 = readText())
+		  | (<POUND> b=readFunction(p)))
+	             { })
+	 {
+	if (c != null) {
+	   if (b1!= null) 
+	      c.addSubBlock(b1);
+	   else
+	      c.addString(answer1);
+	   if (b != null) 
+	      c.addSubBlock(b);
+	   else
+	      c.addString(answer3);
+	}
+	return c;
+	}
+}
