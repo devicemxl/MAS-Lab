@@ -4,9 +4,9 @@ In December 2014—following 36 productive years—the Multi-Agent Systems Labor
 <i>"Test Note: All software available from this page is covered under the Apache License, Version 2.0 licencing agreement. Please review this agreement before downloading the software."</i>
 <br>
 <br>
-i don't see other copyright notice, and make a back up of the knowledge make public in their web page as tribute
+all the content was published by School of Computer Science at University of Massachusetts Amherst. Not noticed about copyright, but extend the downloads copyright to all content; i make a back up of the knowledge make public in their web page as tribute. [read the wiki](https://github.com/devicemxl/MAS-Lab/wiki/MAS-Lab) to see their history and publications.
 <br><br>
-read the wiki to see the back-up
+
 
 [TAEMS](/tree/raiz/taems-1.3.1)
 
