@@ -1,0 +1,1270 @@
+/* Copyright (C) 2005, University of Massachusetts, Multi-Agent Systems Lab
+ * See LICENSE for license information
+ */
+
+// Code written by Brett Benyo originally
+// Modified by : Bryan Horling
+//               Regis Vincent
+//options {
+//  DEBUG_PARSER  = true;
+//}
+
+PARSER_BEGIN(TTaemsGrammar)
+
+package taems.parser;
+import java.util.*;
+import taems.*;
+import utilities.Log;
+import utilities.Distribution;
+
+public class TTaemsGrammar {
+
+}
+
+PARSER_END(TTaemsGrammar)
+
+SPECIAL_TOKEN : /* comments */ 
+{ <COMMENT: ";" (~["\n","\r"])* ("\n"|"\r"|"\r\n")> }
+
+SKIP :
+{
+  " "
+| "\t"
+| "\n"
+| "\r"
+| "\f"
+}
+
+TOKEN [IGNORE_CASE] :
+{ <LPAREN:       	"(">
+| <RPAREN:       	")">
+| <SPECAGENT:	 	"spec_agent">
+| <LABEL:		"label">
+| <SPECTASKGROUP:	"spec_task_group">
+| <AGENT:		"agent">
+| <SUBTASKS:		"subtasks">
+| <QAF:			"qaf">
+| <ARRIVAL:		"arrival_time">
+| <EST:			"earliest_start_time">
+| <DEADLINE:		"deadline">
+| <DELIM:		"DELIM">
+| <SPECTASK:		"spec_task">
+| <SUPERTASKS:		"supertasks">
+| <SPECMETHOD:		"spec_method">
+| <OUTCOMES:		"outcomes">
+| <DENSITY:		"density">
+| <QDIST:		"quality_distribution">
+| <DDIST:		"duration_distribution">
+| <CDIST:		"cost_distribution">
+| <TDIST:		"time_distribution">
+| <RATING:		"rating">
+| <PCPU:		"percentage_of_cpu_used">
+| <START:		"start_time">
+| <FINISH:		"finish_time">
+| <ACCRUED:		"accrued_time">
+| <INTERRELATIONSHIP:	"interrelationship">
+| <SPECENABLES:		"spec_enables">
+| <SPECDISABLES:	"spec_disables">
+| <FROMO:		"from_outcome">
+| <FROM:		"from">
+| <TO:			"to">
+| <DELAY:		"delay">
+| <SPECATTRIBUTES:	"spec_attributes">
+| <SPECFACILITATES:	"spec_facilitates">
+| <SPECHINDERS:         "spec_hinders">
+| <SPECUSES:		"spec_uses">
+| <SPECLIMITS:		"spec_limits">
+| <SPECPRODUCES:	"spec_produces">
+| <SPECCONSUMES:	"spec_consumes">
+| <SPECCRESOURCE:	"spec_consumable_resource">
+| <SPECNCRESOURCE:	"spec_non_consumable_resource">
+| <MODEL:		"model">
+| <DURATIONINDEPENDENT: "duration_independent">
+| <PERTIMEUNIT:         "per_time_unit">
+| <RESOURCE:		"resource">
+| <QUANTITY:		"quantity">
+| <STATE:		"state">
+| <DEPLETEDAT:		"depleted_at">
+| <OVERLOADEDAT:	"overloaded_at">
+| <QPOWER:		"quality_power">
+| <DPOWER:		"duration_power">
+| <CPOWER:		"cost_power">
+| <SPECCOMMIT:		"spec_commitment">
+| <SPECNLCOMMIT:	"spec_nonlocal_commitment">
+| <TYPE:		"type">
+| <TASK:		"task">
+| <NEGOTIABILITY:	"negotiability">
+| <UTIL:		"utility">
+| <IMPORTANCE:		"importance">
+| <MINQ:		"minimum_quality">
+| <SAT:			"time_satisfied">
+| <FROMAGENT:		"from_agent">
+| <TOAGENT:		"to_agent">
+| <SCHEDULES:		"schedules">
+| <SPECSCHED:		"spec_schedule">
+| <SPECMLCSCHED:		"spec_mlc_schedule">
+| <SCHEDELEMS:		"schedule_elements">
+| <SCHEDELEM:		"schedule_element">
+| <PRECONS:		"preconditions">
+| <PRECPRE:		"spec_precedence_precondition">
+| <EARLIESTPRE:		"spec_earlieststarttime_precondition">
+| <STARTDIST:		"start_time_distribution">
+| <FINISHDIST:		"finish_time_distribution">
+| <QMON:		"quality_monitoring_info">
+| <DMON:		"duration_monitoring_info">
+| <TASKQINFOS:		"task_quality_infos">
+| <COMMITINFO:		"commitment_info">
+| <SPECSSB:		"spec_schedule_setting_bundle">
+| <QVAL:		"quality_value">
+| <DVAL:		"duration_value">
+| <CVAL:		"cost_value">
+| <SPECEVALCRIT:	"spec_evaluation_criteria">
+| <GOODNESSQS:		"goodness_quality_slider">
+| <GOODNESSCS:		"goodness_cost_slider">
+| <GOODNESSDS:		"goodness_duration_slider">
+| <THRESHQS:		"threshold_quality_slider">
+| <THRESHCS:		"threshold_cost_slider">
+| <THRESHDS:		"threshold_duration_slider">
+| <QTHRESH:		"quality_threshold">
+| <CLIMIT:		"cost_limit">
+| <DLIMIT:		"duration_limit">
+| <UNCERTAINQS:		"uncertainty_quality_slider">
+| <UNCERTAINCS:		"uncertainty_cost_slider">
+| <UNCERTAINDS:		"uncertainty_duration_slider">
+| <THRESHCERTQS:	"threshold_certainty_quality_slider">
+| <THRESHCERTDS:	"threshold_certainty_duration_slider">
+| <THRESHCERTCS:        "threshold_certainty_cost_slider">
+| <QUALCERTTHRESH:	"quality_certainty_threshold">
+| <COSTCERTTHRESH: 	"cost_certainty_threshold">
+| <DURCERTTHRESH:	"duration_certainty_threshold">
+| <METAGS:		"meta_goodness_slider">
+| <METATS:		"meta_threshold_slider">
+| <METAUS:		"meta_uncertainty_slider">
+| <METAUTS:		"meta_uncertainty_threshold_slider">
+| <CONSUMES:		"consumes">
+| <PRODUCES:		"produces">
+| <DIS:			"dont_interval_start">
+| <DIE:			"dont_interval_end">
+| <NONLOCAL:		"nonlocal">
+| <OLDNONLOCAL:		"method_is_non_local">
+}
+
+TOKEN :
+{ 
+  < NUM: ["-",".","0"-"9"] (["-",".","0"-"9","e","E"])* >
+| < ID: ["a"-"z","A"-"Z","/","*","0"-"9"] (["a"-"z","A"-"Z","-","/","_",".","#","<",">","*","0"-"9"] )* >
+| < SPECIAL: (["!","?","/",",",".",":","-","_","[","]","{","}","|","\\","+","="])+ >
+}
+
+Taems Input(Log genlog) :
+{
+  Token t=null, t2;
+  Taems taems = new Taems();
+}
+{
+( <LPAREN> 
+  ( (<SPECAGENT> tt_agent(taems) <RPAREN>) 
+         { genlog.log("Read agent"); }
+  | (<SPECATTRIBUTES> tt_specattributetaems(taems) <RPAREN>)
+  | (<SPECTASKGROUP> tt_taskgroup(taems) <RPAREN>) 
+         {genlog.log("Read taskgroup");}
+  | (<SPECTASK> tt_task(taems) <RPAREN>)
+         {genlog.log("Read task");}
+  | (<SPECMETHOD> tt_method(taems) <RPAREN>)
+         {genlog.log("Read method");}
+  | (<SPECFACILITATES> tt_facilitates(taems) <RPAREN>)
+         {genlog.log("Read facilitates");}
+  | (<SPECHINDERS> tt_hinders(taems) <RPAREN>)
+         {genlog.log("Read hinders");}
+  | (<SPECENABLES> tt_enables(taems) <RPAREN>)
+         {genlog.log("Read enables");}
+  | (<SPECDISABLES> tt_disables(taems) <RPAREN>)
+         {genlog.log("Read disables");}
+  | (<SPECUSES> tt_consumes(taems) <RPAREN>)
+         {genlog.log("Read uses");}
+  | (<SPECCONSUMES> tt_consumes(taems) <RPAREN>)
+         {genlog.log("Read consumes");}
+  | (<SPECLIMITS> tt_limits(taems) <RPAREN>)
+         {genlog.log("Read limits");}
+  | (<SPECPRODUCES>tt_produces(taems) <RPAREN>)
+         {genlog.log("Read produces");}
+  | ((t=<SPECCRESOURCE> | t=<SPECNCRESOURCE>) tt_resource(t.image, taems) 
+	<RPAREN>) {genlog.log("Read "+t.image);}
+  | (<SPECCOMMIT> tt_commitment(taems, false) <RPAREN>)
+         {genlog.log("Read commitment");}
+  | (<SPECNLCOMMIT> tt_commitment(taems, true) <RPAREN>)
+         {genlog.log("Read depricated nonlocal commitment");}
+  | (<SPECSCHED> tt_sched(taems) <RPAREN>)
+         {genlog.log("Read schedule");}
+  | (<SPECMLCSCHED> tt_mlc_sched(taems) <RPAREN>)
+         {genlog.log("Read mlc_schedule");}
+  | (<SPECEVALCRIT> tt_evalcrit(taems) <RPAREN>)
+         {genlog.log("Read eval_criteria");}
+  ))+ <EOF>
+  {
+       taems.retargetVirtuals();
+       return taems;
+  }
+}
+
+void tt_agent(Taems taems) :
+{
+   Token t;
+   Agent agent = new Agent(null);
+}
+{
+  (<LPAREN> 
+     (
+	( <LABEL> (t=<ID> | t=<NUM>) <RPAREN>
+	  {agent.setLabel(t.image);} )
+      | (<SPECATTRIBUTES> tt_specattributeagent(agent) <RPAREN>)
+   ))*
+  {taems.addAgent(agent);}
+}
+
+void tt_taskgroup(Taems taems) :
+{
+   Token t1,t2,t3;
+   Task tg = new Task(null, null, null);;
+}
+{
+  (<LPAREN> 
+     (
+        (<LABEL> t1=<ID> <RPAREN> 
+     	   { tg.setLabel(t1.image);} )
+     | (<SPECATTRIBUTES> tt_specattribute(tg) <RPAREN>)
+     | (<AGENT> (t1=<ID> | t1=<NUM>) <RPAREN>
+	{ tg.setAgent(new Agent(t1.image));})
+     | (<SUBTASKS> (t1=<ID> 
+	{
+	tg.addSubtask(new VirtualTaskBase(t1.image, null)); }
+	)* <RPAREN>)
+     | (<QAF> t1=<ID> <RPAREN>
+	{ if (t1.image.equals("q_max"))
+	     tg.setQAF(new MaxQAF());
+          else if (t1.image.equals("q_min"))
+	     tg.setQAF(new MinQAF()); 
+          else if (t1.image.equals("q_sum"))
+	     tg.setQAF(new SumQAF()); 
+          else if (t1.image.equals("q_last"))
+	     tg.setQAF(new LastQAF()); 
+          else if (t1.image.equals("q_sum_all"))
+	     tg.setQAF(new SumAllQAF()); 
+          else if (t1.image.equals("q_seq_max"))
+	     tg.setQAF(new SeqMaxQAF());
+          else if (t1.image.equals("q_seq_min"))
+	     tg.setQAF(new SeqMinQAF());
+          else if (t1.image.equals("q_seq_sum"))
+	     tg.setQAF(new SeqSumQAF());
+          else if (t1.image.equals("q_seq_last"))
+	     tg.setQAF(new SeqLastQAF());
+          else if (t1.image.equals("q_exactly_one"))
+	     tg.setQAF(new ExactlyOneQAF());
+	  else {
+	     System.err.println("Warning: Parser does not recognize qaf " + t1.image);
+             tg.setQAF(new QAF(t1.image) { });
+	  }
+	     })		   
+     | (<ARRIVAL> t1=<NUM> <RPAREN>
+	{ tg.setArrivalTime(Integer.valueOf(t1.image).intValue()); } )
+     | (<EST> t1=<NUM> <RPAREN>
+	{ tg.setEarliestStartTime(Integer.valueOf(t1.image).intValue()); })
+     | (<DEADLINE> t1=<NUM> <RPAREN>
+	{ tg.setDeadline(Float.valueOf(t1.image).intValue());})
+   ))*
+  {  taems.addNode(tg);   }
+    
+}
+
+void tt_task(Taems taems) :
+{
+   Token t1,t2,t3;
+   Task t=new Task(null, null, null);
+}
+{
+  (<LPAREN> 
+    ( 
+       (<LABEL> t1=<ID> <RPAREN> 
+		{ t.setLabel(t1.image);  })	
+    |  (<SPECATTRIBUTES> tt_specattribute(t) <RPAREN>)
+    |  (<AGENT> (t1=<ID> | t1=<NUM>) <RPAREN>
+	{ t.setAgent(new Agent(t1.image));})
+    | (<SUPERTASKS> (t1=<ID>
+	{ 
+	/* t.addSupertask(new VirtualTaskBase(t1.image, null)); */
+        } )* <RPAREN>)
+    | (<SUBTASKS> (t1=<ID> 
+	{ 
+	t.addSubtask(new VirtualTaskBase(t1.image, null));}
+	)* <RPAREN>)
+    | (<QAF> t1=<ID> <RPAREN>
+	{ if (t1.image.equals("q_max"))
+	     t.setQAF(new MaxQAF());
+          else if (t1.image.equals("q_min"))
+	     t.setQAF(new MinQAF()); 
+          else if (t1.image.equals("q_sum"))
+	     t.setQAF(new SumQAF()); 
+          else if (t1.image.equals("q_last"))
+	     t.setQAF(new LastQAF()); 
+          else if (t1.image.equals("q_sum_all"))
+	     t.setQAF(new SumAllQAF()); 
+          else if (t1.image.equals("q_seq_max"))
+	     t.setQAF(new SeqMaxQAF());
+          else if (t1.image.equals("q_seq_min"))
+	     t.setQAF(new SeqMinQAF());
+          else if (t1.image.equals("q_seq_sum"))
+	     t.setQAF(new SeqSumQAF());
+          else if (t1.image.equals("q_seq_last"))
+	     t.setQAF(new SeqLastQAF()); 
+          else if (t1.image.equals("q_exactly_one"))
+	     t.setQAF(new ExactlyOneQAF());
+	  else
+	     System.err.println("Warning: Parser does not recognize qaf " + t1.image);
+	     })		   
+    | (<ARRIVAL> t1=<NUM> <RPAREN>
+	{ t.setArrivalTime(Integer.valueOf(t1.image).intValue()); } )
+    | (<EST> t1=<NUM> <RPAREN>
+	{ t.setEarliestStartTime(Integer.valueOf(t1.image).intValue());})
+    | (<DEADLINE> t1=<NUM> <RPAREN>
+	{ t.setDeadline(Float.valueOf(t1.image).intValue());})
+    | ((<NONLOCAL>|<OLDNONLOCAL>) <RPAREN>)
+        { t.setNonLocal(true);}    
+     ))*
+  { taems.addNode(t);}
+}   
+
+void tt_method(Taems taems) :
+{
+   Token t1,t2,t3;
+   Method t = new Method(null, null);
+}
+{
+  (<LPAREN> 
+    (
+       (<LABEL> t1=<ID> <RPAREN> 
+  	 { t.setLabel(t1.image); } )
+     | (<SPECATTRIBUTES> tt_specattribute(t) <RPAREN>)
+     | (<AGENT> (t1=<ID> | t1=<NUM>) <RPAREN>
+	{ t.setAgent(new Agent(t1.image)); })
+     | (<SUPERTASKS> (t1=<ID>
+	{ 
+	/* t.addSupertask(new VirtualTaskBase(t1.image, null));  */
+	} )* <RPAREN>)
+     | (<OUTCOMES> (ParseOutcome(t))* <RPAREN>)
+     | (<ARRIVAL> t1=<NUM> <RPAREN>
+	{ t.setArrivalTime(Integer.valueOf(t1.image).intValue()); } )
+     | (<EST> t1=<NUM> <RPAREN>
+	{ t.setEarliestStartTime(Integer.valueOf(t1.image).intValue()); })
+     | (<DEADLINE> t1=<NUM> <RPAREN>
+	{ t.setDeadline(Float.valueOf(t1.image).intValue()); })
+     | (<PCPU> t1=<NUM> <RPAREN>
+	{ Float.valueOf(t1.image).floatValue();})
+     | (<START> t1=<NUM> <RPAREN>
+	{ t.setStartTime(Integer.valueOf(t1.image).intValue());})
+     | (<FINISH> t1=<NUM> <RPAREN>
+	{ t.setFinishTime(Integer.valueOf(t1.image).intValue());})
+     | (<ACCRUED> t1=<NUM> <RPAREN>
+	{ t.setAccruedTime(Integer.valueOf(t1.image).intValue());})
+     | ((<NONLOCAL>|<OLDNONLOCAL>) <RPAREN>)
+        { t.setNonLocal(true); }  
+   ))*
+  { taems.addNode(t); }
+}   
+
+void ParseOutcome(Method m) :
+{
+   Token label, t1;
+   Outcome newo;
+   Distribution d = null,q = null,c = null;
+   double density = 1.0;
+}
+{
+  <LPAREN> label=<ID> 
+  (<LPAREN> 
+    ( (<DENSITY> t1=<NUM> <RPAREN>
+	{ density = Float.valueOf(t1.image).floatValue();})
+    | (<QDIST> q = ParseDistribution() <RPAREN>)
+    | (<DDIST> d = ParseDistribution() <RPAREN>)
+    | (<CDIST> c = ParseDistribution() <RPAREN>)
+  ))*
+  { 
+    newo = new Outcome(label.image, q, d, c, (float)density);
+    m.addOutcome(newo);
+  }
+  <RPAREN>
+}
+
+Distribution ParseDistribution() :
+{
+   Token t1;
+   Distribution newd = new Distribution();
+}
+{
+   (t1=<NUM>
+   {
+      newd.addElement(Float.valueOf(t1.image));
+   })*
+   {
+      return newd;
+   }
+}
+
+void tt_facilitates(Taems taems) :
+{
+   Token label = null, agent = null, from = null, from_outcome = null, to = null;
+   Distribution delay = new Distribution(0,1), qp = null, cp = null, dp = null;
+   FacilitatesInterrelationship nle = new FacilitatesInterrelationship(null, null, null, null, null, null);
+}
+{
+   (<LPAREN> 
+     ( (<SPECATTRIBUTES> tt_specattribute(nle) <RPAREN>)
+     | (<LABEL> label=<ID> <RPAREN>)
+     | (<AGENT> (agent=<ID> | agent=<NUM>) <RPAREN>)
+     | (<FROM> from=<ID> <RPAREN>)
+     | (<FROMO> from_outcome=<ID> <RPAREN>)
+     | (<TO> to=<ID> <RPAREN>)
+     | (<DELAY> delay=ParseDistribution() <RPAREN>)
+     | (<QPOWER> qp=ParseDistribution() <RPAREN>)
+     | (<DPOWER> dp=ParseDistribution() <RPAREN>)
+     | (<CPOWER> cp=ParseDistribution() <RPAREN>)
+    ))*
+   { 
+  Agent a;
+  Node fromNode=null, toNode=null;
+  Outcome outcome = null;
+  if (agent != null) 
+     a = new Agent(agent.image);
+  else
+     a = null;
+
+  nle.setLabel(label.image);
+  nle.setAgent(a);
+  nle.setDelay(delay);
+  nle.setQuality(qp);
+  nle.setDuration(dp);
+  nle.setCost(cp);
+ 
+  if (from_outcome != null) 
+        outcome = new Outcome(from_outcome.image);
+ if (from != null) 
+        if (from_outcome == null)
+		fromNode = new VirtualNode(from.image, null);
+	else
+		fromNode = new VirtualTaskBase(from.image, null);
+  if (to != null) 
+        toNode = new VirtualNode(to.image, null);
+
+  
+  if ((fromNode != null) && (toNode != null)) {
+    fromNode.addInterrelationship(nle,outcome,toNode);
+    taems.addNode(fromNode);
+    taems.addNode(toNode);
+    }
+  else
+     System.err.println("Error in parsing Interrelationship " + label.image);
+ }
+}
+
+void tt_hinders(Taems taems) :
+{
+   Token label = null, agent = null, from = null, from_outcome = null, to = null;
+   Distribution delay = new Distribution(0,1), qp = null, cp = null, dp = null;
+   HindersInterrelationship nle = new HindersInterrelationship(null, null,
+null, null, null, null);;
+}
+{
+   (<LPAREN> 
+     ( (<SPECATTRIBUTES> tt_specattribute(nle) <RPAREN>)
+     | (<LABEL> label=<ID> <RPAREN>)
+     | (<AGENT> (agent=<ID> | agent=<NUM>) <RPAREN>)
+     | (<FROM> from=<ID> <RPAREN>)
+     | (<FROMO> from_outcome=<ID> <RPAREN>)
+     | (<TO> to=<ID> <RPAREN>)
+     | (<DELAY> delay=ParseDistribution() <RPAREN>)
+     | (<QPOWER> qp=ParseDistribution() <RPAREN>)
+     | (<DPOWER> dp=ParseDistribution() <RPAREN>)
+     | (<CPOWER> cp=ParseDistribution() <RPAREN>)
+    ))*
+  {
+  Agent a;
+  Node fromNode=null, toNode=null;
+  Outcome outcome=null;
+  if (agent != null) 
+     a = new Agent(agent.image);
+  else
+     a = null;
+
+  nle.setLabel(label.image);
+  nle.setAgent(a);
+  nle.setDelay(delay);
+  nle.setQuality(qp);
+  nle.setDuration(dp);
+  nle.setCost(cp);
+  if (from_outcome != null) 
+        outcome = new Outcome(from_outcome.image);
+  if (from != null) 
+        if (from_outcome == null)
+		fromNode = new VirtualNode(from.image, null);
+	else
+		fromNode = new VirtualTaskBase(from.image, null);
+  if (to != null) 
+        toNode = new VirtualNode(to.image, null);
+  if ((fromNode != null) && (toNode != null)) {
+    fromNode.addInterrelationship(nle,outcome,toNode);
+    taems.addNode(fromNode);
+    taems.addNode(toNode);
+    }
+  else
+     System.err.println("Error in parsing Interrelationship " + label.image);
+ }
+}
+void tt_enables(Taems taems) :
+{
+   Token label = null, agent = null, from = null, from_outcome = null, to = null;
+   Distribution delay = new Distribution(0,1), qp = null, cp = null, dp = null;
+   EnablesInterrelationship nle = new EnablesInterrelationship(null, null, null);
+}
+{
+   (<LPAREN> 
+     ( 
+       (<SPECATTRIBUTES> tt_specattribute(nle) <RPAREN>)
+     | (<LABEL> label=<ID> <RPAREN>)
+     | (<AGENT> (agent=<ID> | agent=<NUM>) <RPAREN>)
+     | (<FROM> from=<ID> <RPAREN>)
+     | (<FROMO> from_outcome=<ID> <RPAREN>)
+     | (<TO> to=<ID> <RPAREN>)
+     | (<DELAY> delay=ParseDistribution() <RPAREN>)
+    ))*
+   { 
+  Agent a;
+  Node fromNode=null, toNode=null;
+  Outcome outcome=null;
+  if (agent != null) 
+     a = new Agent(agent.image);
+  else
+     a = null;
+
+  nle.setLabel(label.image);
+  nle.setAgent(a);
+  nle.setDelay(delay);
+  if (from_outcome != null) 
+        outcome = new Outcome(from_outcome.image);
+  if (from != null) 
+        if (from_outcome == null)
+		fromNode = new VirtualNode(from.image, null);
+	else
+		fromNode = new VirtualTaskBase(from.image, null);
+  if (to != null) 
+        toNode = new VirtualNode(to.image, null);
+  if ((fromNode != null) && (toNode != null)) {
+    fromNode.addInterrelationship(nle,outcome,toNode);
+    taems.addNode(fromNode);
+    taems.addNode(toNode);
+    }
+  else
+     System.err.println("Error in parsing Interrelationship " + label.image);
+  }
+ }
+
+void tt_disables(Taems taems) :
+{
+   Token label = null, agent = null, from = null, from_outcome = null, to = null;
+   Distribution delay = new Distribution(0,1), qp = null, cp = null, dp = null;
+   DisablesInterrelationship nle = new DisablesInterrelationship(null, null, null);
+}
+{
+   (<LPAREN> 
+     ( (<SPECATTRIBUTES> tt_specattribute(nle) <RPAREN>)
+     | (<LABEL> label=<ID> <RPAREN>)
+     | (<AGENT> (agent=<ID> | agent=<NUM>) <RPAREN>)
+     | (<FROM> from=<ID> <RPAREN>)
+     | (<FROMO> from_outcome=<ID> <RPAREN>)
+     | (<TO> to=<ID> <RPAREN>)
+     | (<DELAY> delay=ParseDistribution() <RPAREN>)
+    ))*
+   { 
+  Agent a;
+  Node fromNode=null, toNode=null;
+  Outcome outcome=null;
+  if (agent != null) 
+     a = new Agent(agent.image);
+  else
+     a = null;
+  nle.setLabel(label.image);
+  nle.setAgent(a);
+  nle.setDelay(delay);
+  if (from_outcome != null) 
+        outcome = new Outcome(from_outcome.image);
+  if (from != null) 
+        if (from_outcome == null)
+		fromNode = new VirtualNode(from.image, null);
+	else
+		fromNode = new VirtualTaskBase(from.image, null);
+  if (to != null) 
+        toNode = new VirtualNode(to.image, null);
+  if ((fromNode != null) && (toNode != null)) {
+    fromNode.addInterrelationship(nle,outcome,toNode);
+    taems.addNode(fromNode);
+    taems.addNode(toNode);
+    }
+  else
+     System.err.println("Error in parsing Interrelationship " + label.image);
+  }
+ }
+
+void tt_limits(Taems taems) :
+{
+   Token label = null, agent = null, from = null, from_outcome = null, to = null;
+   Distribution delay = null, qp = null, cp = null, dp = null;
+   String model = Interrelationship.PER_TIME_UNIT;
+   LimitsInterrelationship nle = new LimitsInterrelationship(null, null, null, null, null);
+}
+{
+   (<LPAREN> 
+     ( (<SPECATTRIBUTES> tt_specattribute(nle) <RPAREN>)
+     | (<LABEL> label=<ID> <RPAREN>)
+     | (<AGENT> (agent=<ID> | agent=<NUM>) <RPAREN>)
+     | (<FROM> from=<ID> <RPAREN>)
+     | (<TO> to=<ID> <RPAREN>)
+     | (<QPOWER> qp=ParseDistribution() <RPAREN>)
+     | (<DPOWER> dp=ParseDistribution() <RPAREN>)
+     | (<CPOWER> cp=ParseDistribution() <RPAREN>)
+     | (<MODEL> (<DURATIONINDEPENDENT> { model = Interrelationship.DURATION_INDEPENDENT; }
+                        | <PERTIMEUNIT> { model = Interrelationship.PER_TIME_UNIT; }) <RPAREN>)
+    ))*
+   { 
+  Agent a;
+  Node fromNode=null, toNode=null;
+  if (agent != null) 
+     a = new Agent(agent.image);
+  else
+     a = null;
+
+  nle.setLabel(label.image);
+  nle.setAgent(a);
+  nle.setQuality(qp);
+  nle.setDuration(dp);
+  nle.setCost(cp);
+  nle.setModel(model);
+  if (from != null) 
+        fromNode = new VirtualNode(from.image, null);
+  if (to != null) 
+        toNode = new VirtualNode(to.image, null);
+  if ((fromNode != null) && (toNode != null)) {
+    fromNode.addInterrelationship(nle, null, toNode);
+    taems.addNode(fromNode);
+    taems.addNode(toNode);
+    }
+  else
+     System.err.println("Error in parsing Interrelationship " + label.image);
+  } 
+}
+
+void tt_consumes(Taems taems) :
+{
+   Token label = null, agent = null, from = null, from_outcome = null, to = null;
+   Distribution cp = null;
+   String model=Interrelationship.PER_TIME_UNIT;
+   ConsumesInterrelationship nle = new ConsumesInterrelationship(null, null, null);
+}
+{
+   (<LPAREN> 
+     ( (<SPECATTRIBUTES> tt_specattribute(nle) <RPAREN>)
+     | (<LABEL> label=<ID> <RPAREN>)
+     | (<AGENT> (agent=<ID> | agent=<NUM>) <RPAREN>)
+     | (<FROM> from=<ID> <RPAREN>)
+     | (<TO> to=<ID> <RPAREN>)
+     | (<CONSUMES> cp=ParseDistribution() <RPAREN>)
+     | (<MODEL> (<DURATIONINDEPENDENT> { model = Interrelationship.DURATION_INDEPENDENT; }
+                        | <PERTIMEUNIT> { model = Interrelationship.PER_TIME_UNIT; }) <RPAREN>)
+    ))*
+   { 
+  Node fromNode=null, toNode=null;
+  Agent a;
+  if (agent != null) 
+     a = new Agent(agent.image);
+  else
+     a = null;
+
+  nle.setLabel(label.image);
+  nle.setAgent(a);
+  nle.setCost(cp);
+  nle.setModel(model);
+  if (from != null) 
+        fromNode = new VirtualNode(from.image, null);
+  if (to != null) 
+        toNode = new VirtualNode(to.image, null);
+  if ((fromNode != null) && (toNode != null)) {
+    fromNode.addInterrelationship(nle, null, toNode);
+    taems.addNode(fromNode);	       
+    taems.addNode(toNode);
+    }   
+  else
+     System.err.println("Error in parsing Interrelationship " + label.image);
+  }
+}
+
+void tt_produces(Taems taems) :
+{
+   Token label = null, agent = null, from = null, from_outcome = null, to = null;
+   Distribution cp = null;
+   String model=Interrelationship.PER_TIME_UNIT;
+   ProducesInterrelationship nle  = new ProducesInterrelationship(null, null, null);
+}
+{
+   (<LPAREN> 
+     ( (<SPECATTRIBUTES> tt_specattribute(nle) <RPAREN>)
+     | (<LABEL> label=<ID> <RPAREN>)
+     | (<AGENT> (agent=<ID> | agent=<NUM>) <RPAREN>)
+     | (<FROM> from=<ID> <RPAREN>)
+     | (<TO> to=<ID> <RPAREN>)
+     | (<PRODUCES> cp=ParseDistribution() <RPAREN>)
+     | (<MODEL> (<DURATIONINDEPENDENT> { model = Interrelationship.DURATION_INDEPENDENT; }
+                        | <PERTIMEUNIT> { model = Interrelationship.PER_TIME_UNIT; }) <RPAREN>)
+    ))*
+   { 
+  Agent a;
+  Node fromNode=null, toNode=null;
+  if (agent != null) 
+     a = new Agent(agent.image);
+  else
+     a = null;
+
+  nle.setLabel(label.image);
+  nle.setAgent(a);
+  nle.setCost(cp);
+  nle.setModel(model);
+  if (from != null) 
+        fromNode = new VirtualNode(from.image, null);
+  if (to != null) 
+        toNode = new VirtualNode(to.image, null);
+  if ((fromNode != null) && (toNode != null)) {
+    fromNode.addInterrelationship(nle, null, toNode);
+    taems.addNode(fromNode);
+    taems.addNode(toNode);
+    }
+  else
+     System.err.println("Error in parsing Interrelationship " + label.image);
+ }
+}
+
+
+void tt_resource(String type, Taems taems) :
+{
+   Token label = null, from = null, state = null, depleted = null, by=null, overloaded = null;
+   Resource newr;
+     if (type.equals("spec_consumable_resource"))
+       newr = new ConsumableResource(null, null, 0.0, 0.0, 100.0);
+     else
+       newr = new NonConsumableResource(null, null, 0.0, 0.0, 100.0);
+}
+{
+   (<LPAREN> 
+     ( (<SPECATTRIBUTES> tt_specattribute(newr) <RPAREN>)
+     | (<LABEL> label=<ID> <RPAREN>)
+     | (<STATE> state=<NUM> <RPAREN>)
+     | (<DEPLETEDAT> depleted=<NUM> <RPAREN>)
+     | (<OVERLOADEDAT> overloaded=<NUM> <RPAREN>)
+     | (<AGENT> by=<ID>  <RPAREN>))
+    )*
+   { 
+     if (label != null) 
+	newr.setLabel(label.image);
+
+     if (state != null)
+	newr.setState(Double.valueOf(state.image).doubleValue());   
+
+     if (depleted != null)
+	newr.setDepletedAt(Double.valueOf(depleted.image).doubleValue());
+
+     if (overloaded != null)
+	newr.setOverloadedAt(Double.valueOf(overloaded.image).doubleValue());
+
+     if (by != null)
+        newr.setAgent(new Agent(by.image));
+     taems.addNode(newr);
+    }
+}
+
+void tt_evalcrit(Taems taems) :
+{
+  Token t1;
+  Criteria v=new Criteria();
+}
+{
+   <LPAREN> <LABEL> t1=<ID> <RPAREN>
+	{v.setLabel(t1.image);}
+   <LPAREN> <GOODNESSQS> t1=<NUM> <RPAREN>
+	{v.setGoodnessQuality(Float.valueOf(t1.image));}
+   <LPAREN> <GOODNESSCS>  t1=<NUM> <RPAREN>
+	{v.setGoodnessCost(Float.valueOf(t1.image));}
+   <LPAREN> <GOODNESSDS>  t1=<NUM> <RPAREN>
+	{v.setGoodnessDuration(Float.valueOf(t1.image));}
+   <LPAREN> <THRESHQS> t1=<NUM> <RPAREN>
+	{v.setThresholdQuality(Float.valueOf(t1.image));}
+   <LPAREN> <THRESHCS>  t1=<NUM> <RPAREN>
+	{v.setThresholdCost(Float.valueOf(t1.image));}
+   <LPAREN> <THRESHDS>  t1=<NUM> <RPAREN>
+	{v.setThresholdDuration(Float.valueOf(t1.image));}	
+   <LPAREN> <QTHRESH> t1=<NUM> <RPAREN>
+	{v.setQualityThreshold(Float.valueOf(t1.image));}
+   <LPAREN> <CLIMIT>  t1=<NUM> <RPAREN>
+	{v.setCostThreshold(Float.valueOf(t1.image));}
+   <LPAREN> <DLIMIT>  t1=<NUM> <RPAREN>
+	{v.setDurationThreshold(Float.valueOf(t1.image));}	
+   <LPAREN> <UNCERTAINQS> t1=<NUM> <RPAREN>
+	{v.setUncertaintyQuality(Float.valueOf(t1.image));}
+   <LPAREN> <UNCERTAINCS>  t1=<NUM> <RPAREN>
+	{v.setUncertaintyCost(Float.valueOf(t1.image));}
+   <LPAREN> <UNCERTAINDS>  t1=<NUM> <RPAREN>
+	{v.setUncertaintyDuration(Float.valueOf(t1.image));}
+   <LPAREN> <THRESHCERTQS> t1=<NUM> <RPAREN>
+	{v.setThresholdCertaintyQuality(Float.valueOf(t1.image));}
+   <LPAREN> <THRESHCERTCS>  t1=<NUM> <RPAREN>
+	{v.setThresholdCertaintyCost(Float.valueOf(t1.image));}
+   <LPAREN> <THRESHCERTDS>  t1=<NUM> <RPAREN>
+	{v.setThresholdCertaintyDuration(Float.valueOf(t1.image));}	
+   <LPAREN> <QUALCERTTHRESH> t1=<NUM> <RPAREN>
+	{v.setQualityCertaintyThreshold(Float.valueOf(t1.image));}
+   <LPAREN> <COSTCERTTHRESH>  t1=<NUM> <RPAREN>
+	{v.setCostCertaintyThreshold(Float.valueOf(t1.image));}
+   <LPAREN> <DURCERTTHRESH>  t1=<NUM> <RPAREN>
+	{v.setDurationCertaintyThreshold(Float.valueOf(t1.image));}	
+   <LPAREN> <METAGS> t1=<NUM> <RPAREN>
+	{v.setMetaGoodness(Float.valueOf(t1.image));}
+   <LPAREN> <METATS>  t1=<NUM> <RPAREN>
+	{v.setMetaThreshold(Float.valueOf(t1.image));}
+   <LPAREN> <METAUS>  t1=<NUM> <RPAREN>
+	{v.setMetaUncertainty(Float.valueOf(t1.image));}
+   <LPAREN> <METAUTS>  t1=<NUM> <RPAREN>
+	{v.setMetaUncertaintyThreshold(Float.valueOf(t1.image));
+	taems.setScheduleCriteria(v);
+	}
+   
+}
+
+/*
+	  v.addElement(Float.valueOf(t1.image));}
+   <LPAREN> <GOODNESSCS>  t1=<NUM> <RPAREN>
+	{v.addElement(Float.valueOf(t1.image));}
+   <LPAREN> <GOODNESSDS>  t1=<NUM> <RPAREN>
+	{v.addElement(Float.valueOf(t1.image));}
+   <LPAREN> <THRESHQS> t1=<NUM> <RPAREN>
+	{v.addElement(Float.valueOf(t1.image));}
+   <LPAREN> <THRESHCS>  t1=<NUM> <RPAREN>
+	{v.addElement(Float.valueOf(t1.image));}
+   <LPAREN> <THRESHDS>  t1=<NUM> <RPAREN>
+	{v.addElement(Float.valueOf(t1.image));}	
+   <LPAREN> <QTHRESH> t1=<NUM> <RPAREN>
+	{v.insertElementAt(Float.valueOf(t1.image),0);}
+   <LPAREN> <CLIMIT>  t1=<NUM> <RPAREN>
+	{v.insertElementAt(Float.valueOf(t1.image),1);}
+   <LPAREN> <DLIMIT>  t1=<NUM> <RPAREN>
+	{v.insertElementAt(Float.valueOf(t1.image),2);}	
+   <LPAREN> <UNCERTAINQS> t1=<NUM> <RPAREN>
+	{v.addElement(Float.valueOf(t1.image));}
+   <LPAREN> <UNCERTAINCS>  t1=<NUM> <RPAREN>
+	{v.addElement(Float.valueOf(t1.image));}
+   <LPAREN> <UNCERTAINDS>  t1=<NUM> <RPAREN>
+	{v.addElement(Float.valueOf(t1.image));}
+   <LPAREN> <THRESHCERTQS> t1=<NUM> <RPAREN>
+	{v.addElement(Float.valueOf(t1.image));}
+   <LPAREN> <THRESHCERTCS>  t1=<NUM> <RPAREN>
+	{v.addElement(Float.valueOf(t1.image));}
+   <LPAREN> <THRESHCERTDS>  t1=<NUM> <RPAREN>
+	{v.addElement(Float.valueOf(t1.image));}	
+   <LPAREN> <QUALCERTTHRESH> t1=<NUM> <RPAREN>
+	{v.insertElementAt(Float.valueOf(t1.image),3);}
+   <LPAREN> <COSTCERTTHRESH>  t1=<NUM> <RPAREN>
+	{v.insertElementAt(Float.valueOf(t1.image),4);}
+   <LPAREN> <DURCERTTHRESH>  t1=<NUM> <RPAREN>
+	{v.insertElementAt(Float.valueOf(t1.image),5);}	
+   <LPAREN> <METAGS> t1=<NUM> <RPAREN>
+	{v.addElement(Float.valueOf(t1.image));}
+   <LPAREN> <METATS>  t1=<NUM> <RPAREN>
+	{v.addElement(Float.valueOf(t1.image));}
+   <LPAREN> <METAUS>  t1=<NUM> <RPAREN>
+	{v.addElement(Float.valueOf(t1.image));}
+   <LPAREN> <METAUTS>  t1=<NUM> <RPAREN>
+	{v.addElement(Float.valueOf(t1.image));
+	taems.setScheduleCriteria(v);
+*/
+
+void tt_mlc_sched(Taems taems) :
+{
+   Token t1,t2;
+   MLCSchedule s = new MLCSchedule();
+   Schedule ss;
+   ScheduleElement se;
+   Vector tempvec;
+   Vector sched_els, task_qual, commit_info, qd, dd, cd;
+}
+{
+  <LPAREN> <SCHEDULES>
+	(<LPAREN> <SPECSCHED> (ss = tt_sched(null)) <RPAREN>
+	  {s.addScheduleSimple(ss);})*
+       	 <RPAREN>
+
+  <LPAREN> <SCHEDELEMS> {tempvec = new Vector();} 
+	((se = tt_sched_elem())
+	  {s.addScheduleElement(se);})*
+       	 <RPAREN>
+
+  (<LPAREN> 
+  ( (<TASKQINFOS> {tempvec = new Vector();}
+	(t1=<ID> t2=<NUM> 
+	 {tempvec.addElement(t1.image);
+	  tempvec.addElement(Integer.decode(t2.image));
+	 })*
+	{s.setTaskQualityInfo(tempvec);} <RPAREN>)
+  | (<COMMITINFO> {tempvec = new Vector();}
+	((t1=<ID> | t1=<NUM>)
+	 {tempvec.addElement(t1.image);})
+	{s.setCommitmentInfo(tempvec);} <RPAREN>)
+  | (<STARTDIST> {s.setStart(ParseDistribution());} <RPAREN>)
+  | (<FINISHDIST> {s.setFinish(ParseDistribution());} <RPAREN>)
+  | (<QDIST> { s.setQuality(ParseDistribution()); } <RPAREN>)
+  | (<DDIST> { s.setDuration(ParseDistribution()); } <RPAREN>)
+  | (<CDIST> { s.setCost(ParseDistribution()); } <RPAREN>)
+  | (<RATING> t1=<NUM> <RPAREN>
+	     { s.setRating(Double.valueOf(t1.image).doubleValue()); }
+	     )
+	))*
+	{
+    s.fixConditions(null);
+    taems.addSchedule(s);
+  }	
+}
+
+Schedule tt_sched(Taems taems) :
+{
+   Token t1,t2;
+   Schedule s = new Schedule();
+   ScheduleElement se;
+   Vector tempvec;
+   Vector sched_els, task_qual, commit_info, qd, dd, cd;
+}
+{
+  <LPAREN> <SCHEDELEMS> {tempvec = new Vector();} 
+	((se = tt_sched_elem())
+	  {s.addScheduleElement(se);})*
+       	 <RPAREN>
+
+  (<LPAREN> 
+  ( (<TASKQINFOS> {tempvec = new Vector();}
+	(t1=<ID> t2=<NUM> 
+	 {tempvec.addElement(t1.image);
+	  tempvec.addElement(Integer.decode(t2.image));
+	 })*
+	{s.setTaskQualityInfo(tempvec);} <RPAREN>)
+  | (<COMMITINFO> {tempvec = new Vector();}
+	((t1=<ID> | t1=<NUM>)
+	 {tempvec.addElement(t1.image);})
+	{s.setCommitmentInfo(tempvec);} <RPAREN>)
+  | (<STARTDIST> {s.setStart(ParseDistribution());} <RPAREN>)
+  | (<FINISHDIST> {s.setFinish(ParseDistribution());} <RPAREN>)
+  | (<QDIST> { s.setQuality(ParseDistribution()); } <RPAREN>)
+  | (<DDIST> { s.setDuration(ParseDistribution()); } <RPAREN>)
+  | (<CDIST> { s.setCost(ParseDistribution()); } <RPAREN>)
+  | (<RATING> t1=<NUM> <RPAREN>
+	     { s.setRating(Double.valueOf(t1.image).doubleValue()); }
+	     )
+	))*
+	{
+    s.fixConditions(null);
+    if (taems != null)
+      taems.addSchedule(s);
+    return s;
+  }	
+}
+
+ScheduleElement tt_sched_elem() :
+{
+   Token t1,t2;
+   String label;
+   Distribution st = null, ft = null, qd = null, dd = null, cd = null;
+   Vector qm = null, dm = null;
+   Vector prev = new Vector();
+   Precondition pre;
+   ScheduleElement dum = new ScheduleElement();
+}
+{
+   <LPAREN> t1=<ID> 
+     { label = t1.image;}
+   (<LPAREN>
+   ( (<SPECATTRIBUTES> tt_specattributescheduleelement(dum) <RPAREN>)
+   | (<STARTDIST> st=ParseDistribution() <RPAREN>)
+   | (<FINISHDIST> ft=ParseDistribution() <RPAREN>)
+   | (<QDIST> qd=ParseDistribution() <RPAREN>)
+   | (<DDIST> dd=ParseDistribution() <RPAREN>)
+   | (<CDIST> cd=ParseDistribution() <RPAREN>)
+   | (<QMON> {qm = new Vector();}
+	(t1=<NUM>
+	 {qm.addElement(Integer.decode(t1.image));
+	 })* <RPAREN>)
+   | (<DMON> {dm = new Vector();}
+	(t1=<NUM>
+	 {dm.addElement(Integer.decode(t1.image));
+	 })* <RPAREN>)
+   | (<PRECONS> ((pre=tt_precon()) { prev.addElement(pre); })* <RPAREN>)
+   ))*
+   <RPAREN>
+   {ScheduleElement se = new ScheduleElement(new VirtualMethod(label, null), st, ft, qd, dd, cd, qm, dm);
+    if (prev.size() > 0) se.setPreconditions(prev);
+    Enumeration e = dum.getAttributes();
+    while (e.hasMoreElements()) {
+       Object key = e.nextElement();
+       se.setAttribute(key, dum.getAttribute(key));
+    }
+    return se;
+   }
+}
+
+Precondition tt_precon() :
+{
+   Token t;
+   Distribution q;
+   VirtualInterrelationship i;
+   ScheduleElement se;
+   Precondition p;
+}
+{
+   (<LPAREN> (
+    (<EARLIESTPRE>
+	(<LPAREN> <EST> q=ParseDistribution() <RPAREN>)
+     ) {p = new EarliestStartTimePrecondition(null, q);}
+   |
+     (<PRECPRE>
+       (<LPAREN> <SCHEDELEM> t=<ID> <RPAREN>) {se = new ScheduleElement(); se.setMethod(new VirtualMethod(t.image, null));}
+       (<LPAREN> <INTERRELATIONSHIP> t=<ID> <RPAREN>) {i = new VirtualInterrelationship(t.image, null);}
+     ) {p = new PrecedencePrecondition(null, se, i);}
+   ) <RPAREN>)
+   { return p; }
+}
+
+Hashtable tt_realspecattribute() :
+{
+ Token t1, t2=null, t3=null;
+ Object o;
+ String text="";
+ Hashtable h = new Hashtable();
+}
+{ 
+  (<LPAREN> 
+      t1=tt_get_next_token()
+      (t3=<ID>|t3=<NUM>)
+      (
+        (<DELIM> t2=<SPECIAL>)*
+        text=readText()
+        <RPAREN>
+      |
+        {text = null;}
+        <RPAREN>
+      )
+    {
+
+    if (t2 != null) {
+       text = "DELIM"+ t2.image + " " + text;
+       t2 = null;
+    }
+
+    if ((text == null) || (text.trim().length() == 0)) {
+       text = t3.image;
+       t3.image="String";
+    }
+
+    o = utilities.Converter.reTypeProperty(text, t3.image);
+
+    if (o != null)
+      h.put(t1.image, o);
+    else if (t3.image.equalsIgnoreCase("Node")) 
+      h.put(t1.image, new VirtualNode(text));
+    else
+      h.put(t1.image, text);
+   })*
+   { return h; }
+}
+
+void tt_specattribute(Node n) :
+{
+ Token t1, t2=null, t3;
+ Object o;
+ String text="";
+}
+{ 
+   {
+	Hashtable h = tt_realspecattribute();
+	Enumeration e = h.keys();
+	while (e.hasMoreElements()) {
+		Object k = e.nextElement();
+		o = h.get(k);
+		n.setAttribute(k,o); 
+	}
+   }
+}
+
+String readText():
+{
+Token t2;
+String text="", tmp="";
+}
+{
+ ((t2=<ID> {
+       if (tmp.equals(""))	
+         tmp = t2.image;
+       else
+          tmp = tmp + " " + t2.image;
+       })
+  | (t2=<NUM> {
+       if (tmp.equals(""))	
+         tmp = t2.image;
+       else
+          tmp = tmp + " " + t2.image;
+       })
+  | (t2=<SPECIAL> {
+	if (text.equals(""))
+	   if (tmp.equals(""))
+              text = t2.image;
+	   else {
+              text = tmp.trim() + t2.image;
+	      tmp = "";
+	      }
+       else if(tmp.equals(""))
+              text = text + t2.image;
+	   else {
+              text = text + tmp.trim() + t2.image;
+	      tmp = "";
+	        }
+	      }
+	))+ 
+   {
+   return(text+tmp.trim());
+   }
+}
+
+
+
+void tt_specattributetaems(Taems t) :
+{
+ Token t1, t2=null, t3;
+ Object o;
+ String text="";
+}
+{ 
+   {
+	Hashtable h = tt_realspecattribute();
+	Enumeration e = h.keys();
+	while (e.hasMoreElements()) {
+		Object k = e.nextElement();
+		o = h.get(k);
+		t.setAttribute(k,o); 
+	}
+   }
+}
+
+void tt_specattributecommitment(Commitment com) :
+{
+ Token t1, t2=null, t3;
+ String text="";
+ Object o;
+}
+{ 
+   {
+	Hashtable h = tt_realspecattribute();
+	Enumeration e = h.keys();
+	while (e.hasMoreElements()) {
+		Object k = e.nextElement();
+		o = h.get(k);
+		com.setAttribute(k,o); 
+	}
+   }
+}
+
+void tt_specattributescheduleelement(ScheduleElement se) :
+{
+ Token t1, t2=null, t3;
+ String text="";
+ Object o;
+}
+{ 
+   {
+	Hashtable h = tt_realspecattribute();
+	Enumeration e = h.keys();
+	while (e.hasMoreElements()) {
+		Object k = e.nextElement();
+		o = h.get(k);
+		se.setAttribute(k,o); 
+	}
+   }
+}
+
+void tt_specattributeagent(Agent a) :
+{
+ Token t1, t2=null, t3;
+ String text="";
+ Object o;
+}
+{ 
+   {
+	Hashtable h = tt_realspecattribute();
+	Enumeration e = h.keys();
+	while (e.hasMoreElements()) {
+		Object k = e.nextElement();
+		o = h.get(k);
+		a.setAttribute(k,o); 
+	}
+   }
+}
+
+void tt_commitment(Taems taems, boolean nl) :
+{
+   Token t1;
+   Vector tmpTask = new Vector();
+   Commitment commitment = new Commitment();
+}
+{
+   (<LPAREN> 
+      ( (<SPECATTRIBUTES> tt_specattributecommitment(commitment) <RPAREN>)
+      | (<LABEL> (t1=<ID> | t1=<NUM>) <RPAREN>	
+	  {commitment.setLabel(t1.image);})
+      | (<TYPE> t1=tt_get_next_token() <RPAREN>
+	  {commitment.setType(t1.image);})
+      | (<AGENT> (t1=<ID> | t1=<NUM>) <RPAREN>
+	  {commitment.setFromAgent(new Agent(t1.image));})
+      | (<FROMAGENT> (t1=<ID> | t1=<NUM>) <RPAREN>
+	  {commitment.setFromAgent(new Agent(t1.image));})
+      | (<TOAGENT> (t1=<ID> | t1=<NUM>) <RPAREN>
+	  {commitment.setToAgent(new Agent(t1.image));})
+      | (<TASK> 
+	  (t1=<ID> {tmpTask.addElement(new VirtualTaskBase(t1.image, null));})* <RPAREN>
+	   {commitment.setTaskVector(tmpTask);})
+      | (<IMPORTANCE> t1=<NUM> <RPAREN>
+	  {commitment.setImportance(Integer.valueOf(t1.image).intValue());})
+      | (<MINQ> t1=<NUM> <RPAREN>
+	  {commitment.setMinimumQuality(Float.valueOf(t1.image).floatValue());})
+      | (<EST> t1=<NUM> <RPAREN>
+	  {commitment.setEarliestStartTime(Integer.valueOf(t1.image).intValue());})
+      | (<DEADLINE> t1=<NUM> <RPAREN>
+	  {commitment.setDeadline(Float.valueOf(t1.image).intValue());})
+      | (<DIS> t1=<NUM> <RPAREN>
+	  {commitment.setDontIntervalStart(Integer.valueOf(t1.image).intValue());})
+      | (<DIE> t1=<NUM> <RPAREN>
+	  {commitment.setDontIntervalEnd(Integer.valueOf(t1.image).intValue());})
+      | (<SAT> t1=<NUM> <RPAREN>
+	  {commitment.setTimeSatisfied(Integer.valueOf(t1.image).intValue());})
+      | (<QDIST> { commitment.setQualityDistribution(ParseDistribution()); } <RPAREN>)
+      | (<TDIST> { commitment.setTimeDistribution(ParseDistribution()); } <RPAREN>)
+      | ((<NONLOCAL>|<OLDNONLOCAL>) { commitment.setNonLocal(true); } <RPAREN>)
+    ))*
+	{
+    if (nl) commitment.setNonLocal(true);
+    taems.addCommitment(commitment);
+  }
+}
+ 
+JAVACODE
+Token tt_get_next_token()
+{
+   return getNextToken();
+}
+
