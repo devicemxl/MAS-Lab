@@ -1,0 +1,92 @@
+ # Written by: Bryan Horling  and Regis Vincent
+ #             Department of Computer and Information Science
+ #             University of Massachusetts
+ #             Amherst, Massachusetts 01003.
+ #
+ # This code was written at the Multi-Agent Systems Lab.
+ # Department of Computer Science, University of Massachusetts,
+ # Amherst, MA 01003.
+ #
+ # See LICENSE file for licensing details.
+
+###
+# Vars
+###
+
+# Locations
+HOME	= $(shell cd; /bin/sh -c pwd)
+ARCH	= $(shell uname -s)
+ifeq "$(ARCH)" "Linux"
+	#JAVART	= /usr/maslocal/jdk2/bin/
+	JAVART	= 
+	PERL	= perl
+endif
+
+LIBS	= lib
+DOCD	= doc
+CLASSD	= classes
+
+# Files
+EMPTY	=
+SPACE	= $(EMPTY) $(EMPTY)
+JLIBS	= $(wildcard $(LIBS)/*[".jar"|".zip"])
+CLASSPTH= .:$(CLASSD):$(subst $(SPACE),:,$(strip $(JLIBS)))
+JAVAPAK	= $(shell grep "^\\s*package.*;\\s*$$" $(JAVA) | sed -e "s/.*package *\(.*\);$$/\1/i" | sort | uniq)
+
+# Programs
+JAVAC	= $(JAVART)javac -g -J-mx30m -d $(CLASSD) -deprecation -classpath $(CLASSPTH)
+JAVADOC	= $(JAVART)javadoc -classpath $(CLASSPTH) -sourcepath .. \
+   -public -d $(DOCD) -version -author \
+   -link http://mas.cs.umass.edu/research/mass/api/agent/ \
+   -link http://mas.cs.umass.edu/research/mass/api/ihome/ \
+   -link http://mas.cs.umass.edu/research/mass/api/utilities/ \
+   -link http://mas.cs.umass.edu/research/mass/api/taems/
+JAVAH	= $(JAVART)javah -jni -v -d .. -classpath $(CLASSPTH)
+JAVACC  = $(JAVART)java -classpath $(CLASSPTH) javacc
+GCC	= g++ -lc -shared -I/usr/include/java -I/usr/include/java/alpha
+
+###
+# Rules
+###
+
+# So we get the correct behavior
+standard: all
+
+# Javac rules
+$(CLASSD)/$(MODULE)/%.class: %.java
+	$(JAVAC) $<
+
+$(CLASSD)/%.class: %.java
+	$(JAVAC) $<
+
+debug:
+	@ echo "             (C) MASL 1997,1998 99.44% Pure Java certified"
+	@ echo "To run the MAS Simulator, type:"
+	@ echo "       make run"
+	@ echo ""
+	@ echo "If an error occurs, mail to vincent,bhorling@cs.umass.edu"
+	@ echo ""
+	@ echo "Here an log of your environment:"
+	@ echo "      ARCH = $(ARCH)"
+	@ echo "      HOME = $(HOME)"
+	@ echo "  MASSHOME = $(MASSHOME)"
+	@ echo "    JAVART = $(JAVART)"
+	@ echo "      LIBS = $(LIBS)"
+	@ echo "     JLIBS = $(JLIBS)"
+	@ echo "  CLASSPTH = $(CLASSPTH)"
+	@ echo ""
+	@ echo "      Host = `uname -a`"
+
+doc: $(JAVA) FORCE
+	@echo Making Javadocs...
+	-@rm -rf $(DOCD)
+	-@mkdir $(DOCD)
+	$(JAVADOC) $(JAVAPAK)
+
+dochtml: doc
+	@echo Copying to html...
+	-rm -rf $(HTMLD)/$(MODULE)/*
+	chmod -R a+r $(DOCD)
+	cp -r $(DOCD)/* $(HTMLD)/$(MODULE)
+
+FORCE: ;
